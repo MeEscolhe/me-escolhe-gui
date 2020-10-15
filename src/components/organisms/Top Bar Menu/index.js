@@ -4,7 +4,7 @@ import { Avatar, ButtonLink } from '../../atoms'
 import { TopBar, MenuComponent, MenuBar, Profile } from './styled'
 import { UserOutlined } from '@ant-design/icons'
 
-export const TopBarMenu = ({ image }) => {
+export const TopBarMenu = ({ image, onClick }) => {
     const color = {
         icon: colors.pink
     }
@@ -21,7 +21,7 @@ export const TopBarMenu = ({ image }) => {
                     </MenuComponent.Item>
                 </MenuComponent>
             </MenuBar>
-            <ButtonLink onClick={() => alert("PROFILE") }>
+            <ButtonLink onClick={onClick}>
                 <Profile src={ image } size={44} icon={<UserOutlined />}/>                   
             </ButtonLink>
         </TopBar>
