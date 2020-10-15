@@ -10,7 +10,7 @@ export default {
     black: '#000000',
     icon: "#ff82ab",
     fullstack: {
-        primary: "#6B2CF5",
+        primary: "#5e32f2",
         secundary: "#D450E6",
         icon: "#ef7dff"
     },
@@ -20,7 +20,7 @@ export default {
         icon: "#ffeeb6"
     },
     backEnd: {
-        primary: "#2F80FF",
+        primary: "#09af58",
         secundary: "#3CCBFF",
         icon: "#9de5ff"
     },
@@ -59,7 +59,7 @@ export const color = ( job ) => {
     switch (job) {
         case BACKEND:
             return { 
-                primary: "#2F80FF",
+                primary: "#09af58",
                 secundary: "#3CCBFF",
                 icon: "#9de5ff"
             }          
@@ -77,7 +77,7 @@ export const color = ( job ) => {
             }
         case FULLSTACK:
             return {
-                primary: "#6B2CF5",
+                primary: "#5e32f2",
                 secundary: "#D450E6",
                 icon: "#ef7dff"
             }
