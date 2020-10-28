@@ -16,13 +16,10 @@ export const TopBarMenu = ({ image, onClick }) => {
                     <MenuComponent.Item >
                         Seleções
                     </MenuComponent.Item>
-                    <MenuComponent.Item >
-                        Minhas Seleções
-                    </MenuComponent.Item>
                 </MenuComponent>
             </MenuBar>
             <ButtonLink onClick={onClick}>
-                <Profile src={ image } size={44} icon={<UserOutlined />}/>                   
+                <Profile src={ image } size={44} icon={ <UserOutlined />}/>                   
             </ButtonLink>
         </TopBar>
     </>

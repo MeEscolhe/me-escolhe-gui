@@ -28,7 +28,7 @@ export const LabNameComponent = styled(Label)`
 export const Header = styled.div`
     display: flex;
     flex-direction: row;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 `;
 
 export const DataHeader = styled.div`

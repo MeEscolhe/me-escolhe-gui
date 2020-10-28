@@ -10,7 +10,7 @@ export default {
     black: '#000000',
     icon: "#ff82ab",
     fullstack: {
-        primary: "#5e32f2",
+        primary: "#7143e5",
         secundary: "#D450E6",
         icon: "#ef7dff"
     },
@@ -50,6 +50,7 @@ export default {
         noProgress: "#cccccc",
     }
 }
+
 const BACKEND = "Back-End"
 const FRONTEND = "Front-End"
 const TESTER = "Tester"
@@ -77,7 +78,7 @@ export const color = ( job ) => {
             }
         case FULLSTACK:
             return {
-                primary: "#5e32f2",
+                primary: "#7143e5",
                 secundary: "#D450E6",
                 icon: "#ef7dff"
             }
@@ -87,5 +88,26 @@ export const color = ( job ) => {
                 secundary: "#E23E57",
                 icon: "#ff7d90"
             }
+    }   
+}
+
+export const skillLevel = ( level ) => {
+    switch (level) {
+        case 1:
+            return "#ecad41"   
+        case 2:
+            return "#f59f3b"   
+ 
+        case 3:
+            return "#fb8e37"   
+
+        case 4:
+            return "#fb8537" 
+        
+        case 5:
+            return "#fb6a37"   
+
+        default:
+            return "#00B8BA"   
     }   
 }

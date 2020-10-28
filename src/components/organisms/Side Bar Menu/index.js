@@ -1,11 +1,11 @@
 import React from 'react'
 import { HeaderMin } from '../../molecules'
 import { SideBar, MenuComponent } from './styled'
-import { UserOutlined, SettingOutlined, QuestionOutlined } from '@ant-design/icons'
+import { UserOutlined, SettingOutlined, QuestionOutlined, UnorderedListOutlined } from '@ant-design/icons'
 
 export const SideBarMenu = ({ visible, onClose, name, email, image}) => {
     return <SideBar
-            width={700}
+            width={600}
             placement="right"
             closable={false}
             visible={visible}
@@ -17,16 +17,19 @@ export const SideBarMenu = ({ visible, onClose, name, email, image}) => {
                 image={image} 
             />
             <MenuComponent mode="vertical">
-                    <MenuComponent.Item icon={ <UserOutlined/> }>
-                        Conta
-                    </MenuComponent.Item>
-                    <MenuComponent.Item icon={ <SettingOutlined /> }>
-                        Configurações
-                    </MenuComponent.Item>
-                    <MenuComponent.Item icon={ <QuestionOutlined /> }>
-                        Ajuda
-                    </MenuComponent.Item>
-                </MenuComponent>
+                <MenuComponent.Item icon={ <UserOutlined/> }>
+                    Conta
+                </MenuComponent.Item>
+                <MenuComponent.Item icon={ <UnorderedListOutlined /> }>
+                    Minhas Seleções
+                </MenuComponent.Item>
+                <MenuComponent.Item icon={ <SettingOutlined /> }>
+                    Configurações
+                </MenuComponent.Item>
+                <MenuComponent.Item icon={ <QuestionOutlined /> }>
+                    Ajuda
+                </MenuComponent.Item>
+            </MenuComponent>
         </SideBar>
     ;
 };
