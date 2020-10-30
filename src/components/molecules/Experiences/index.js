@@ -3,11 +3,11 @@ import { Title } from '../../atoms'
 import { Content, Header, TimeLine, Experience, Details, TitleComponent } from './styled'
 import { colors } from '../../../styles/colors'
 
-export const Experiences = ({work, experiences }) => {
-    const title = work ? "Profissional" : "Acadêmica"
+export const Experiences = ({academicExperiences, workExperiences }) => {
+    const title = workExperiences ? "Profissional" : "Acadêmica"
     
-    const listExperience = work ? 
-        experiences.map((experience) => {
+    const listExperience = workExperiences ? 
+    workExperiences.map((experience) => {
             return <Experience color={ colors.pink }>
                 <Details>
                     <TitleComponent level={4} color>{ experience.role }</TitleComponent>
@@ -17,7 +17,7 @@ export const Experiences = ({work, experiences }) => {
             </Experience>
         })
     :    
-        experiences.map((experience) => {
+    academicExperiences.map((experience) => {
             return <Experience color={ colors.pink }>
                 <Details>
                     <TitleComponent level={4} color>{ experience.title }</TitleComponent>

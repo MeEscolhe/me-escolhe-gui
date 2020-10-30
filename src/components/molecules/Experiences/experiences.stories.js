@@ -5,7 +5,7 @@ export default {
   title: 'Experiences Molecule Component',
   component: Experiences,
 };
-const experiences = [
+const academicExperiences = [
     {
         title: "Graduanda em Computação",
         category: "Graduação",
@@ -49,14 +49,15 @@ const workExperiences = [
     },
    
 ]
-export const ToStorybookAcademicExperiences= () => <Experiences experiences={ experiences }/>
+
+export const ToStorybookAcademicExperiences= () => <Experiences academicExperiences={ academicExperiences }/>
 
 
 ToStorybookAcademicExperiences.story = {
   name: 'Academic Experiences',
 };
 
-export const ToStorybookWorkExperiences= () => <Experiences work experiences={ workExperiences }/>
+export const ToStorybookWorkExperiences= () => <Experiences workExperiences={ workExperiences }/>
 
 
 ToStorybookWorkExperiences.story = {

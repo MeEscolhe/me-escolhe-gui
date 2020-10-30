@@ -1,9 +1,9 @@
 import React from 'react';
-import Skills from './index';
+import SkillsCard from './index';
 
 export default {
-  title: 'Skills Organisms Component',
-  component: Skills,
+  title: ' SkillsCard Template Component',
+  component: SkillsCard,
 };
 
 const hardSkills = [
@@ -139,19 +139,12 @@ const languages = [
         level: 3
     },
 ]
-export const ToStorybookHardSkills= () => <Skills hardSkills={ hardSkills }/>;
- 
-ToStorybookHardSkills.story = {
-  name: 'Hard Skills',
-};
 
-export const ToStorybookSoftSkills= () => <Skills softSkills={ softSkills }/>;
+export const ToStorybookSkillsCard= () => <SkillsCard 
+    hardSkills={ hardSkills } 
+    softSkills={ softSkills}
+    languages={ languages }/>;
  
-ToStorybookSoftSkills.story = {
-  name: 'Soft Skills',
-};
-export const ToStorybookLanguagesSkills= () => <Skills languages={ languages }/>;
- 
-ToStorybookLanguagesSkills.story = {
-  name: 'Languages Skills',
+ToStorybookSkillsCard.story = {
+  name: ' SkillsCard',
 };

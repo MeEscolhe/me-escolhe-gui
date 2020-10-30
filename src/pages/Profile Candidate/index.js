@@ -1,7 +1,7 @@
 import React from 'react'
 import { Title, Text } from '../../components/atoms'
-import { Experiences, HeaderProfile } from '../../components/molecules'
-import { Skills } from '../../components/organisms'
+import { HeaderProfile } from '../../components/molecules'
+import { SkillsCard, ExperiencesCard } from '../../components/templates'
 import { Header, Content } from './styled'
 import { Card } from 'antd';
 
@@ -208,18 +208,13 @@ class ProfileCandidate extends React.Component {
                     <Title level={3} color> Sobre </Title>
                     <Text>{ this.state.description }</Text>
                 </Card>
-                <Card>
-                    <Title level={3} color> Competências </Title>
-                        <Skills title={"Habilidades Técnicas"} hardSkills={ this.state.hardSkills }/>                      
-                        <Skills title={"Habilidades Interpessoais"} softSkills={ this.state.softSkills }/>                      
-                        <Skills title={"Idiomas"} languages={ this.state.languages }/>                      
-
-                </Card>
-                <Card>
-                    <Title level={3} color> Experiências </Title>
-                    <Experiences experiences={ this.state.academicExperiences }/>
-                    <Experiences work experiences={ this.state.workExperiences }/>
-                </Card>
+                <SkillsCard 
+                    hardSkills={ this.state.hardSkills } 
+                    softSkills={this.state.softSkills } 
+                    languages={this.state.languages }/>
+                <ExperiencesCard 
+                    workExperiences={ this.state.workExperiences } 
+                    academicExperiences={ this.state.academicExperiences }/>
             </Content>
         </>
         
