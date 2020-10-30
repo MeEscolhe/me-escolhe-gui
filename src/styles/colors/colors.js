@@ -30,18 +30,7 @@ export default {
         icon: "#ff82ab"
     },
     progress: {
-        classified: {
-            init: "#00FFED",
-            final: "#00B8BA",
-        },
-        progress: { 
-            init: "#FFCF1B",
-            final: "#FF881B",
-        },
-        declassified: {
-            init: "#FF512F",
-            final: "#C70030",
-        },
+        
     },
     phase: {
         progress: "#FFDA64",
@@ -110,4 +99,29 @@ export const skillLevel = ( level ) => {
         default:
             return "#00B8BA"   
     }   
+}
+
+export const statusPhase = ( status) => {
+    switch(status){
+        case 'success':
+            return {
+                init: "#00FFED",
+                final: "#00B8BA"
+            }
+        case 'active':
+            return { 
+                init: "#FFCF1B",
+                final: "#FF881B"
+            }
+        case 'exception':
+            return {
+                init: "#FF512F",
+                final: "#C70030"
+            }
+        default:
+            return {
+                init: "#cccccc",
+                final: '#f5f5f5'
+            }
+    }
 }

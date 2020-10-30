@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeaderMin } from '../../molecules'
+import { HeaderUserMin } from '../../molecules'
 import { SideBar, MenuComponent } from './styled'
 import { UserOutlined, SettingOutlined, QuestionOutlined, UnorderedListOutlined } from '@ant-design/icons'
 
@@ -11,7 +11,7 @@ export const SideBarMenu = ({ visible, onClose, name, email, image}) => {
             visible={visible}
             onClose={onClose}
         >
-            <HeaderMin 
+            <HeaderUserMin 
                 name={name} 
                 email={email} 
                 image={image} 

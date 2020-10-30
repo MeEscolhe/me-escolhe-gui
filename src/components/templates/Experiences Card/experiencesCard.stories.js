@@ -54,5 +54,5 @@ const workExperiences = [
 export const ToStorybookExperiencesCard= () => <ExperiencesCard academicExperiences={ academicExperiences } workExperiences={ workExperiences }/>;
  
 ToStorybookExperiencesCard.story = {
-  name: ' ExperiencesCard',
+  name: ' Experiences Card',
 };

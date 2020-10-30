@@ -1,11 +1,9 @@
 import React from 'react'
-import { Title, Text } from '../../components/atoms'
-import { HeaderProfile } from '../../components/molecules'
-import { SkillsCard, ExperiencesCard } from '../../components/templates'
+import { HeaderUser } from '../../components/molecules'
+import { SkillsCard, ExperiencesCard, AboutCard } from '../../components/templates'
 import { Header, Content } from './styled'
-import { Card } from 'antd';
 
-class ProfileCandidate extends React.Component {
+class CandidateProfile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -201,17 +199,14 @@ class ProfileCandidate extends React.Component {
     render() {
         return <>
             <Header>
-                <HeaderProfile user={ this.state.user }/>
+                <HeaderUser user={ this.state.user }/>
             </Header>
             <Content>
-                <Card>
-                    <Title level={3} color> Sobre </Title>
-                    <Text>{ this.state.description }</Text>
-                </Card>
+                <AboutCard description={ this.state.description }/>
                 <SkillsCard 
                     hardSkills={ this.state.hardSkills } 
-                    softSkills={this.state.softSkills } 
-                    languages={this.state.languages }/>
+                    softSkills={ this.state.softSkills } 
+                    languages={ this.state.languages }/>
                 <ExperiencesCard 
                     workExperiences={ this.state.workExperiences } 
                     academicExperiences={ this.state.academicExperiences }/>
@@ -220,4 +215,4 @@ class ProfileCandidate extends React.Component {
         
     }
 }
-export default ProfileCandidate;
+export default CandidateProfile;

@@ -5,7 +5,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import { SelectionsPage, ProfileCandidate } from './pages';
+import { SelectionsPage, CandidateProfile, CandidateProjectProfile, ProjectProfile } from './pages';
 import * as serviceWorker from './serviceWorker';
 
 const selections = [
@@ -48,7 +48,13 @@ ReactDOM.render(
         <SelectionsPage title={ "Minhas Seleções" } selections={ selections }/>
       </Route>
       <Route path="/user/profile">
-        <ProfileCandidate />
+        <CandidateProfile />
+      </Route>
+      <Route path="/user/projects/project/profile">
+        <CandidateProjectProfile />
+      </Route>
+      <Route path="/project/profile">
+        <ProjectProfile />
       </Route>
       <Route path="/">
         <SelectionsPage title={ "Seleções" } selections={ selections }/>

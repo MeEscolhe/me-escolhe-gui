@@ -146,5 +146,31 @@ export const ToStorybookSkillsCard= () => <SkillsCard
     languages={ languages }/>;
  
 ToStorybookSkillsCard.story = {
-  name: ' SkillsCard',
+  name: ' Skills Card',
+};
+
+export const ToStorybookSkillsCardHard= () => <SkillsCard hardSkills={ hardSkills } 
+/>;
+ 
+ToStorybookSkillsCardHard.story = {
+  name: ' Skills Card  with Hard Skills',
+};
+
+
+export const ToStorybookSkillsCardSoft= () => <SkillsCard  softSkills={ softSkills}/>;
+ 
+ToStorybookSkillsCardSoft.story = {
+  name: ' Skills Card with Soft Skills',
+};
+
+export const ToStorybookSkillsCardLanguage= () => <SkillsCard languages={ languages }/>;
+ 
+ToStorybookSkillsCardLanguage.story = {
+  name: ' Skills Card with Language Skills',
+};
+
+export const ToStorybookSkillsCardNoSkills= () => <SkillsCard />;
+ 
+ToStorybookSkillsCardNoSkills.story = {
+  name: ' Skills Card No Skills',
 };

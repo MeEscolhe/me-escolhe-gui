@@ -1,17 +1,18 @@
 import React from 'react'
-import HeaderProfile from './index'
+import HeaderUser from './index'
 
 export default {
-  title: 'HeaderProfile Molecule Component',
-  component: HeaderProfile,
+  title: 'HeaderUser Molecule Component',
+  component: HeaderUser,
 };
 
 const userDefault = {
   name: "Nome do Estudante",
   email: "email",
-  soft: 3,
-  hard: 13,
-  language: 2,
+  soft: 0,
+  hard: 0,
+  language: 0,
+  cra: 0,
   image: ""
 }
 const user = {
@@ -20,17 +21,18 @@ const user = {
   soft: 3,
   hard: 13,
   language: 2,
+  cra: 7.5,
   image: "https://scontent.fjdo10-2.fna.fbcdn.net/v/t1.0-9/107065226_3160359924018706_6230635106728147226_n.jpg?_nc_cat=111&_nc_sid=09cbfe&_nc_ohc=s2dirxK1HDgAX_4KAdA&_nc_ht=scontent.fjdo10-2.fna&oh=82c1a4b907bdd6c641671bab8ffb106e&oe=5FABD24E"
 }
 
-export const ToStorybookHeaderProfile= () => <HeaderProfile user={ userDefault }/>
+export const ToStorybookHeaderUserDefault= () => <HeaderUser user={ userDefault }/>
 
-ToStorybookHeaderProfile.story = {
-  name: 'HeaderProfile Default',
+ToStorybookHeaderUserDefault.story = {
+  name: 'HeaderUser Default',
 };
 
-export const ToStorybookHeaderProfileUser= () => <HeaderProfile user={ user}/>
+export const ToStorybookHeaderUser= () => <HeaderUser user={ user}/>
 
-ToStorybookHeaderProfileUser.story = {
-  name: 'HeaderProfile User',
+ToStorybookHeaderUser.story = {
+  name: 'HeaderUser',
 };

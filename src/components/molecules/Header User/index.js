@@ -5,7 +5,7 @@ import { ButtonLink } from '../../atoms'
 import { HeaderProfile, User, Config, Skills, Skill, Footer, LogoComponent, TitleComponent } from './styled'
 import { colors } from '../../../styles/colors'
 
-export const Header = ({ user, ...props }) => {
+export const Header = ({ user }) => {
   return <HeaderProfile>
       <Config>
           <ButtonLink color={ colors.white } onClick={ () => alert("CONFIG") }><SettingOutlined/></ButtonLink>
