@@ -1,15 +1,24 @@
 import React from 'react'
 import { HeaderUserMin } from '../../molecules'
 import { SideBar, MenuComponent } from './styled'
-import { UserOutlined, SettingOutlined, QuestionOutlined, UnorderedListOutlined } from '@ant-design/icons'
+import { UserOutlined, SettingOutlined, QuestionOutlined} from '@ant-design/icons'
+import { useHistory } from 'react-router-dom'
+import { route } from '../../../routes'
 
 export const SideBarMenu = ({ visible, onClose, name, email, image}) => {
+    const history = useHistory()
+
+    const changeRoute = (path) => {
+        history.push(path)
+        onClose()
+    }
+
     return <SideBar
             width={600}
             placement="right"
             closable={false}
-            visible={visible}
-            onClose={onClose}
+            visible={ visible }
+            onClose={ onClose }
         >
             <HeaderUserMin 
                 name={name} 
@@ -17,16 +26,20 @@ export const SideBarMenu = ({ visible, onClose, name, email, image}) => {
                 image={image} 
             />
             <MenuComponent mode="vertical">
-                <MenuComponent.Item icon={ <UserOutlined/> }>
+                <MenuComponent.Item 
+                    icon={ <UserOutlined/> }
+                    onClick={() => changeRoute(route.userProfile)}
+                    >
                     Conta
                 </MenuComponent.Item>
-                <MenuComponent.Item icon={ <UnorderedListOutlined /> }>
-                    Minhas Seleções
-                </MenuComponent.Item>
-                <MenuComponent.Item icon={ <SettingOutlined /> }>
+                <MenuComponent.Item 
+                    icon={ <SettingOutlined /> }
+                    onClick={() => changeRoute(route.configuration)}>
                     Configurações
                 </MenuComponent.Item>
-                <MenuComponent.Item icon={ <QuestionOutlined /> }>
+                <MenuComponent.Item 
+                    icon={ <QuestionOutlined /> }
+                    onClick={() => changeRoute(route.help)}>
                     Ajuda
                 </MenuComponent.Item>
             </MenuComponent>

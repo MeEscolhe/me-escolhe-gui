@@ -3,18 +3,22 @@ import { colors } from '../../../styles/colors'
 import { Avatar, ButtonLink } from '../../atoms'
 import { TopBar, MenuComponent, MenuBar, Profile } from './styled'
 import { UserOutlined } from '@ant-design/icons'
+import { useHistory } from 'react-router-dom'
+import { route } from '../../../routes'
 
 export const TopBarMenu = ({ image, onClick }) => {
-    const color = {
-        icon: colors.pink
-    }
+    const history = useHistory()
+
     return <>
         <TopBar>
             <MenuBar>
-                <Avatar size={54} colors={ color }/>            
+                <Avatar size={54} colors={{icon: colors.pink }}/>            
                 <MenuComponent mode="horizontal">
-                    <MenuComponent.Item >
+                    <MenuComponent.Item onClick={() => history.push(route.selections)}>
                         Seleções
+                    </MenuComponent.Item>
+                    <MenuComponent.Item onClick={() => history.push(route.userSelections)}>
+                        Minhas Seleções
                     </MenuComponent.Item>
                 </MenuComponent>
             </MenuBar>
@@ -23,7 +27,7 @@ export const TopBarMenu = ({ image, onClick }) => {
             </ButtonLink>
         </TopBar>
     </>
-    ;
+    
 };
 
-export default TopBarMenu;
+export default TopBarMenu
