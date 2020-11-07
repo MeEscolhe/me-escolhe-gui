@@ -5,7 +5,7 @@ import { Header, User, TitleComponent } from './styled'
 
 export const HeaderMin = ({ name, email, image, ...props }) => {
   return <Header>
-        <Avatar src={image} size={150} icon={ <UserOutlined /> }/>
+        <Avatar src={image} size={130} icon={ <UserOutlined /> }/>
         <User>
             <TitleComponent level={2}> { name } </TitleComponent>
             <TitleComponent level={5}> { email } </TitleComponent>

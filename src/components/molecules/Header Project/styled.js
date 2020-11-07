@@ -4,23 +4,19 @@ import { Title } from '../../atoms'
 import { colors } from '../../../styles/colors'
 
 export const HeaderProfile = styled.div`
-    display: flex;
-    flex-direction: column;    
+    display: flex;   
     justify-content: center;
+    flex-direction: column;    
     background-image: linear-gradient(240deg, ${ colors.pink }, ${ colors.darkViolet });
 `;
 
-export const Config = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    margin: 1%;
-`;
-
-export const User = styled.div`
+export const Content = styled.div`
     display: flex;
     flex-direction: column;    
     align-items: center;
-    margin-block-end: 10%;
+    margin-block-start: 3%;
+    margin-block-end: 5%;
+
 `;
 
 export const TitleComponent = styled(Title)`
@@ -28,16 +24,10 @@ export const TitleComponent = styled(Title)`
     margin-block-end: 0 !important;
 `;
 
-export const Skills = styled.div`
+export const Footer = styled.div`
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-block-end: 5%;
-`;
-
-export const Skill = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row-reverse;
+    margin-inline-end: 3%; 
+    margin-block-end: 1%;
+   
 `;

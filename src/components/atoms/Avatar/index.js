@@ -8,7 +8,7 @@ export const Avatar = ({size, colors, logo}) => {
             size={size ? size: 64} 
             icon={
                 <Icon component={logo ? logo : Logo} style={{ color: colors.icon }}/>
-            } />;
+            } />
 }
 
 export default Avatar;

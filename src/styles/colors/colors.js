@@ -10,7 +10,7 @@ export default {
     black: '#000000',
     icon: "#ff82ab",
     fullstack: {
-        primary: "#5e32f2",
+        primary: "#7143e5",
         secundary: "#D450E6",
         icon: "#ef7dff"
     },
@@ -30,18 +30,7 @@ export default {
         icon: "#ff82ab"
     },
     progress: {
-        classified: {
-            init: "#00FFED",
-            final: "#00B8BA",
-        },
-        progress: { 
-            init: "#FFCF1B",
-            final: "#FF881B",
-        },
-        declassified: {
-            init: "#FF512F",
-            final: "#C70030",
-        },
+        
     },
     phase: {
         progress: "#FFDA64",
@@ -50,6 +39,7 @@ export default {
         noProgress: "#cccccc",
     }
 }
+
 const BACKEND = "Back-End"
 const FRONTEND = "Front-End"
 const TESTER = "Tester"
@@ -77,7 +67,7 @@ export const color = ( job ) => {
             }
         case FULLSTACK:
             return {
-                primary: "#5e32f2",
+                primary: "#7143e5",
                 secundary: "#D450E6",
                 icon: "#ef7dff"
             }
@@ -88,4 +78,50 @@ export const color = ( job ) => {
                 icon: "#ff7d90"
             }
     }   
+}
+
+export const skillLevel = ( level ) => {
+    switch (level) {
+        case 1:
+            return "#ecad41"   
+        case 2:
+            return "#f59f3b"   
+ 
+        case 3:
+            return "#fb8e37"   
+
+        case 4:
+            return "#fb8537" 
+        
+        case 5:
+            return "#fb6a37"   
+
+        default:
+            return "#00B8BA"   
+    }   
+}
+
+export const statusPhase = ( status) => {
+    switch(status){
+        case 'success':
+            return {
+                init: "#00FFED",
+                final: "#00B8BA"
+            }
+        case 'active':
+            return { 
+                init: "#FFCF1B",
+                final: "#FF881B"
+            }
+        case 'exception':
+            return {
+                init: "#FF512F",
+                final: "#C70030"
+            }
+        default:
+            return {
+                init: "#cccccc",
+                final: '#f5f5f5'
+            }
+    }
 }

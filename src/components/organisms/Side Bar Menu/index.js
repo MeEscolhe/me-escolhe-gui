@@ -1,32 +1,48 @@
 import React from 'react'
-import { HeaderMin } from '../../molecules'
+import { HeaderUserMin } from '../../molecules'
 import { SideBar, MenuComponent } from './styled'
-import { UserOutlined, SettingOutlined, QuestionOutlined } from '@ant-design/icons'
+import { UserOutlined, SettingOutlined, QuestionOutlined} from '@ant-design/icons'
+import { useHistory } from 'react-router-dom'
+import { route } from '../../../routes'
 
 export const SideBarMenu = ({ visible, onClose, name, email, image}) => {
+    const history = useHistory()
+
+    const changeRoute = (path) => {
+        history.push(path)
+        onClose()
+    }
+
     return <SideBar
-            width={700}
+            width={600}
             placement="right"
             closable={false}
-            visible={visible}
-            onClose={onClose}
+            visible={ visible }
+            onClose={ onClose }
         >
-            <HeaderMin 
+            <HeaderUserMin 
                 name={name} 
                 email={email} 
                 image={image} 
             />
             <MenuComponent mode="vertical">
-                    <MenuComponent.Item icon={ <UserOutlined/> }>
-                        Conta
-                    </MenuComponent.Item>
-                    <MenuComponent.Item icon={ <SettingOutlined /> }>
-                        Configurações
-                    </MenuComponent.Item>
-                    <MenuComponent.Item icon={ <QuestionOutlined /> }>
-                        Ajuda
-                    </MenuComponent.Item>
-                </MenuComponent>
+                <MenuComponent.Item 
+                    icon={ <UserOutlined/> }
+                    onClick={() => changeRoute(route.userProfile)}
+                    >
+                    Conta
+                </MenuComponent.Item>
+                <MenuComponent.Item 
+                    icon={ <SettingOutlined /> }
+                    onClick={() => changeRoute(route.configuration)}>
+                    Configurações
+                </MenuComponent.Item>
+                <MenuComponent.Item 
+                    icon={ <QuestionOutlined /> }
+                    onClick={() => changeRoute(route.help)}>
+                    Ajuda
+                </MenuComponent.Item>
+            </MenuComponent>
         </SideBar>
     ;
 };

@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
-import { List } from 'antd';
+import { List } from 'antd'
 import { Selection, Details } from '../../molecules'
-import { color } from '../../../styles/colors';
+import { color } from '../../../styles/colors'
+import { useHistory } from 'react-router-dom'
+import { route } from '../../../routes'
 
-export const Selections = ({data}) => {
+export const Selections = ({noDetails, data}) => {
     const [open, setOpen] = useState(false)
     const [details, setDetails] = useState({})
+    const history = useHistory()
 
     const openDetails = (item) => {
         setOpen(true)
@@ -24,7 +27,7 @@ export const Selections = ({data}) => {
                         description={ item.description } 
                         labName={ item.labName } 
                         colors={ color(item.job) }
-                        onClick={() => openDetails(item)}
+                        onClick={() => noDetails ? history.push(route.projectProfile): openDetails(item)}
                     />
                 </List.Item>
             )}
@@ -36,7 +39,7 @@ export const Selections = ({data}) => {
             colors={ color(details.job) }
             labName={ details.labName } 
             visible={ open }
-            onOk={() => setOpen(false)}
+            onOk={() => history.push(route.projectProfile)}
             onCancel={() => setOpen(false)}
         />
     </>;

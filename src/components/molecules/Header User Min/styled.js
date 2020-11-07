@@ -8,6 +8,7 @@ export const Header = styled.div`
     flex-direction: row;    
     justify-content: flex-start;
     padding: 2%;
+    padding-block-end: 5%;
     background-image: linear-gradient(240deg, ${ colors.pink }, ${ colors.darkViolet });
 `;
 
