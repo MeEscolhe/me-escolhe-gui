@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { List } from 'antd';
+import { List } from 'antd'
 import { Selection, Details } from '../../molecules'
 import { color } from '../../../styles/colors'
 import { useHistory } from 'react-router-dom'

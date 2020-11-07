@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Title, Input } from '../../components/atoms'
 import { Selections } from '../../components/organisms'
 import { Header, Content, Search } from './styled'
-import { SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined } from '@ant-design/icons'
+import { getSelections } from '../../server'
 
-class AllSelections extends React.Component {
+class AllSelections extends Component {
     constructor(props) {
         super(props);
         this.state = {
             title: props.title,
             selections: props.selections
         }
+    }
+
+    componentDidMount = () => {
+        getSelections()
     }
 
     filterSelections = (event) => {

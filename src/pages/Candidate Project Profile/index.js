@@ -1,7 +1,9 @@
 import React from 'react'
+import { Title } from '../../components/atoms'
 import { HeaderProject, Progress } from '../../components/molecules'
 import { AboutCard } from '../../components/templates'
-import { Content } from './styled'
+import { Header, Content, SideBar } from './styled'
+import { List } from 'antd'
 
 class CandidateProjectProfile extends React.Component {
     constructor(props){
@@ -16,17 +18,57 @@ class CandidateProjectProfile extends React.Component {
                 phase: {
                     number: '1', 
                     status: 'active'
-                }
-            }
+                },
+            },
+            data: [
+                {
+                    title: 'Fase 1',
+                    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                },
+                {
+                    title: 'Fase 1',
+                    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                },
+                {
+                    title: 'Fase 2',
+                    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                },
+                {
+                    title: 'Fase 2',
+                    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                },
+                {
+                    title: 'Fase 3',
+                    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                },
+                {
+                    title: 'Fase 3',
+                    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                },
+            ]
+
         }
     }
 
     render() {
         return <>
-            <HeaderProject project={ this.state.project }/>  
+            <Header>
+                <HeaderProject project={ this.state.project }/>  
+                <Title color> Feed </Title>
+            </Header>
             <Content>
-                <AboutCard description={ this.state.project.description }/>
-                <Progress phase={ this.state.project.phase.number } status={this.state.project.phase.status }/>
+                <List
+                    itemLayout="horizontal"
+                    dataSource={ this.state.data }
+                    renderItem={item => (
+                        <List.Item>
+                            <AboutCard title={ item.title } description={ item.description }/>
+                        </List.Item>
+                    )}
+                />
+                <SideBar>
+                    <Progress phase={ this.state.project.phase.number } status={this.state.project.phase.status }/>
+                </SideBar>
             </Content>          
         </>
     }
