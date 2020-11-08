@@ -8,10 +8,12 @@
     "antd": "^4.6.4",
     "axios": "^0.21.0",
     "cypress": "^5.1.0",
+    "dotenv": "^8.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
+    "shards-react": "^1.0.3",
     "storybook": "^6.0.21",
     "styled-components": "^5.2.0"
   },

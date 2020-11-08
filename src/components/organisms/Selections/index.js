@@ -20,7 +20,7 @@ export const Selections = ({noDetails, data}) => {
             itemLayout="horizontal"
             dataSource={data}
             renderItem={item => (
-                <List.Item>
+                <List.Item> 
                     <Selection 
                         projectName={ item.projectName } 
                         job={ item.job } 
