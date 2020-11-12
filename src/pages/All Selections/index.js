@@ -3,19 +3,22 @@ import { Title, Input } from '../../components/atoms'
 import { Selections } from '../../components/organisms'
 import { Header, Content, Search } from './styled'
 import { SearchOutlined } from '@ant-design/icons'
-import { getSelections } from '../../server'
+
+import SelectionService from '../../services/selectionsService'
 
 class AllSelections extends Component {
     constructor(props) {
         super(props);
+        this.selectionService = new SelectionService()
         this.state = {
             title: props.title,
             selections: props.selections
         }
     }
 
-    componentDidMount = () => {
-        getSelections()
+    componentDidMount() {
+        //let selections = this.selectionService.getAll()
+        //this.setState({selections: selections})
     }
 
     filterSelections = (event) => {
@@ -35,7 +38,7 @@ class AllSelections extends Component {
     render() {
         return <>
         <Header>
-            <Title color level={2}>{ this.state.title }</Title>
+            <Title level={2}>{ this.state.title }</Title>
             <Search>
             <Input 
                 bordered={false}

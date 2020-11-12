@@ -1,16 +1,13 @@
 import React from 'react'
-import { Text, Button, Avatar } from '../../atoms'
+import { Avatar } from '../../atoms'
 import { 
     ModalMolecule, 
-    TitleComponent, 
-    Job,
+    TitleComponent,
     Header, 
-    DataHeader, 
-    Legend} from './styled'
+    DataHeader} from './styled'
 
-export const Details = ({projectName, job, description, colors, labName, visible, onOk, onCancel, ...props}) => {
-  return <>
-        <ModalMolecule
+export const ModalSelection = ({projectName, colors, labName, visible, onOk, onCancel, ...props}) => {
+  return <ModalMolecule
             visible={ visible }
             footer={null}
             primary={ colors.primary }
@@ -29,14 +26,7 @@ export const Details = ({projectName, job, description, colors, labName, visible
             </Header>
             }
             {...props}
-        >
-            <Job color level={4}>{ job }</Job>
-            <Text>{ description }</Text>
-            <Legend>
-                <Button color={ colors.icon } onClick={ onOk }>Ver Detalhes</Button>
-            </Legend>
-        </ModalMolecule>
-  </>;
+        />
 };
 
-export default Details;
+export default ModalSelection;

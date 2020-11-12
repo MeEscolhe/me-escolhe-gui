@@ -4,7 +4,7 @@ import { Button } from '../../atoms'
 import { color } from '../../../styles/colors';
 
 export default {
-  title: 'Modal Details Molecule Component',
+  title: 'Details Template Component',
   component: Details,
 };
 
@@ -33,5 +33,5 @@ const ModalDetails = () => {
 export const ToStorybookDetails = () => <ModalDetails/>;
 
 ToStorybookDetails.story = {
-  name: 'Modal Details',
+  name: 'Details',
 };

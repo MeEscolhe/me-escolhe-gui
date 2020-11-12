@@ -22,11 +22,6 @@ export const TitleComponent = styled(Title)`
     margin-inline-start: 16px !important;
 `;
 
-export const Job = styled(Title)`
-    margin-block-start: 0 !important;
-    margin-block-end: 1em !important;
-`;
-
 export const Header = styled.div`
     display: flex;
     flex-direction: row;
@@ -37,10 +32,4 @@ export const DataHeader = styled.div`
     display: flex;
     flex-direction: column;
     margin: 16;
-`;
-
-export const Legend = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
 `;

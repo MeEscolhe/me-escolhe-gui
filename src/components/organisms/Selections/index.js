@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { List } from 'antd'
-import { Selection, Details } from '../../molecules'
+import { Selection } from '../../molecules'
+import { Details } from '../../templates'
 import { color } from '../../../styles/colors'
 import { useHistory } from 'react-router-dom'
 import { route } from '../../../routes'
@@ -20,24 +21,24 @@ export const Selections = ({noDetails, data}) => {
             itemLayout="horizontal"
             dataSource={data}
             renderItem={item => (
-                <List.Item>
+                <List.Item> 
                     <Selection 
-                        projectName={ item.projectName } 
-                        job={ item.job } 
+                        projectName={ item.projectName ? item.projectName : "Nome do Projeto"  } 
+                        job={ item.role } 
                         description={ item.description } 
-                        labName={ item.labName } 
-                        colors={ color(item.job) }
+                        labName={ item.labName ? item.labName  : "Nome do lab"} 
+                        colors={ color(item.role) }
                         onClick={() => noDetails ? history.push(route.projectProfile): openDetails(item)}
                     />
                 </List.Item>
             )}
         />
         <Details
-            projectName={ details.projectName } 
-            job={ details.job } 
+            projectName={ details.projectName ? details.projectName : "Nome do Projeto"} 
+            job={ details.role } 
             description={ details.description } 
-            colors={ color(details.job) }
-            labName={ details.labName } 
+            colors={ color(details.role) }
+            labName={ details.labName ? details.labName  : "Nome do lab"} 
             visible={ open }
             onOk={() => history.push(route.projectProfile)}
             onCancel={() => setOpen(false)}
