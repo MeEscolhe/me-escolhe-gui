@@ -6,16 +6,18 @@ import {
     HeaderForm, 
     ItemForm,
     Legend} from './styled'
+import { color } from '../../../styles/colors'
 
-export const Apply = ({visible, colors, onCancel, onOk, projectName, labName}) => {
+export const Apply = ({visible, onCancel, onOk, labName, projectName, role}) => {
+    const colorIcon = color(role)
     return <>
         <ModalSelection
-            projectName={ projectName }
-            labName={ labName }
             visible={ visible }
-            colors={ colors }
             onCancel={ onCancel }
             onOk={ onOk }
+            labName={ labName }
+            projectName={ projectName }
+            role={ role }
         >
             <Form>
                 <HeaderForm>
@@ -29,7 +31,7 @@ export const Apply = ({visible, colors, onCancel, onOk, projectName, labName}) =
                 </ItemForm>
             </Form>    
             <Legend>
-                <Button color={ colors.icon } onClick={ onOk }>Candidatar</Button>
+                <Button color={ colorIcon.icon } onClick={ onOk }>Candidatar</Button>
             </Legend>
         </ModalSelection>
   </>

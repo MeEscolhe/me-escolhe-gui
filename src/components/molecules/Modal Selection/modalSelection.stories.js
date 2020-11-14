@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import ModalSelection from './index'
 import { Button } from '../../atoms'
-import { color } from '../../../styles/colors';
 
 export default {
   title: 'Modal Selection Molecule Component',
@@ -9,7 +8,7 @@ export default {
 };
 
 const title="Nome do Projeto"
-const job="Vaga"
+const role="Vaga"
 const labName="UFCG"
 
 const ModalSelections = () => {
@@ -19,7 +18,7 @@ const ModalSelections = () => {
         <Button onClick={() => setOpen(true)}>Open Modal Selection</Button>
         <ModalSelection
           projectName={ title } 
-          colors={ color(job) }
+          role={ role }
           labName={ labName } 
           visible={ open }
           onOk={() => setOpen(false)}

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Apply from './index'
 import { Button } from '../../atoms'
-import { color } from '../../../styles/colors';
 
 export default {
   title: 'Apply Template Component',
@@ -9,7 +8,7 @@ export default {
 };
 
 const title="Nome do Projeto"
-const job="Vaga"
+const role="Vaga"
 const labName="UFCG"
 
 const ModalApply = () => {
@@ -18,12 +17,13 @@ const ModalApply = () => {
   return<>
         <Button onClick={() => setOpen(true)}>Open Apply</Button>
         <Apply 
-          projectName={ title } 
-          colors={ color(job) }
-          labName={ labName } 
           visible={ open }
           onOk={() => setOpen(false)}
-          onCancel={() => setOpen(false)}/>
+          onCancel={() => setOpen(false)}
+          labName={ labName } 
+          projectName={ title } 
+          role={ role }
+          />
       </>
 }
 

@@ -1,23 +1,26 @@
 import React from 'react'
+import { color } from '../../../styles/colors'
 import { Text, Button } from '../../atoms'
 import { ModalSelection } from '../../molecules'
 import {
     Job, 
     Legend} from './styled'
 
-export const Details = ({projectName, job, description, colors, labName, visible, onOk, onCancel, ...props}) => {
-  return <ModalSelection
-            projectName={ projectName }
-            labName={ labName }
+export const Details = ({projectName, role, description, labName, visible, onOk, onCancel, ...props}) => {
+    const colors = color(role)
+
+    return <ModalSelection
             visible={ visible }
-            colors={ colors }
             onCancel={ onCancel }
             onOk={ onOk }
+            labName={ labName }
+            projectName={ projectName }
+            role={ role }
         >
-            <Job color level={4}>{ job }</Job>
+            <Job colors level={4}>{ role }</Job>
             <Text>{ description }</Text>
             <Legend>
-                <Button color={ colors.icon } onClick={ onOk }>Ver Detalhes</Button>
+                <Button colors={ colors.icon } onClick={ onOk }>Ver Detalhes</Button>
             </Legend>
         </ModalSelection>
 };

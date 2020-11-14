@@ -24,7 +24,7 @@ export const Selections = ({noDetails, data}) => {
                 <List.Item> 
                     <Selection 
                         projectName={ item.projectName ? item.projectName : "Nome do Projeto"  } 
-                        job={ item.role } 
+                        role={ item.role } 
                         description={ item.description } 
                         labName={ item.labName ? item.labName  : "Nome do lab"} 
                         colors={ color(item.role) }
@@ -35,7 +35,7 @@ export const Selections = ({noDetails, data}) => {
         />
         <Details
             projectName={ details.projectName ? details.projectName : "Nome do Projeto"} 
-            job={ details.role } 
+            role={ details.role } 
             description={ details.description } 
             colors={ color(details.role) }
             labName={ details.labName ? details.labName  : "Nome do lab"} 

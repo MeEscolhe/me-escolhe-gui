@@ -12,7 +12,7 @@ export const TopBarMenu = ({ image, onClick }) => {
     return <>
         <TopBar>
             <MenuBar>
-                <Avatar size={54} colors={{icon: colors.pink }}/>            
+                <Avatar size={54} color={ colors.pink }/>            
                 <MenuComponent mode="horizontal">
                     <MenuComponent.Item onClick={() => history.push(route.selections)}>
                         Seleções
