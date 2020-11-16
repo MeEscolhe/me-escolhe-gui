@@ -6,7 +6,7 @@ import { color } from '../../../styles/colors'
 import { useHistory } from 'react-router-dom'
 import { route } from '../../../routes'
 
-export const Selections = ({noDetails, data}) => {
+export const Selections = ({noDetails, selections}) => {
     const [open, setOpen] = useState(false)
     const [details, setDetails] = useState({})
     const history = useHistory()
@@ -16,17 +16,21 @@ export const Selections = ({noDetails, data}) => {
         setDetails(item)
     }
 
+    const getSelectionPage = (selectionID) => {
+        history.push(route.selectionProfile + `/${selectionID}`)
+    }
+
     return <>
         <List
             itemLayout="horizontal"
-            dataSource={data}
+            dataSource={selections}
             renderItem={item => (
                 <List.Item> 
                     <Selection 
-                        projectName={ item.projectName ? item.projectName : "Nome do Projeto"  } 
+                        projectName={ item.project ? item.project.name : ""  } 
                         role={ item.role } 
                         description={ item.description } 
-                        labName={ item.labName ? item.labName  : "Nome do lab"} 
+                        labName={ item.project ? item.project.lab.name : "" } 
                         colors={ color(item.role) }
                         onClick={() => noDetails ? history.push(route.projectProfile): openDetails(item)}
                     />
@@ -34,13 +38,13 @@ export const Selections = ({noDetails, data}) => {
             )}
         />
         <Details
-            projectName={ details.projectName ? details.projectName : "Nome do Projeto"} 
+            projectName={ details.project ? details.project.name : ""} 
             role={ details.role } 
             description={ details.description } 
             colors={ color(details.role) }
-            labName={ details.labName ? details.labName  : "Nome do lab"} 
+            labName={ details.project ? details.project.lab.name : "" } 
             visible={ open }
-            onOk={() => history.push(route.projectProfile)}
+            onOk={ () => getSelectionPage(details._id)}
             onCancel={() => setOpen(false)}
         />
     </>;

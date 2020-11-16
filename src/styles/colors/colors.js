@@ -6,6 +6,7 @@ export default {
     white: '#FFFFFF',
     ice: '#EEEEEE',
     gray: '#cccccc',
+    darkGray: '#545454',
     yellow: "#FFDA64",
     black: '#000000',
     icon: "#ff82ab",

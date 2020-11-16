@@ -39,7 +39,7 @@ const data = [
     },
 ]
 
-export const ToStorybookSelections= () => <Selections data={ data }/>;
+export const ToStorybookSelections= () => <Selections selections={ data }/>;
  
 ToStorybookSelections.story = {
   name: ' Selections',

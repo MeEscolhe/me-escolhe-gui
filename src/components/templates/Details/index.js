@@ -17,7 +17,7 @@ export const Details = ({projectName, role, description, labName, visible, onOk,
             projectName={ projectName }
             role={ role }
         >
-            <Job colors level={4}>{ role }</Job>
+            <Job color level={4}>{ role }</Job>
             <Text>{ description }</Text>
             <Legend>
                 <Button colors={ colors.icon } onClick={ onOk }>Ver Detalhes</Button>

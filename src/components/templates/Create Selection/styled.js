@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { Input } from '../../atoms'
-
 import 'antd/dist/antd.css'
+import { Input, InputTextArea } from '../../atoms'
 
 export const Form = styled.div`
     display: flex;
     flex-direction: column;
-
+    margin-inline-start: 5%;
+    margin-inline-end: 5%;
 `;
 export const HeaderForm = styled.div`
     display: flex;
@@ -16,9 +16,11 @@ export const HeaderForm = styled.div`
 `;
 
 export const InputForm = styled(Input)`
-    margin-block-end: 5%;
-    margin-inline-start: 5%;
-    margin-inline-end: 5%;
+    margin-block-end: 10%;
+`;
+
+export const Description = styled(InputTextArea)`
+    margin-block-end: 10%;
 `;
 
 export const Legend = styled.div`
@@ -27,3 +29,5 @@ export const Legend = styled.div`
     justify-content: center;
     margin: 2%;
 `;
+
+export const Skill = styled.div``;

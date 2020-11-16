@@ -5,7 +5,7 @@ import { Title, Text, Label } from '../../atoms'
 import { Card } from 'antd'
 
 export const CardMolecule = styled(Card)`
-    width: 300;
+    width: 100vw;
     margin-top: 16;
     background-image: linear-gradient(240deg, ${ ({primary}) => primary }, ${ ({secundary}) => secundary });
 `;

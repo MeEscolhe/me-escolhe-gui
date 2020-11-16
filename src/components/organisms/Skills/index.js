@@ -3,7 +3,7 @@ import { Tag, Title } from '../../atoms'
 import { skillLevel, colors } from '../../../styles/colors'
 import { Content, Header, LogoComponent, Level } from './styled'
 
-export const TagList = ({ hardSkills, softSkills, languages }) => {
+export const Skills = ({ hardSkills, softSkills, languages }) => {
     const title = hardSkills ? "Habilidades Técnicas" 
     : softSkills ? "Habilidades Interpessoais" 
     : "Idiomas"
@@ -45,4 +45,4 @@ export const TagList = ({ hardSkills, softSkills, languages }) => {
     { tagSkills }
     </Content>
 }
-export default TagList;
+export default Skills;

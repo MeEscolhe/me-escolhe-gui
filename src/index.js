@@ -8,7 +8,7 @@ import {
 import { Menu } from './components/templates'
 import { route } from './routes'
 import * as serviceWorker from './serviceWorker'
-import { AllSelections, CandidateSelections, CandidateProfile, CandidateProjectProfile, ProjectProfile } from './pages';
+import { AllSelections, CandidateSelections, CandidateProfile, CandidateProjectProfile, SelectionProfile } from './pages';
 
 const user = {
   name: "Sheilla da Silva",
@@ -59,11 +59,11 @@ ReactDOM.render(
       <Route path={ route.userSelection }>
         <CandidateProjectProfile/>
       </Route>
-      <Route path={ route.projectProfile }>
-        <ProjectProfile/>
+      <Route path={ route.selectionProfile + '/:selectionID' }>
+        <SelectionProfile/>
       </Route>
       <Route path={ route.selections }>
-        <AllSelections title={ "Seleções" } selections={ selections }/>
+        <AllSelections/>
       </Route>
       <Route 
         path={ route.userSelections }>
