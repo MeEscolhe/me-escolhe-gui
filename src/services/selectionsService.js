@@ -24,7 +24,7 @@ class SelectionService {
         students.map(student => {
             const { registration } = student
             if (registration in registrations) {
-                res.join(student)
+                res.push(student)
             }
         })
         return res
