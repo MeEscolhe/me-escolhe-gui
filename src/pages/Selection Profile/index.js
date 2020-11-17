@@ -19,7 +19,6 @@ class SelectionProfile extends React.Component {
         const location = window.location.href
         const selectionID = (location.split("/"))[5]
         this.selectionService.getSelection(selectionID).then(data => {
-            console.log(data)
             this.setState({selection: data})
         }
         )

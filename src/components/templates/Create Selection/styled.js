@@ -29,5 +29,3 @@ export const Legend = styled.div`
     justify-content: center;
     margin: 2%;
 `;
-
-export const Skill = styled.div``;

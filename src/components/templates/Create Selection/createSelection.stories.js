@@ -8,9 +8,19 @@ export default {
     component: CreateSelection,
 };
 
-const projectName="Nome do Projeto"
+const project={
+    selections: [],
+    _id: "5fb0337c06ac7005ec506672",
+    name: "Projeto UFCG genérico",
+    description: "Um projeto da UFCG voltado para testes de API",
+    
+}
 const role="Default"
-const labName="UFCG"
+const lab={
+    description: "Ateliê de computação",
+    _id: "5fb0332a06ac7005ec506671",
+    name: "Compcult",
+}
 
 const CreateSelectionExample = () => {
   const [open, setOpen] = useState(true)
@@ -21,8 +31,8 @@ const CreateSelectionExample = () => {
             visible={ open }
             onOk={() => setOpen(false)}
             onCancel={() => setOpen(false)}
-            labName={ labName } 
-            projectName={ projectName }
+            lab={ lab } 
+            project={ project }
             color={ color(role) }
         />
       </>

@@ -10,7 +10,7 @@ export const Skills = ({ hardSkills, softSkills, languages }) => {
 
     const skills = hardSkills ? hardSkills 
     : softSkills ? softSkills 
-    : languages
+    : languages ? languages : []
     
     const levels = hardSkills ? [1, 2, 3, 4, 5] 
     : languages ? [1, 2, 3] : []

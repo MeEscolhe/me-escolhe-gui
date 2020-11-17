@@ -4,11 +4,14 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from "react-router-dom"
 import { Menu } from './components/templates'
 import { route } from './routes'
 import * as serviceWorker from './serviceWorker'
-import { AllSelections, CandidateSelections, CandidateProfile, CandidateProjectProfile, SelectionProfile } from './pages';
+import { Home, AllSelections, CandidateSelections, CandidateProfile, CandidateProjectProfile, SelectionProfile } from './pages';
+
+import auth from './auth'
 
 const user = {
   name: "Sheilla da Silva",
@@ -49,26 +52,65 @@ const selections = [
   },
 ]
 
+const ProtectedRoute = ({component, ...props}) => {
+  return <Route
+    {...props}
+    render={(rest) => {
+      if(auth.isAuthenticated())
+        return <>      
+          <Menu user={ user }/>
+          { component }
+        </>
+      else 
+        return <Redirect to={ route.home }/>
+    }}
+  />
+}
+
 ReactDOM.render(
   <Router>
-    <Menu user={ user }/>
     <Switch>
-      <Route path={ route.userProfile }>
-        <CandidateProfile/>
-      </Route>
-      <Route path={ route.userSelection }>
-        <CandidateProjectProfile/>
-      </Route>
-      <Route path={ route.selectionProfile + '/:selectionID' }>
-        <SelectionProfile/>
-      </Route>
-      <Route path={ route.selections }>
-        <AllSelections/>
-      </Route>
       <Route 
-        path={ route.userSelections }>
-        <CandidateSelections title={ "Minhas Seleções" } selections={ selections }/>
-      </Route>
+        exact 
+        path={ route.home }
+        render={() => <Home/>}/>
+      
+      <ProtectedRoute 
+        exact 
+        path={ route.selections }
+        component={<AllSelections/>}
+      />
+
+      
+      <ProtectedRoute 
+        exact 
+        path={ route.userProfile }
+        component={<CandidateProfile/>}
+      />  
+      <ProtectedRoute 
+        exact 
+        path={ route.userSelection }
+        component={<CandidateProjectProfile/>}
+      />
+
+      <ProtectedRoute 
+        exact 
+        path={ route.selectionProfile + '/:selectionID' }
+        component={<SelectionProfile/>}       
+      />
+
+      <ProtectedRoute 
+        exact 
+        path={ route.userSelections }
+        component={<CandidateSelections title={ "Minhas Seleções" } selections={ selections }/>}
+      />
+
+      <Route 
+        exact 
+        path="*"
+        component={() => "404 NOT FOUND"}
+      />
+        
     </Switch>
   </Router>,
   document.getElementById('root')

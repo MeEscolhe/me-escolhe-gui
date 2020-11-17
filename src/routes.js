@@ -7,4 +7,5 @@ export const route = {
   selectionProfile: "/selections/profile",
   help: "/help",
   home: "/",
+  login: "/login",
 }
