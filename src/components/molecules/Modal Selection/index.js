@@ -7,7 +7,7 @@ import {
     DataHeader} from './styled'
 import { color } from '../../../styles/colors';
 
-export const ModalSelection = ({projectName, role, labName, visible, onOk, onCancel, ...props}) => {
+export const ModalSelection = ({projectName, role, labName, visible, onCancel, ...props}) => {
     const colors = color(role)
 
     return <ModalMolecule

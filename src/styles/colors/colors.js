@@ -9,7 +9,7 @@ export default {
     darkGray: '#545454',
     yellow: "#FFDA64",
     black: '#000000',
-    icon: "#ff82ab",
+    icon: "#ff7d90",
     fullstack: {
         primary: "#7143e5",
         secundary: "#D450E6",

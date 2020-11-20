@@ -4,12 +4,12 @@ import { HeaderProject } from '../../components/molecules'
 import { AboutCard, SkillsCard } from '../../components/templates'
 import { Content, Footer } from './styled'
 
-import SelectionService from '../../services/selectionsService'
+import selectionService from '../../services/selectionsService'
 
 class SelectionProfile extends React.Component {
     constructor(props){
         super(props)
-        this.selectionService = new SelectionService()
+        this.selectionService = selectionService
         this.state = {
             selection: {}
         }

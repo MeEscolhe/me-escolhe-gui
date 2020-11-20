@@ -4,19 +4,19 @@ import { Selections } from '../../components/organisms'
 import { Header, Content, Search } from './styled'
 import { SearchOutlined } from '@ant-design/icons'
 
-import SelectionService from '../../services/selectionsService'
+import selectionService from '../../services/selectionsService'
 
 class AllSelections extends Component {
     constructor(props) {
         super(props);
-        this.selectionService = new SelectionService()
+        this.selectionService = selectionService
         this.state = {
             selections: []
         }
     }
 
     componentDidMount() {
-        this.selectionService.getAll().then(data => 
+        this.selectionService.getOpenSelections().then(data => 
             this.setState({selections: data})
         )
     }

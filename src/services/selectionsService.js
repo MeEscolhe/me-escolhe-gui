@@ -1,11 +1,28 @@
 import server from './server'
 
 class SelectionService {
-    async getAll(page, limit) {
+
+    async getOpenSelections(page, limit) {
         if (page === null) page = 1
         if (limit === null) limit = 10
-        let selections = await server.get('/selections?page='+page+'&limit='+limit)
-        return selections.data
+        try {
+            let selections = await server.get('/selections?page='+page+'&limit='+limit)
+            return selections.data.filter(({current}) => current)
+        } catch(e) {
+            return e
+        }
+        
+    }
+
+    async getCloseSelections(page, limit) {
+        if (page === null) page = 1
+        if (limit === null) limit = 10
+        try {
+            let selections = await server.get('/selections?page='+page+'&limit='+limit)
+            return selections.data.filter(({current}) => !current)
+        } catch(e) {
+            return e
+        }
     }
 
     async getSelection(id) {
@@ -31,4 +48,4 @@ class SelectionService {
     }
 }
 
-export default SelectionService
+export default new SelectionService()

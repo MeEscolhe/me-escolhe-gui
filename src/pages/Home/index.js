@@ -1,28 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { colors } from '../../styles/colors'
 import { Avatar, Button, Title } from '../../components/atoms'
+import { Login } from '../../components/templates'
 import { TopBar, Logo } from './styled'
-import { useHistory } from 'react-router-dom'
-import { route } from '../../routes'
-
-import auth from '../../auth'
 
 export const Home = () => {
-    const history = useHistory()
-
-    const loginPage = () => {
-        auth.login(() => {
-            history.push(route.selections)
-        })
-    }
-
+    const [openLogin, setOpenLoginFom] = useState(false)
+    
     return <>
         <TopBar>
             <Logo>
                 <Avatar size={54} color={ colors.pink }/>
                 <Title color level={4}> ME ESCOLHE </Title>
             </Logo>
-            <Button onClick={ loginPage }>Login</Button>
+            <Button onClick={() => setOpenLoginFom(true) }>Login</Button>
+            <Login
+                visible={ openLogin }
+                onCancel={() => setOpenLoginFom(false) }
+            />
         </TopBar>
     </>
     
