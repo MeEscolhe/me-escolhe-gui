@@ -19,11 +19,10 @@ export const Login = ({visible, onCancel, onOk}) => {
 
     const loginPage = () => {
         const user = {
-            email: email,
-            password: password
+            email: "jack@gmail.com",
+            password: "lincoln123456789"
         }
-        
-        console.log(user)
+        setTypeAccount(CANDIDATE)
 
         if(typeAccount === CANDIDATE) {
             auth.login(user, CANDIDATE, () => {

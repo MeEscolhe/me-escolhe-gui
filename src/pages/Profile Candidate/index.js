@@ -3,6 +3,9 @@ import { HeaderUser } from '../../components/molecules'
 import { SkillsCard, ExperiencesCard, AboutCard } from '../../components/templates'
 import { Header, Content } from './styled'
 
+import userService from '../../services/userService'
+import user from '../../user'
+
 class CandidateProfile extends React.Component {
     constructor(props) {
         super(props);
@@ -196,20 +199,43 @@ class CandidateProfile extends React.Component {
             
         }
     }
+
+    componentDidMount() {
+        console.log("CHAMANDO")
+        userService.getCandidate(user.getID()).then(data => {
+            console.log(data)
+            this.setState({ user: data})
+        })
+        console.log(this.state.user)
+
+    }
+
     render() {
         return <>
             <Header>
                 <HeaderUser user={ this.state.user }/>
             </Header>
             <Content>
-                <AboutCard description={ this.state.description }/>
-                <SkillsCard 
-                    hardSkills={ this.state.hardSkills } 
-                    softSkills={ this.state.softSkills } 
-                    languages={ this.state.languages }/>
-                <ExperiencesCard 
-                    workExperiences={ this.state.workExperiences } 
-                    academicExperiences={ this.state.academicExperiences }/>
+                <AboutCard description={ this.state.user.description }/>
+                {
+                    this.state.user.skills ? 
+                    <SkillsCard 
+                        hardSkills={ this.state.user.skills.hardSkills } 
+                        softSkills={ this.state.user.skills.softSkills } 
+                        languages={ this.state.user.skills.languages }/>
+                    :
+                    <></>
+                }
+                {
+                    this.state.user.experiences ? 
+                    <ExperiencesCard 
+                        workExperiences={ this.state.user.experiences.workExperiences } 
+                        academicExperiences={ this.state.user.experiences.academicExperiences }/>
+                    :
+                    <>
+                    </>
+                }
+                
             </Content>
         </>
         

@@ -5,11 +5,12 @@ import { AboutCard, SkillsCard } from '../../components/templates'
 import { Content, Footer } from './styled'
 
 import selectionService from '../../services/selectionsService'
+import phaseService from '../../services/phasesService'
+import user from '../../user'
 
 class SelectionProfile extends React.Component {
     constructor(props){
         super(props)
-        this.selectionService = selectionService
         this.state = {
             selection: {}
         }
@@ -18,10 +19,14 @@ class SelectionProfile extends React.Component {
     componentDidMount() {
         const location = window.location.href
         const selectionID = (location.split("/"))[5]
-        this.selectionService.getSelection(selectionID).then(data => {
+        selectionService.getSelection(selectionID).then(data => {
             this.setState({selection: data})
-        }
-        )
+        })
+    }
+
+    apply = () => {
+        phaseService.registrationPhase(this.state.selection.phases[0], user.getID())
+        alert("VOCê SE CANDIDATOU <3")
     }
 
     render() {
@@ -37,7 +42,7 @@ class SelectionProfile extends React.Component {
                     languages={ this.state.selection.skills? this.state.selection.skills.languages : [] }/>
             </Content>
             <Footer>
-                <Button onClick={() => alert("Você se Candidatou a Vaga!!!")}>Candidatar-se</Button>
+                <Button onClick={ this.apply }>Candidatar-se</Button>
             </Footer>            
         </>
     }

@@ -32,19 +32,15 @@ class SelectionService {
         return selection.data
     }
 
-    async getCandidates(id) {
+    async getSelectionCandidates(id) {
         const { phases } = this.getSelection(id)
         const phaseId = phases[0]
-        const { registrations } = await server.get(`/phases/${phaseId}`)
-        const students = await server.get(`/students`)
-        let res = []
-        students.map(student => {
-            const { registration } = student
-            if (registration in registrations) {
-                res.push(student)
-            }
-        })
-        return res
+        const { students } = this.getPhase(phaseId)
+        return students
+    }
+
+    async getPhase(id) {
+        return await server.get(`/phases/`+id)
     }
 }
 

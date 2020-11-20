@@ -1,16 +1,16 @@
 import server from './services/server'
+import user from './user'
 
 class Auth {
     constructor() {
         this.authenticated = false
-        this.typeUser = null
-        this.userID = null
         this.route = null
     }
     
-    async login(user, typeUser, cb){
-        this.typeUser = typeUser
-        if(this.typeUser === "CANDIDATE"){
+    async login(_user, typeUser, cb){
+        user.createUser(_user.email, _user.password, typeUser)
+        
+        if(user.getType() === "CANDIDATE"){
             this.route = 'students/'
         } else {
             this.route = 'teachers/'
@@ -23,17 +23,14 @@ class Auth {
         } catch(e) {
             return
         }
-        console.log(users)
-        let _user = users.data.filter(({email, password}) => {
-            return user.email ===  email && user.password === password        
-        });
 
-        if(_user) {
+        let userAccount = users.data.filter(({email, password}) => user.getEmail() ===  email && user.getPassword() === password);
+
+        if(userAccount.length > 0) {
             this.authenticated = true
-            this.userID = _user._id
+            user.setID(userAccount[0]._id)
             cb()
         }
-        
         
     }
 
