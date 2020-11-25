@@ -1,18 +1,21 @@
 import React from 'react'
 import { Button } from '../../components/atoms'
-import { HeaderProject } from '../../components/molecules'
+import { CardStatus, HeaderProject } from '../../components/molecules'
 import { AboutCard, SkillsCard } from '../../components/templates'
 import { Content, Footer } from './styled'
 
 import selectionService from '../../services/selectionsService'
 import phaseService from '../../services/phasesService'
 import user from '../../user'
+import { route } from '../../routes'
 
 class SelectionProfile extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            selection: {}
+            selection: {},
+            isNotApply: true,
+            isOk: false
         }
     }
 
@@ -25,8 +28,17 @@ class SelectionProfile extends React.Component {
     }
 
     apply = () => {
-        phaseService.registrationPhase(this.state.selection.phases[0], user.getID())
-        alert("VOCê SE CANDIDATOU <3")
+        console.log(this.state.selection.phases)
+        const res = phaseService.registrationPhase(this.state.selection.phases[0], user.getID())
+       
+        res.then(data => {
+            console.log(data)
+            if(data) 
+                this.setState({isNotApply: false, isOk: true})
+            else 
+                this.setState({isNotApply: false})
+        })
+        
     }
 
     render() {
@@ -43,7 +55,24 @@ class SelectionProfile extends React.Component {
             </Content>
             <Footer>
                 <Button onClick={ this.apply }>Candidatar-se</Button>
-            </Footer>            
+            </Footer>
+            {
+                this.state.isNotApply ?
+                <></>
+                : 
+                this.state.isOk ? 
+                <CardStatus 
+                    title={"Sucesso!"}
+                    message={"Candidatura realizada com sucesso"}
+                    onClick={() => this.props.history.push(route.selections)}
+                /> 
+                : 
+                <CardStatus 
+                    title={"Erro!"}
+                    message={"Tente novamente em alguns segundos"}
+                    onClick={() => this.props.history.push(route.selections)}
+                />
+            }            
         </>
     }
 }

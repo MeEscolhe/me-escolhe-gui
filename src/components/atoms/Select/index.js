@@ -6,6 +6,7 @@ export const Select = ({ options, ...props}) => {
         return <OptionComponent value={option}>{ option }</OptionComponent>
         }
     )
+    
     return <SelectComponent {...props}>
         { optionsComponents }
     </SelectComponent>

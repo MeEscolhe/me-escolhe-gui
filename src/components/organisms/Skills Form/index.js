@@ -3,10 +3,10 @@ import { Tag, Title, Button, Select } from '../../atoms'
 import { skillLevel, colors } from '../../../styles/colors'
 import { Skill, Content, InputForm, Header, Legend} from './styled'
 
-import { CloseOutlined, PlusOutlined } from '@ant-design/icons'
+import { PlusOutlined } from '@ant-design/icons'
 
 
-export const SkillsForm = ({ title, skills=[], options, deleteSkill, buttonColor, addSkill }) => {
+export const SkillsForm = ({ title, skills=[], options, deleteSkill, addSkill }) => {
     const [skillName, setSkillName] = useState()
     const [_skillLevel, setSkillLevel] = useState()
 
@@ -71,12 +71,10 @@ export const SkillsForm = ({ title, skills=[], options, deleteSkill, buttonColor
         
         <Legend>
             <Button 
-                color={ buttonColor } 
                 onClick={ add }
                 icon={ <PlusOutlined /> }/>
         </Legend>
     </Skill>
-        
-        
+       
 }
 export default SkillsForm;

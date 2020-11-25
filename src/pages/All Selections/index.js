@@ -1,24 +1,30 @@
 import React, { Component } from 'react'
-import { Title, Input } from '../../components/atoms'
+import { Title, Input, Button } from '../../components/atoms'
 import { Selections } from '../../components/organisms'
-import { Header, Content, Search } from './styled'
-import { SearchOutlined } from '@ant-design/icons'
+import { CreateSelection } from '../../components/templates'
+import { Header, Content, Search, Legend } from './styled'
+import { SearchOutlined, PlusOutlined } from '@ant-design/icons'
+import { Affix } from 'antd'
 
 import selectionService from '../../services/selectionsService'
+import user from '../../user'
 
 class AllSelections extends Component {
     constructor(props) {
         super(props);
         this.selectionService = selectionService
         this.state = {
-            selections: []
+            selections: [],
+            title: props.title,
+            createSelections: false,
         }
     }
 
     componentDidMount() {
-        this.selectionService.getOpenSelections().then(data => 
-            this.setState({selections: data})
-        )
+        if(user.isCandidate)
+            this.selectionService.getOpenSelections().then(data => 
+                this.setState({selections: data})
+            )
     }
 
     filterSelections = (event) => {
@@ -32,13 +38,17 @@ class AllSelections extends Component {
                 projectName.toLowerCase().indexOf(search.toLowerCase()) > -1
             ) 
             this.setState({selections: filter})
-        }        
+        }       
+    }
+
+    openCreateSelection = () => {
+        this.setState({ createSelections: !this.state.createSelections})
     }
 
     render() {
         return <>
         <Header>
-            <Title color level={2}> Seleções </Title>
+            <Title color level={2}>{ this.state.title }</Title>
             <Search>
             <Input 
                 bordered={false}
@@ -50,7 +60,26 @@ class AllSelections extends Component {
         </Header>
         <Content>
             <Selections selections={ this.state.selections }/>
+            {
+                this.state.createSelections ? 
+                <CreateSelection
+                    visible={ this.state.createSelections }
+                    onOk={ this.openCreateSelection }
+                    onCancel={ this.openCreateSelection }
+                /> : <></>
+            }
         </Content>
+        {
+            user.isRecruiter() ?
+            <Affix offsetBottom={50}>
+                <Legend>
+                    <Button 
+                        icon={<PlusOutlined />} 
+                        onClick={ this.openCreateSelection }/>
+                </Legend>
+            </Affix>
+            : <></>
+        }
     </>;
     }
 

@@ -31,8 +31,6 @@ const CreateSelectionExample = () => {
             visible={ open }
             onOk={() => setOpen(false)}
             onCancel={() => setOpen(false)}
-            lab={ lab } 
-            project={ project }
             color={ color(role) }
         />
       </>

@@ -15,7 +15,7 @@ class PhasesService {
     async registrationPhase(phaseID, studentID) {
         let phase = await server.get(`/phases/`+phaseID)
         
-        console.log(phase)
+        console.log("ANtes: "+phase)
         phase = phase.data
         const students = phase.students.push(studentID)
         const body = {
@@ -25,8 +25,12 @@ class PhasesService {
             "selectionId": phase.selectionId,
             "__v": phase.__v
         }
-
-        await server.get(`/phases/`+phaseID, body)
+        try{
+            const res = await server.put(`/phases/`+phaseID, body)
+            console.log(res)
+        }catch(e){
+            console.log(e)
+        }
         console.log(await server.get(`/phases/`+phaseID))
 
 

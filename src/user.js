@@ -43,6 +43,15 @@ class User {
     setType(type) {
         this.type = type
     }
+
+    isCandidate() {
+        return this.type === "CANDIDATE"
+    }
+
+    isRecruiter() {
+        return this.type === "RECRUITER"
+    }
 }
 
 export default new User()
+

@@ -1,11 +1,12 @@
 import React from 'react'
 import { HeaderUserMin } from '../../molecules'
 import { SideBar, MenuComponent } from './styled'
-import { UserOutlined, SettingOutlined, QuestionOutlined, LogoutOutlined} from '@ant-design/icons'
+import { UserOutlined, LogoutOutlined} from '@ant-design/icons'
 import { useHistory } from 'react-router-dom'
 import { route } from '../../../routes'
 
 import auth from '../../../auth'
+import user from '../../../user'
 
 export const SideBarMenu = ({ visible, onClose, name, email, image}) => {
     const history = useHistory()
@@ -34,22 +35,16 @@ export const SideBarMenu = ({ visible, onClose, name, email, image}) => {
                 image={image} 
             />
             <MenuComponent mode="vertical">
-                <MenuComponent.Item 
-                    icon={ <UserOutlined/> }
-                    onClick={() => changeRoute(route.userProfile)}
-                    >
-                    Conta
-                </MenuComponent.Item>
-                <MenuComponent.Item 
-                    icon={ <SettingOutlined /> }
-                    onClick={() => changeRoute(route.configuration)}>
-                    Configurações
-                </MenuComponent.Item>
-                <MenuComponent.Item 
-                    icon={ <QuestionOutlined /> }
-                    onClick={() => changeRoute(route.help)}>
-                    Ajuda
-                </MenuComponent.Item>
+                {
+                    user.isCandidate() ? 
+                    <MenuComponent.Item 
+                        icon={ <UserOutlined/> }
+                        onClick={() => changeRoute(route.userProfile)}
+                        >
+                        Conta
+                    </MenuComponent.Item>
+                    : <></>
+                }                
                 <MenuComponent.Item 
                     icon={ <LogoutOutlined /> }
                     onClick={() => logoutPage() }>

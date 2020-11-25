@@ -19,11 +19,10 @@ export const Login = ({visible, onCancel, onOk}) => {
 
     const loginPage = () => {
         const user = {
-            email: "jack@gmail.com",
-            password: "lincoln123456789"
+            email: email,
+            password: password
         }
-        setTypeAccount(CANDIDATE)
-
+        
         if(typeAccount === CANDIDATE) {
             auth.login(user, CANDIDATE, () => {
                 history.push(route.selections)
@@ -34,7 +33,7 @@ export const Login = ({visible, onCancel, onOk}) => {
             })
         } else {
             history.push(route.home)
-        }   
+        }  
     }
 
     const setUserEmail = (event) => {

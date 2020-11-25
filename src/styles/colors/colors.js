@@ -1,3 +1,5 @@
+import {role} from '../../pt-br'
+
 export default {
     darkViolet: '#311D3F',
     violet: '#522546',
@@ -9,6 +11,8 @@ export default {
     darkGray: '#545454',
     yellow: "#FFDA64",
     black: '#000000',
+    green: '#35bd26',
+    red: '#db4f40',
     icon: "#ff7d90",
     fullstack: {
         primary: "#7143e5",
@@ -41,32 +45,27 @@ export default {
     }
 }
 
-const BACKEND = "Back-End"
-const FRONTEND = "Front-End"
-const TESTER = "Tester"
-const FULLSTACK = "FullStack"
-
 export const color = ( job ) => {
     switch (job) {
-        case BACKEND:
+        case role.ANALYTICS:
             return { 
                 primary: "#09af58",
                 secundary: "#3CCBFF",
                 icon: "#9de5ff"
             }          
-        case FRONTEND:
+        case role.FRONTEND:
             return {
                 primary: "#FF4BA7",
                 secundary: "#FFDA64",
                 icon: "#ffeeb6"
             }  
-        case TESTER:
+        case role.QUALITY:
             return {
                 primary: "#6F085A",
                 secundary: "#FE3D6C",
                 icon: "#ff82ab"
             }
-        case FULLSTACK:
+        case role.FULLSTACK:
             return {
                 primary: "#7143e5",
                 secundary: "#D450E6",

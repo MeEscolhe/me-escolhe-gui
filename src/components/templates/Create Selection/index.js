@@ -1,30 +1,35 @@
 import React, { Component } from 'react'
-import { Title, Button } from '../../atoms'
+import { Title, Button, Select } from '../../atoms'
 import { ModalSelection } from '../../molecules'
 import { SkillsForm } from '../../organisms'
 import { 
     Form,
-    HeaderForm, 
-    InputForm,
+    HeaderForm,
     Description,
-    Legend} from './styled'
+    SelectComponent,
+    OptionComponent, 
+    Legend,
+    LegendOption} from './styled'
+
+import { colors } from '../../../styles/colors'
+
+import { roles } from '../../../pt-br'
 
 import SelectionService from '../../../services/selectionsService'
+
 
 class CreateSelection extends Component {
     constructor(props) {
         super(props)
-        this.selectionService = new SelectionService()
-
+        this.selectionService = SelectionService
         this.state = {
             visible: props.visible,
             onCancel: props.onCancel,
             onOk: props.onOk,
-            project: props.project,
-            lab: props.lab,
-            color: props.color,
-            role: '',
-            description: '',
+            projectID: null,
+            lab: null,
+            role: null,
+            description: null,
             hardSkills: [],
             softSkills: [],
             languages: []
@@ -37,7 +42,7 @@ class CreateSelection extends Component {
             "description": this.state.description,
             "phases": [],
             "current": false,
-            "projectId": this.state.project._id,
+            "projectId": this.state.projectID,
             "skills": {
               "hardSkills": this.state.hardSkills,
               "softSkills": this.state.softSkills,
@@ -57,8 +62,12 @@ class CreateSelection extends Component {
         this.state.onOk()
     }
 
-    addRole = (event) => {
-        this.setState({ role: event.target.value })
+    addRole = (value) => {
+        this.setState({ role: value })
+    }
+
+    addProject = (value) => {
+        this.setState({ projectID: value})
     }
 
     addDescription = (event) => {
@@ -124,10 +133,54 @@ class CreateSelection extends Component {
         console.log(this.state.languages)
     }
 
+    projects = () => {
+        const options = [
+            {
+                project:{   
+                    _id: "ID Project",
+                    name: "Nome do projeto",
+                    lab:{
+                        name: "Nome do lab"
+                    }
+                }
+            },
+            {
+                project:{   
+                    _id: "ID Lab",
+                    name: "Nome do projeto",
+                    lab:{
+                        name: "Nome do lab"
+                    }
+                }
+            },
+            {
+                project:{   
+                    _id: "ID",
+                    name: "Nome do projeto",
+                    lab:{
+                        name: "Nome do lab"
+                    }
+                }
+            },
+        ]
+
+        return options.map(project => {
+            return <OptionComponent
+                value={project.project._id}
+            >{
+                <>
+                    {project.project.name}
+                    <LegendOption>
+                        {project.project.lab.name}
+                    </LegendOption>
+                </>
+            }           
+            </OptionComponent>
+        })
+    }
+
     render() {
         return <ModalSelection
-            projectName={ this.state.project.name }
-            labName={ this.state.lab.name }
             visible={ this.state.visible }
             color={ this.state.color }
             onCancel={ this.state.onCancel }
@@ -137,11 +190,17 @@ class CreateSelection extends Component {
                 <HeaderForm>
                     <Title color level={4}>Criar Seleção</Title>
                 </HeaderForm>  
-                <InputForm
-                    value={ this.state.role } 
-                    size="large" 
+                <SelectComponent 
+                    value={ this.state.projectID }
+                    onChange={ this.addProject }
+                    placeholder="Projeto">
+                    { this.projects() }
+                </SelectComponent>
+                <Select 
+                    value={ this.state.role }
+                    onChange={ this.addRole }
                     placeholder="Vaga"
-                    onChange={ this.addRole }/>
+                    options={roles}/>
                 <Description 
                     value={ this.state.description }
                     rows={3} 
@@ -154,14 +213,12 @@ class CreateSelection extends Component {
                     options={ [1, 2, 3] }
                     addSkill={ this.addHardSKills }
                     deleteSkill={() => alert()} 
-                    buttonColor={ this.state.color.icon } 
                 /> 
                 <SkillsForm
                     title={ "Habilidades Interpessoais" } 
                     skills={ this.state.softSkills } 
                     addSkill={ this.addSofSKill }
                     deleteSkill={ this.deleteSofSKill } 
-                    buttonColor={ this.state.color.icon } 
                 />       
                 <SkillsForm
                     title={ "Idiomas" } 
@@ -169,11 +226,10 @@ class CreateSelection extends Component {
                     options={ [1, 2, 3] }
                     addSkill={ this.addLanguage }
                     deleteSkill={() => alert()} 
-                    buttonColor={ this.state.color.icon } 
                 />                    
             </Form>    
             <Legend>
-                <Button color={ this.state.color.icon } onClick={ this.addSelection }>Criar</Button>
+                <Button onClick={ this.addSelection }>Criar</Button>
             </Legend>
         </ModalSelection>
     }

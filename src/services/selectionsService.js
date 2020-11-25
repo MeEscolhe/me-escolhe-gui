@@ -42,6 +42,7 @@ class SelectionService {
     async getPhase(id) {
         return await server.get(`/phases/`+id)
     }
+
 }
 
 export default new SelectionService()

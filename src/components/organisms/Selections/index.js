@@ -6,7 +6,9 @@ import { color } from '../../../styles/colors'
 import { useHistory } from 'react-router-dom'
 import { route } from '../../../routes'
 
-export const Selections = ({noDetails, selections}) => {
+import user from '../../../user'
+
+export const Selections = ({selections}) => {
     const [open, setOpen] = useState(false)
     const [details, setDetails] = useState({})
     const history = useHistory()
@@ -32,7 +34,7 @@ export const Selections = ({noDetails, selections}) => {
                         description={ item.description } 
                         labName={ item.project ? item.project.lab.name : "" } 
                         colors={ color(item.role) }
-                        onClick={() => noDetails ? history.push(route.projectProfile): openDetails(item)}
+                        onClick={() => user.isRecruiter() ? history.push(route.projectProfile): openDetails(item)}
                     />
                 </List.Item>
             )}
