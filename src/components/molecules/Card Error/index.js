@@ -8,7 +8,7 @@ export const CardError = ({error, message, onClick, ...props}) => {
             hoverable
             {...props}
         >
-            <Title level={5}>{ error }</Title>
+            <Title color level={5}>{ error }</Title>
             <Text> { message }</Text>
             <ButtonLink onClick={ onClick }>Ok, Entendi</ButtonLink>
         </CardMolecule>

@@ -20,3 +20,9 @@ export const Search = styled.div`
     width: 50%;
     padding-block-end: 1%;
 `;
+
+export const Legend = styled.div`
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 24px;
+`;

@@ -8,8 +8,11 @@ import {
     DataHeader, 
     Legend } from './styled'
 import { Avatar } from '../../atoms'
+import { color } from '../../../styles/colors';
 
-export const Selection = ({projectName, job, description, colors, labName, onClick, ...props}) => {
+export const Selection = ({labName, projectName, role, description, onClick, ...props}) => {
+    const colors = color(role)
+
     return <CardMolecule
             hoverable
             primary={ colors.primary }
@@ -18,13 +21,13 @@ export const Selection = ({projectName, job, description, colors, labName, onCli
             {...props}
         >
             <Header>
-                <Avatar colors={ colors }/>
+                <Avatar color={ colors.icon }/>
                 <DataHeader>
                     <TitleComponent 
                         level={3}>{ projectName }
                     </TitleComponent>
                     <TitleComponent 
-                        level={5}>{ job }
+                        level={5}>{ role }
                     </TitleComponent>
                 </DataHeader>            
             </Header>

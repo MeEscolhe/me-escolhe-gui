@@ -3,8 +3,11 @@ export const route = {
   userProfile: "/user/profile",
   userSelections: "/user/selections",
   userSelection: "/user/selections/profile",
-  projectProfile: "/project/profile",
   configuration: "/configuration",
+  selectionProfile: "/selections/profile",
   help: "/help",
   home: "/",
+  login: "/login",
+  accountStudent: "/account/student",
+  accountRecruiter: "/account/recruiter"
 }

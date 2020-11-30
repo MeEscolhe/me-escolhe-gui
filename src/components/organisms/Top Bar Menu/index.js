@@ -6,20 +6,26 @@ import { UserOutlined } from '@ant-design/icons'
 import { useHistory } from 'react-router-dom'
 import { route } from '../../../routes'
 
+import user from '../../../user'
+
 export const TopBarMenu = ({ image, onClick }) => {
     const history = useHistory()
 
     return <>
         <TopBar>
             <MenuBar>
-                <Avatar size={54} colors={{icon: colors.pink }}/>            
+                <Avatar size={54} color={ colors.pink }/>            
                 <MenuComponent mode="horizontal">
                     <MenuComponent.Item onClick={() => history.push(route.selections)}>
                         Seleções
                     </MenuComponent.Item>
-                    <MenuComponent.Item onClick={() => history.push(route.userSelections)}>
-                        Minhas Seleções
-                    </MenuComponent.Item>
+                    {
+                        user.isCandidate() ? 
+                        <MenuComponent.Item onClick={() => history.push(route.userSelections)}>
+                            Minhas Seleções
+                        </MenuComponent.Item>
+                        : <></>
+                    }                    
                 </MenuComponent>
             </MenuBar>
             <ButtonLink onClick={onClick}>
