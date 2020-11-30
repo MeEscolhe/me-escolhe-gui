@@ -59,21 +59,33 @@ class CreateStudentAccount extends Component {
     }
 
     addSoftSkills = (skill) => {
-        const skills =  this.state.softSkills
+        const skills =  this.state.skills.softSkills
         skills.push(skill)      
-        this.setState({ softSkills: skills }) 
+        this.setState({skills:{
+            hardSkills: this.state.skills.hardSkills, 
+            softSkills: skills,
+            languages: this.state.skills.languages
+        }}) 
     }
 
     addHardSkills = (skill) => {
-        const skills =  this.state.hardSkills
+        const skills =  this.state.skills.hardSkills
         skills.push(skill)      
-        this.setState({ hardSkills: skills })         
+        this.setState({skills:{
+            hardSkills: skills, 
+            softSkills: this.state.skills.softSkills,
+            languages: this.state.skills.languages
+        }})         
     }
 
     addLanguages = (skill) => {
-        const skills =  this.state.languages
+        const skills =  this.state.skills.languages
         skills.push(skill)      
-        this.setState({ languages: skills })  
+        this.setState({skills:{
+            hardSkills: this.state.skills.hardSkills, 
+            softSkills: this.state.skills.softSkills,
+            languages: skills
+        }})  
     }
 
     createStudentAccount = () => {

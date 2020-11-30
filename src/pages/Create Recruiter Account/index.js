@@ -3,7 +3,6 @@ import { Title, Input, InputTextArea, Button, ButtonLink } from '../../component
 
 import { Footer, Content, Header, Container, Legend, SelectComponent, OptionComponent } from './styled'
 
-import candidateService from '../../services/candidateService'
 import labService from '../../services/labService'
 import teacherService from '../../services/teacherService'
 

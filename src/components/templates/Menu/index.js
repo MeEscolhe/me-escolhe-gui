@@ -26,7 +26,6 @@ export const Menu = () => {
             email={ myUser ? myUser.email : '' } 
             image={ myUser ? myUser.image : ''}
         />
-
   </>;
 }
 
