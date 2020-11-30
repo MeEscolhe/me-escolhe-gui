@@ -1,10 +1,10 @@
 export const role = {
-    BACKEND: 'Back-end',
-    FRONTEND: 'Front-end',
-    QUALITY: 'Qualidade',
-    FULLSTACK: 'Fullstack',
-    ANALYTICS: 'Analytics',
-    DEVOPS: 'Devops'
+    BACKEND: 'BACKEND',
+    FRONTEND: 'FRONTEND',
+    QUALITY: 'QUALIDADE',
+    FULLSTACK: 'FULLSTACK',
+    ANALYTICS: 'ANALYTICS',
+    DEVOPS: 'DEVOPS'
 }
 
 export const roles = [role.BACKEND, role.ANALYTICS, role.DEVOPS, role.FRONTEND, role.FULLSTACK, role.QUALITY]

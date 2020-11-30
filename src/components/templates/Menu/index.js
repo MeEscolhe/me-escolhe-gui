@@ -8,6 +8,7 @@ export const Menu = () => {
     const [myUser, setMyUser] = useState() 
     const [open, setOpen] = useState(false)
 
+    
     useEffect(() => {
         if(user.isCandidate())
             candidateService.getCandidate(user.getID()).then(data => setMyUser(data))
@@ -15,7 +16,7 @@ export const Menu = () => {
             if(user.isRecruiter()) 
                 teacherService.getById(user.getID()).then(data => setMyUser(data)) 
         }
-    })
+    }, [user])
 
     return <>
         <TopBarMenu image={ myUser ? myUser.image : '' } onClick={() => setOpen(true)}/>

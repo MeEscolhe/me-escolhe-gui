@@ -30,14 +30,7 @@ class SelectionProfile extends React.Component {
     apply = () => {
         console.log(this.state.selection)
         let phases =  this.state.selection.phases        
-        phaseService.registrationPhase(phases[0], user.getID()).then(status => {
-            console.log(status)
-            if(status === 200) 
-                this.setState({isNotApply: false, isOk: true})
-            else 
-                this.setState({isNotApply: false})
-        })
-        
+        phaseService.registrationPhase(phases[0], user.getID())        
     }
 
     render() {

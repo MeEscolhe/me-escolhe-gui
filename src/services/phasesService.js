@@ -13,14 +13,15 @@ class PhasesService {
     }
 
     async registrationPhase(phaseID, studentID) {
-        console.log(phaseID)
-        try{
-            const res = await server.post(`/phases/`+phaseID+`/student/`+studentID)
-            console.log(res)
-            return 200
-        }catch(e){
-            return 400
-        }
+        if(phaseID && studentID) {
+            try{
+                const res = await server.post(`/phases/`+phaseID+`/student/`+studentID)
+                console.log(res)
+                return 200
+            }catch(e){
+                return 400
+            }
+        }        
 
     }
 }
