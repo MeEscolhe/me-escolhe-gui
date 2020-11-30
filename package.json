@@ -20,6 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "heroku-postbuild": "npm run build",
     "test": "jest init",
     "test:coverage": "jest",
     "eject": "react-scripts eject",
