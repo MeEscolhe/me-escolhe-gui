@@ -17,13 +17,9 @@ export const MenuComponent = styled(Menu).attrs(style => {})`
             color: ${ colors.pink } !important;
             border-bottom: none !important;
         }
-        &:active {
-            color: ${ colors.pink } !important;
-            border-bottom: none !important;
-        }
     }
     .ant-menu-item-selected {
-        color: ${ colors.pink } !important;
+        color: ${ colors.black } !important;
         border-bottom: none !important;
         background: ${ colors.white } !important;
     }

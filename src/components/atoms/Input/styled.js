@@ -4,19 +4,21 @@ import { Input } from 'antd';
 
 
 export const InputAtom = styled(Input)`
+    display: flex;
     border-radius: 0px;
     outline: none;
     outline-style: none;
-    border-top: none;
-    border-left: none;
-    border-right: none;
+    border: none;
     border-bottom: solid ${ colors.gray } 1px;
     padding: 3px 10px;
+    margin: 24px;
+
     &:focus, &:focus{
-    outline: none !important;
+      outline: none !important;
     }
-    &:focus, &:active {
+    &:focus, &:active, &:hover {
       box-shadow: none;
       border-bottom: solid ${ colors.gray } 1px;
+      border-color: ${ colors.gray };
     }
 `;

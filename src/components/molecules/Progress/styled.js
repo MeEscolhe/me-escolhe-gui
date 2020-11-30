@@ -9,5 +9,6 @@ export const ProgressComponent = styled.div`
     flex-direction: column;
     align-content: center;
     align-items: center;
+    margin: 1%;
 `;
 

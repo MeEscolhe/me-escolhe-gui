@@ -1,3 +1,5 @@
+import {role} from '../../pt-br'
+
 export default {
     darkViolet: '#311D3F',
     violet: '#522546',
@@ -6,11 +8,14 @@ export default {
     white: '#FFFFFF',
     ice: '#EEEEEE',
     gray: '#cccccc',
+    darkGray: '#545454',
     yellow: "#FFDA64",
     black: '#000000',
-    icon: "#ff82ab",
+    green: '#35bd26',
+    red: '#db4f40',
+    icon: "#ff7d90",
     fullstack: {
-        primary: "#6B2CF5",
+        primary: "#7143e5",
         secundary: "#D450E6",
         icon: "#ef7dff"
     },
@@ -20,7 +25,7 @@ export default {
         icon: "#ffeeb6"
     },
     backEnd: {
-        primary: "#2F80FF",
+        primary: "#09af58",
         secundary: "#3CCBFF",
         icon: "#9de5ff"
     },
@@ -30,18 +35,7 @@ export default {
         icon: "#ff82ab"
     },
     progress: {
-        classified: {
-            init: "#00FFED",
-            final: "#00B8BA",
-        },
-        progress: { 
-            init: "#FFCF1B",
-            final: "#FF881B",
-        },
-        declassified: {
-            init: "#FF512F",
-            final: "#C70030",
-        },
+        
     },
     phase: {
         progress: "#FFDA64",
@@ -50,34 +44,30 @@ export default {
         noProgress: "#cccccc",
     }
 }
-const BACKEND = "Back-End"
-const FRONTEND = "Front-End"
-const TESTER = "Tester"
-const FULLSTACK = "FullStack"
 
 export const color = ( job ) => {
     switch (job) {
-        case BACKEND:
+        case role.ANALYTICS:
             return { 
-                primary: "#2F80FF",
+                primary: "#09af58",
                 secundary: "#3CCBFF",
                 icon: "#9de5ff"
             }          
-        case FRONTEND:
+        case role.FRONTEND:
             return {
                 primary: "#FF4BA7",
                 secundary: "#FFDA64",
                 icon: "#ffeeb6"
             }  
-        case TESTER:
+        case role.QUALITY:
             return {
                 primary: "#6F085A",
                 secundary: "#FE3D6C",
                 icon: "#ff82ab"
             }
-        case FULLSTACK:
+        case role.FULLSTACK:
             return {
-                primary: "#6B2CF5",
+                primary: "#7143e5",
                 secundary: "#D450E6",
                 icon: "#ef7dff"
             }
@@ -88,4 +78,50 @@ export const color = ( job ) => {
                 icon: "#ff7d90"
             }
     }   
+}
+
+export const skillLevel = ( level ) => {
+    switch (level) {
+        case 1:
+            return "#ecad41"   
+        case 2:
+            return "#f59f3b"   
+ 
+        case 3:
+            return "#fb8e37"   
+
+        case 4:
+            return "#fb8537" 
+        
+        case 5:
+            return "#fb6a37"   
+
+        default:
+            return "#00B8BA"   
+    }   
+}
+
+export const statusPhase = ( status) => {
+    switch(status){
+        case 'success':
+            return {
+                init: "#00FFED",
+                final: "#00B8BA"
+            }
+        case 'active':
+            return { 
+                init: "#FFCF1B",
+                final: "#FF881B"
+            }
+        case 'exception':
+            return {
+                init: "#FF512F",
+                final: "#C70030"
+            }
+        default:
+            return {
+                init: "#cccccc",
+                final: '#f5f5f5'
+            }
+    }
 }
