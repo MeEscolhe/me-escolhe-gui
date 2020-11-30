@@ -178,7 +178,6 @@ class CreateStudentAccount extends Component {
                     <SkillsForm
                         title={ "Habilidades Interpessoais" } 
                         skills={ this.state.skills.softSkills } 
-                        options={ [1, 2, 3] }
                         addSkill={ this.addSoftSkills }
                     />
                     <SkillsForm
