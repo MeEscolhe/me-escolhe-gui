@@ -57,8 +57,14 @@ class SelectionService {
         }
     }
 
-    async getPhase(id) {
-        return await server.get(`/phases/`+id)
+    async post(body) {
+        try {
+            let res = await server.post('/selections', body)
+            return res
+        } catch(e) {
+            return e
+        }
+
     }
 
 }

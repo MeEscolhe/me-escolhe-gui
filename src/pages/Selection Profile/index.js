@@ -28,12 +28,11 @@ class SelectionProfile extends React.Component {
     }
 
     apply = () => {
-        console.log(this.state.selection.phases)
-        const res = phaseService.registrationPhase(this.state.selection.phases[0], user.getID())
-       
-        res.then(data => {
-            console.log(data)
-            if(data) 
+        console.log(this.state.selection)
+        let phases =  this.state.selection.phases        
+        phaseService.registrationPhase(phases[0], user.getID()).then(status => {
+            console.log(status)
+            if(status === 200) 
                 this.setState({isNotApply: false, isOk: true})
             else 
                 this.setState({isNotApply: false})
@@ -59,7 +58,6 @@ class SelectionProfile extends React.Component {
                     <Button onClick={ this.apply }>Candidatar-se</Button>
                 </Footer>
                 : <></>
-
             }
             {
                 this.state.isNotApply ?

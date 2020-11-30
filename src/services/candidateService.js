@@ -11,9 +11,12 @@ class UserService {
     }
 
     async postCandidate(body) {
+        console.log(body)
         try {
-            let res = await server({method: 'post', url:'/students', data: body})
-            return res
+            await server.post('/students', body).then(res => {
+                console.log(res)
+                return res
+              })
         } catch (error) {
             return []
         }        

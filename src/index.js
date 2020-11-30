@@ -11,10 +11,9 @@ import {
 import { Menu } from './components/templates'
 import { route } from './routes'
 import * as serviceWorker from './serviceWorker'
-import { Home, AllSelections, CreateStudentAccount, CandidateProfile, CandidateProjectProfile, SelectionProfile } from './pages';
+import { Home, AllSelections, CreateStudentAccount, CreateRecruiterAccount, CandidateProfile, CandidateProjectProfile, SelectionProfile } from './pages';
 
 import auth from './auth'
-
 
 const ProtectedRoute = ({component,...props}) => {
   return <Route
@@ -22,7 +21,7 @@ const ProtectedRoute = ({component,...props}) => {
     render={() => {
       if(auth.isAuthenticated())
         return <>      
-          <Menu />
+          <Menu/>
           { component }
         </>        
       else 
@@ -41,8 +40,13 @@ ReactDOM.render(
       
       <Route 
         exact 
-        path={ route.account }
+        path={ route.accountStudent }
         render={() => <CreateStudentAccount/>}/>
+
+      <Route 
+        exact 
+        path={ route.accountRecruiter }
+        render={() => <CreateRecruiterAccount/>}/>
       
       <ProtectedRoute 
         exact 

@@ -10,20 +10,19 @@ class CreateStudentAccount extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: '',
+            name: null,
             registration: null,
             email: null,
             password: null,
             confirmPassword: null,
-            description: null,
+            description: '',
             cra: null,
             skills: {
                 hardSkills: [],
                 softSkills: [],
                 languages: []
             },
-            expiriences: [],
-            phases: []
+            experiences: []
         }
     }
 
@@ -45,7 +44,7 @@ class CreateStudentAccount extends Component {
     }
 
     addRegistration = (event) => {
-        this.setState({registration:  event.target.value})
+        this.setState({registration:  parseInt(event.target.value)})
 
     }
 
@@ -55,7 +54,7 @@ class CreateStudentAccount extends Component {
     }
 
     addCRA = (event) => {
-        this.setState({cra: event.target.value})
+        this.setState({cra: parseFloat(event.target.value)})
         
     }
 
@@ -78,9 +77,18 @@ class CreateStudentAccount extends Component {
     }
 
     createStudentAccount = () => {
-        // && !this.isNotValidStudent()
-        if(this.isEqualsPassword()){
-            const body = this.state
+        if(this.isEqualsPassword() && !this.isNotValidStudent()){
+            const body = {
+                registration: this.state.registration,
+                name: this.state.name,
+                password: this.state.password,
+                description: this.state.description,
+                email: this.state.email,
+                cra: this.state.cra,
+                skills: this.state.skills,
+                experiences: this.state.experiences,
+                phases: []
+            }
             let res = candidateService.postCandidate(body)
             console.log(res)
         }
@@ -99,14 +107,10 @@ class CreateStudentAccount extends Component {
         return this.state.password === this.state.confirmPassword
     }
 
-    handleClick = () => {
-    }
 
     render() {
         return <Content>
-            <Footer>
-                <ButtonLink onClick={this.handleClick }>Voltar</ButtonLink>
-            </Footer>
+            
             <Header>
                 <Title color level={3}>Criar Conta</Title>
             </Header>

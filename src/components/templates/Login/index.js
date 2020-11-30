@@ -19,22 +19,17 @@ export const Login = ({visible, onCancel, onOk}) => {
 
     const loginPage = () => {
         console.log(typeAccount)
-        const student = {
-            email: "leandro.amorim@ccc.ufcg.edu.br",
-            password: "uHjKa21"
+        const user = {
+            email: email,
+            password: password
         }
 
-        const teacher = {
-            email: "alberto.nascimento@dsc.ufcg.edu.br",
-            password: "IoCCuFCGpB"
-        }
-        
         if(typeAccount === CANDIDATE) {
-            auth.login(student, CANDIDATE, () => {
+            auth.login(user, CANDIDATE, () => {
                 history.push(route.selections)
             })
         } else if(typeAccount === RECRUITER) {
-            auth.login(teacher, RECRUITER, () => {
+            auth.login(user, RECRUITER, () => {
                 history.push(route.selections)
             })
         } else {
@@ -48,6 +43,13 @@ export const Login = ({visible, onCancel, onOk}) => {
 
     const setUserPassword = (event) => {
         setPassword(event.target.value)
+    }
+
+    const createAccountPage = () => {
+        if(typeAccount === CANDIDATE)
+            history.push(route.accountStudent)
+        else
+            history.push(route.accountRecruiter)
     }
 
     return <ModalSelection
@@ -92,7 +94,7 @@ export const Login = ({visible, onCancel, onOk}) => {
                 </Legend>
 
                 <Legend>
-                    <Button color={ colors.icon } onClick={() => alert("Criar Conta") }>Criar Conta</Button>
+                    <Button color={ colors.icon } onClick={() => createAccountPage() }>Criar Conta</Button>
                 </Legend>
             </>
         }

@@ -13,25 +13,31 @@ import {
 
 import { roles } from '../../../pt-br'
 
-import SelectionService from '../../../services/selectionsService'
+import selectionsService from '../../../services/selectionsService'
+import user from '../../../user'
 
 
 class CreateSelection extends Component {
     constructor(props) {
         super(props)
-        this.selectionService = SelectionService
         this.state = {
             visible: props.visible,
             onCancel: props.onCancel,
             onOk: props.onOk,
+            projects: [],
             projectID: null,
             lab: null,
             role: null,
-            description: null,            hardSkills: [],
+            description: null,            
+            hardSkills: [],
             softSkills: [],
             languages: [],
 
         }
+    }
+
+    componentDidMount() {
+        selectionsService.getSelectionByRecruter(user.getID()).then(data => this.setState({projects: data}))
     }
 
     addSelection = () => {
@@ -39,7 +45,7 @@ class CreateSelection extends Component {
             "role": this.state.role,
             "description": this.state.description,
             "phases": [],
-            "current": false,
+            "current": true,
             "projectId": this.state.projectID,
             "skills": {
               "hardSkills": this.state.hardSkills,
@@ -47,7 +53,7 @@ class CreateSelection extends Component {
               "languages": this.state.languages
             }
         }
-        
+        selectionsService.post(body)
         console.log(body)
         this.setState({
             role: '',
@@ -132,37 +138,8 @@ class CreateSelection extends Component {
     }
 
     projects = () => {
-        const options = [
-            {
-                project:{   
-                    _id: "ID Project",
-                    name: "Nome do projeto",
-                    lab:{
-                        name: "Nome do lab"
-                    }
-                }
-            },
-            {
-                project:{   
-                    _id: "ID Lab",
-                    name: "Nome do projeto",
-                    lab:{
-                        name: "Nome do lab"
-                    }
-                }
-            },
-            {
-                project:{   
-                    _id: "ID",
-                    name: "Nome do projeto",
-                    lab:{
-                        name: "Nome do lab"
-                    }
-                }
-            },
-        ]
-
-        return options.map(project => {
+        console.log(this.state.projects)
+        return this.state.projects.map(project => {
             return <OptionComponent
                 value={project.project._id}
             >{
@@ -175,6 +152,7 @@ class CreateSelection extends Component {
             }           
             </OptionComponent>
         })
+        
     }
 
     render() {

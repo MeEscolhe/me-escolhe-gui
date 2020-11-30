@@ -13,26 +13,14 @@ class PhasesService {
     }
 
     async registrationPhase(phaseID, studentID) {
-        let phase = await server.get(`/phases/`+phaseID)
-        
-        console.log("ANtes: "+phase)
-        phase = phase.data
-        const students = phase.students.push(studentID)
-        const body = {
-            "students": students,
-            "description": phase.description,
-            "_id": phase._id,
-            "selectionId": phase.selectionId,
-            "__v": phase.__v
-        }
+        console.log(phaseID)
         try{
-            const res = await server.put(`/phases/`+phaseID, body)
+            const res = await server.post(`/phases/`+phaseID+`/student/`+studentID)
             console.log(res)
+            return 200
         }catch(e){
-            console.log(e)
+            return 400
         }
-        console.log(await server.get(`/phases/`+phaseID))
-
 
     }
 }

@@ -8,5 +8,6 @@ export const route = {
   help: "/help",
   home: "/",
   login: "/login",
-  account: "/account"
+  accountStudent: "/account/student",
+  accountRecruiter: "/account/recruiter"
 }
