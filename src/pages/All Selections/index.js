@@ -5,6 +5,7 @@ import { CreateSelection } from '../../components/templates'
 import { Header, Content, Search, Legend } from './styled'
 import { SearchOutlined, PlusOutlined } from '@ant-design/icons'
 import { Affix } from 'antd'
+import { route } from '../../routes'
 
 import selectionService from '../../services/selectionsService'
 import user from '../../user'
@@ -21,10 +22,29 @@ class AllSelections extends Component {
     }
 
     componentDidMount() {
-        if(user.isCandidate)
-            this.selectionService.getOpenSelections().then(data => 
-                this.setState({selections: data})
-            )
+        if(user.isCandidate()){
+            const location = '/' + window.location.href.split('/')[3]
+            if(location === route.selections)
+                this.selectionService.getOpenSelections().then(data => this.setState({selections: data, title: this.props.title}))
+            else
+                this.selectionService.getSelectionByCandidate(user.getID()).then(data => this.setState({selections: data, title: this.props.title}))
+        }else
+            this.selectionService.getSelectionByRecruter(user.getID()).then(data => this.setState({selections: data, title: this.props.title}))
+
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.title !== prevProps.title) {
+            if(user.isCandidate()){
+                const location = '/' + window.location.href.split('/')[3]
+                if(location === route.selections)
+                    this.selectionService.getOpenSelections().then(data => this.setState({selections: data, title: this.props.title}))
+                else
+                    this.selectionService.getSelectionByCandidate(user.getID()).then(data => this.setState({selections: data, title: this.props.title}))
+            }else 
+                this.selectionService.getSelectionByRecruter(user.getID()).then(data => this.setState({selections: data, title: this.props.title}))            
+            
+        }
     }
 
     filterSelections = (event) => {

@@ -10,7 +10,7 @@ class Auth {
     async login(_user, typeUser, cb){
         user.createUser(_user.email, _user.password, typeUser)
         
-        if(user.getType() === "CANDIDATE"){
+        if(user.isCandidate()){
             this.route = 'students/'
         } else {
             this.route = 'teachers/'
@@ -19,16 +19,19 @@ class Auth {
         
         try {
             users = await server.get(this.route)
-
         } catch(e) {
             return
         }
 
         let userAccount = users.data.filter(({email, password}) => user.getEmail() ===  email && user.getPassword() === password);
 
+        console.log(userAccount)
         if(userAccount.length > 0) {
             this.authenticated = true
-            user.setID(userAccount[0]._id)
+            if(user.isCandidate())
+                user.setID(userAccount[0].registration)
+            else    
+                user.setID(userAccount[0]._id)
             cb()
         }
         

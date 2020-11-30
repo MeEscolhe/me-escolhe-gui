@@ -34,7 +34,7 @@ export const Selections = ({selections}) => {
                         description={ item.description } 
                         labName={ item.project ? item.project.lab.name : "" } 
                         colors={ color(item.role) }
-                        onClick={() => user.isRecruiter() ? history.push(route.projectProfile): openDetails(item)}
+                        onClick={() => user.isRecruiter() ? getSelectionPage(item._id) : openDetails(item)}
                     />
                 </List.Item>
             )}

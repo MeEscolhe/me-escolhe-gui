@@ -3,6 +3,7 @@ import server from './server'
 class SelectionService {
 
     async getOpenSelections(page, limit) {
+        console.log("ALL open")
         if (page === null) page = 1
         if (limit === null) limit = 10
         try {
@@ -15,6 +16,8 @@ class SelectionService {
     }
 
     async getCloseSelections(page, limit) {
+        console.log("CLOSE")
+
         if (page === null) page = 1
         if (limit === null) limit = 10
         try {
@@ -32,11 +35,26 @@ class SelectionService {
         return selection.data
     }
 
-    async getSelectionCandidates(id) {
-        const { phases } = this.getSelection(id)
-        const phaseId = phases[0]
-        const { students } = this.getPhase(phaseId)
-        return students
+    async getSelectionByCandidate(registration) {
+        console.log("CANDIDATE")
+
+        try {
+            let selections = await server.get('/selections?type=student&id='+registration)
+            return selections.data
+        } catch(e) {
+            return e
+        }
+    }
+
+    async getSelectionByRecruter(id) {
+        console.log("RECRUiTER")
+        console.log("ID: " + id)
+        try {
+            let selections = await server.get('/selections?type=teacher&id='+id)
+            return selections.data
+        } catch(e) {
+            return e
+        }
     }
 
     async getPhase(id) {

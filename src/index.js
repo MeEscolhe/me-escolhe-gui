@@ -4,12 +4,14 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect,
+  useHistory,
+  useLocation
 } from "react-router-dom"
 import { Menu } from './components/templates'
 import { route } from './routes'
 import * as serviceWorker from './serviceWorker'
-import { Home, AllSelections, CandidateProfile, CandidateProjectProfile, SelectionProfile } from './pages';
+import { Home, AllSelections, CreateStudentAccount, CandidateProfile, CandidateProjectProfile, SelectionProfile } from './pages';
 
 import auth from './auth'
 
@@ -37,16 +39,21 @@ ReactDOM.render(
         path={ route.home }
         render={() => <Home/>}/>
       
+      <Route 
+        exact 
+        path={ route.account }
+        render={() => <CreateStudentAccount/>}/>
+      
       <ProtectedRoute 
         exact 
         path={ route.selections }
-        component={<AllSelections title="Seleções"/>}
+        component={<AllSelections title="Seleções" location={() => useLocation() } history={useHistory}/>}
       />
 
       <ProtectedRoute 
         exact 
         path={ route.userProfile }
-        component={<CandidateProfile/>}
+        component={<CandidateProfile />}
       />  
       <ProtectedRoute 
         exact 
@@ -63,7 +70,7 @@ ReactDOM.render(
       <ProtectedRoute 
         exact 
         path={ route.userSelections }
-        component={<AllSelections title="Minhas Seleções"/>}
+        component={<AllSelections title="Minhas Seleções" location={useLocation} history={useHistory}/>}
       />
 
       <Route 

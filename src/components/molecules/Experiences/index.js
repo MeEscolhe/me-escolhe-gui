@@ -4,26 +4,35 @@ import { Content, Header, TimeLine, Experience, Details, TitleComponent } from '
 import { colors } from '../../../styles/colors'
 
 export const Experiences = ({academicExperiences, workExperiences }) => {
-    const title = workExperiences ? "Profissional" : "Acadêmica"
+    console.log("A" + academicExperiences)
+    console.log("W" + workExperiences)
+
+    const title = workExperiences ? "Profissional" : "Acadêmica"  
     
+    const duration = (date) => {
+        date = new Date(date)
+       
+        return date.getMonth() + " de " + date.getYear()
+    }
+
     const listExperience = workExperiences ? 
-    workExperiences.map((experience) => {
+        workExperiences.map((experience) => {
             return <Experience color={ colors.pink }>
                 <Details>
                     <TitleComponent level={4} color>{ experience.role }</TitleComponent>
                     <TitleComponent level={5} color={ colors.gray }>{ experience.institution }</TitleComponent>
-                    <TitleComponent level={5} color={ colors.gray }>Duração de { experience.duration } meses</TitleComponent>
+                    <TitleComponent level={5} color={ colors.gray }>Duração de { duration(experience.initialDate) } até { duration(experience.finalDate) }</TitleComponent>
                 </Details>
             </Experience>
         })
     :    
-    academicExperiences.map((experience) => {
+        academicExperiences.map((experience) => {
             return <Experience color={ colors.pink }>
                 <Details>
                     <TitleComponent level={4} color>{ experience.title }</TitleComponent>
                     <TitleComponent level={5} color={ colors.gray }>{ experience.category }</TitleComponent>
                     <TitleComponent level={5} color={ colors.gray }>{ experience.institution }</TitleComponent>
-                    <TitleComponent level={5} color={ colors.gray }>Duração de { experience.duration } meses</TitleComponent>
+                    <TitleComponent level={5} color={ colors.gray }>Duração de { duration(experience.initialDate) } até { duration(experience.finalDate) } </TitleComponent>
                 </Details>
             </Experience>
         })

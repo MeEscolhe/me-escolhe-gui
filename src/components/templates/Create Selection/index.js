@@ -11,8 +11,6 @@ import {
     Legend,
     LegendOption} from './styled'
 
-import { colors } from '../../../styles/colors'
-
 import { roles } from '../../../pt-br'
 
 import SelectionService from '../../../services/selectionsService'
@@ -29,10 +27,10 @@ class CreateSelection extends Component {
             projectID: null,
             lab: null,
             role: null,
-            description: null,
-            hardSkills: [],
+            description: null,            hardSkills: [],
             softSkills: [],
-            languages: []
+            languages: [],
+
         }
     }
 

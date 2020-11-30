@@ -53,9 +53,14 @@ class SelectionProfile extends React.Component {
                     softSkills={ this.state.selection.skills ? this.state.selection.skills.softSkills : []}
                     languages={ this.state.selection.skills? this.state.selection.skills.languages : [] }/>
             </Content>
-            <Footer>
-                <Button onClick={ this.apply }>Candidatar-se</Button>
-            </Footer>
+            {
+                user.isCandidate() ?
+                <Footer>
+                    <Button onClick={ this.apply }>Candidatar-se</Button>
+                </Footer>
+                : <></>
+
+            }
             {
                 this.state.isNotApply ?
                 <></>

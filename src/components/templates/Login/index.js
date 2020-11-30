@@ -18,18 +18,24 @@ export const Login = ({visible, onCancel, onOk}) => {
     const history = useHistory()
 
     const loginPage = () => {
-        const user = {
-            email: email,
-            password: password
+        console.log(typeAccount)
+        const student = {
+            email: "leandro.amorim@ccc.ufcg.edu.br",
+            password: "uHjKa21"
+        }
+
+        const teacher = {
+            email: "alberto.nascimento@dsc.ufcg.edu.br",
+            password: "IoCCuFCGpB"
         }
         
         if(typeAccount === CANDIDATE) {
-            auth.login(user, CANDIDATE, () => {
+            auth.login(student, CANDIDATE, () => {
                 history.push(route.selections)
             })
         } else if(typeAccount === RECRUITER) {
-            auth.login(user, RECRUITER, () => {
-                history.push(route.userProfile)
+            auth.login(teacher, RECRUITER, () => {
+                history.push(route.selections)
             })
         } else {
             history.push(route.home)

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Tag, Title, Button, Select } from '../../atoms'
+import { Tag, Title, Input, Button, Select } from '../../atoms'
 import { skillLevel, colors } from '../../../styles/colors'
-import { Skill, Content, InputForm, Header, Legend} from './styled'
+import { Skill, Content, Header, Legend} from './styled'
 
 import { PlusOutlined } from '@ant-design/icons'
 
@@ -41,7 +41,7 @@ export const SkillsForm = ({ title, skills=[], options, deleteSkill, addSkill })
 
     return <Skill>
         <Title color level={5}>{ title }</Title>
-        <InputForm 
+        <Input 
             value={ skillName }
             onChange={ setName }
             allowClear={true}
