@@ -7,6 +7,7 @@ export const TopBar = styled.div`
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 1px solid  ${ colors.ice };
+    background: ${ colors.white }
 `;
 
 export const MenuBar = styled.div`

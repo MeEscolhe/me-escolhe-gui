@@ -5,7 +5,7 @@ import { Title, Text, Label } from '../../atoms'
 import { Card } from 'antd'
 
 export const CardMolecule = styled(Card)`
-    width: 300;
+    width: 100vw;
     margin-top: 16;
     background-image: linear-gradient(240deg, ${ ({primary}) => primary }, ${ ({secundary}) => secundary });
 `;
@@ -28,7 +28,7 @@ export const LabNameComponent = styled(Label)`
 export const Header = styled.div`
     display: flex;
     flex-direction: row;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 `;
 
 export const DataHeader = styled.div`

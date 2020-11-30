@@ -1,42 +1,52 @@
 import React, { useState } from 'react'
-import { List } from 'antd';
-import { Selection, Details } from '../../molecules'
-import { color } from '../../../styles/colors';
+import { List } from 'antd'
+import { Selection } from '../../molecules'
+import { Details } from '../../templates'
+import { color } from '../../../styles/colors'
+import { useHistory } from 'react-router-dom'
+import { route } from '../../../routes'
 
-export const Selections = ({data}) => {
+import user from '../../../user'
+
+export const Selections = ({selections}) => {
     const [open, setOpen] = useState(false)
     const [details, setDetails] = useState({})
+    const history = useHistory()
 
     const openDetails = (item) => {
         setOpen(true)
         setDetails(item)
     }
 
+    const getSelectionPage = (selectionID) => {
+        history.push(route.selectionProfile + `/${selectionID}`)
+    }
+
     return <>
         <List
             itemLayout="horizontal"
-            dataSource={data}
+            dataSource={selections}
             renderItem={item => (
-                <List.Item>
+                <List.Item> 
                     <Selection 
-                        projectName={ item.projectName } 
-                        job={ item.job } 
+                        projectName={ item.project ? item.project.name : ""  } 
+                        role={ item.role } 
                         description={ item.description } 
-                        labName={ item.labName } 
-                        colors={ color(item.job) }
-                        onClick={() => openDetails(item)}
+                        labName={ item.project ? item.project.lab.name : "" } 
+                        colors={ color(item.role) }
+                        onClick={() => user.isRecruiter() ? getSelectionPage(item._id) : openDetails(item)}
                     />
                 </List.Item>
             )}
         />
         <Details
-            projectName={ details.projectName } 
-            job={ details.job } 
+            projectName={ details.project ? details.project.name : ""} 
+            role={ details.role } 
             description={ details.description } 
-            colors={ color(details.job) }
-            labName={ details.labName } 
+            colors={ color(details.role) }
+            labName={ details.project ? details.project.lab.name : "" } 
             visible={ open }
-            onOk={() => setOpen(false)}
+            onOk={ () => getSelectionPage(details._id)}
             onCancel={() => setOpen(false)}
         />
     </>;
