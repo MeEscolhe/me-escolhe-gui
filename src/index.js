@@ -10,7 +10,6 @@ import {
 } from "react-router-dom"
 import { Menu } from './components/templates'
 import { route } from './routes'
-import * as serviceWorker from './serviceWorker'
 import { Home, AllSelections, CreateStudentAccount, CreateRecruiterAccount, CandidateProfile, CandidateProjectProfile, SelectionProfile } from './pages';
 
 import auth from './auth'
@@ -88,4 +87,3 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-serviceWorker.unregister();

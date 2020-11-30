@@ -59,13 +59,13 @@ export const color = ( job ) => {
                 secundary: "#FFDA64",
                 icon: "#ffeeb6"
             }  
-        case role.QUALITY:
+        case role.DEVOPS:
             return {
                 primary: "#6F085A",
                 secundary: "#FE3D6C",
                 icon: "#ff82ab"
             }
-        case role.FULLSTACK:
+        case role.BACKEND:
             return {
                 primary: "#7143e5",
                 secundary: "#D450E6",
