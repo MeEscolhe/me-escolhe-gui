@@ -6,7 +6,7 @@ import { Footer, Content, Header, Container, Legend } from './styled'
 
 import candidateService from '../../services/candidateService'
 
-class CreateStudentAccount extends Component {
+class CreateCandidateAccount extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -88,7 +88,7 @@ class CreateStudentAccount extends Component {
         }})  
     }
 
-    createStudentAccount = () => {
+    createCandidateAccount = () => {
         if(this.isEqualsPassword() && !this.isNotValidStudent()){
             const body = {
                 registration: this.state.registration,
@@ -108,11 +108,11 @@ class CreateStudentAccount extends Component {
     }
 
     isNotValidStudent = () => {
-        return this.state.registration === null || 
-        this.state.name === null || 
-        this.state.email === null || 
-        this.state.password === null || 
-        this.state.cra === null
+        return this.state.registration || 
+        this.state.name || 
+        this.state.email || 
+        this.state.password || 
+        this.state.cra 
     }
 
     isEqualsPassword = () => {
@@ -189,7 +189,7 @@ class CreateStudentAccount extends Component {
                 </Container>               
             </Content>
             <Legend>
-                <Button onClick={ this.createStudentAccount }>Criar Conta</Button>
+                <Button width={30} onClick={ this.createCandidateAccount }>Criar Conta</Button>
             </Legend>
         </Content>
     }
@@ -197,4 +197,4 @@ class CreateStudentAccount extends Component {
 
 }
 
-export default CreateStudentAccount
+export default CreateCandidateAccount
