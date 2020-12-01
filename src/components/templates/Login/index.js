@@ -67,14 +67,14 @@ export const Login = ({visible, onCancel, onOk}) => {
                     <Button color={ colors.icon } onClick={() => setTypeAccount(CANDIDATE) }>Estudante</Button>
                 </Legend>
                 <Legend>
-                    <Button color={ colors.icon } onClick={() => setTypeAccount(RECRUITER) }>Porfessor</Button>
+                    <Button color={ colors.icon } onClick={() => setTypeAccount(RECRUITER) }>Professor</Button>
                 </Legend>
             </>
             :
             <>
                 <Form>
                     <Header>
-                        <Title color level={4}>Criar Seleção</Title>
+                        <Title color level={4}>Login</Title>
                     </Header>  
                     <InputForm
                         size="large" 
