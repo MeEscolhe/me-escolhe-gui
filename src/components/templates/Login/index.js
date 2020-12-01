@@ -15,6 +15,7 @@ export const Login = ({visible, onCancel, onOk}) => {
 
     const CANDIDATE = "CANDIDATE"
     const RECRUITER = "RECRUITER"
+    
     const history = useHistory()
 
     const loginPage = () => {
@@ -80,13 +81,13 @@ export const Login = ({visible, onCancel, onOk}) => {
                         size="large" 
                         placeholder="E-mail"
                         value={ email }
-                        onChange={ setUserEmail}
+                        onChange={ setUserEmail }
                         />
                     <InputForm
                         size="large" 
                         placeholder="Senha"
                         value={ password }
-                        onChange={setUserPassword}
+                        onChange={ setUserPassword }
                         />
                 </Form>
                 <Legend>
