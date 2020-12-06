@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Title, Input, InputTextArea, Button, Select, ButtonLink } from '../../components/atoms'
-import { SkillsForm } from '../../components/organisms'
+import { Title, Input, InputTextArea, Button} from '../../components/atoms'
+import { ExperiencesForm, SkillsForm } from '../../components/organisms'
 
-import { Footer, Content, Header, Container, Legend } from './styled'
+import { Content, Header, Container, Legend } from './styled'
 
 import candidateService from '../../services/candidateService'
 
@@ -22,7 +22,10 @@ class CreateCandidateAccount extends Component {
                 softSkills: [],
                 languages: []
             },
-            experiences: []
+            experiences: [{
+                academic: [],
+                work: []
+            }]
         }
     }
 
@@ -48,8 +51,9 @@ class CreateCandidateAccount extends Component {
 
     }
 
-    addDescription = (value) => {
-        this.setState({description: value})
+    addDescription = (event) => {
+        console.log(event.target.value)
+        this.setState({description: event.target.value})
         
     }
 
@@ -88,7 +92,28 @@ class CreateCandidateAccount extends Component {
         }})  
     }
 
+    addAcademicExperience = (experience) => {
+        const experiences =  this.state.experiences[0].academic
+        experiences.push(experience)      
+        this.setState({experiences:[{
+            academic: experiences, 
+            work: this.state.experiences[0].work
+        }]})         
+    }
+
+    addWorkExperience = (experience) => {
+        const experiences =  this.state.experiences[0].work
+        experiences.push(experience)      
+        this.setState({experiences:[{
+            academic: this.state.experiences[0].academic, 
+            work: experiences
+        }]})         
+    }
+
     createCandidateAccount = () => {
+        console.log("Criando Conta")
+        console.log("Passs" + this.isEqualsPassword())
+        console.log(!this.isNotValidStudent())
         if(this.isEqualsPassword() && !this.isNotValidStudent()){
             const body = {
                 registration: this.state.registration,
@@ -98,7 +123,7 @@ class CreateCandidateAccount extends Component {
                 email: this.state.email,
                 cra: this.state.cra,
                 skills: this.state.skills,
-                experiences: this.state.experiences,
+                experiences: [],
                 phases: []
             }
             let res = candidateService.postCandidate(body)
@@ -108,11 +133,11 @@ class CreateCandidateAccount extends Component {
     }
 
     isNotValidStudent = () => {
-        return this.state.registration || 
-        this.state.name || 
-        this.state.email || 
-        this.state.password || 
-        this.state.cra 
+        return this.state.registration === null || 
+        this.state.name === null || 
+        this.state.email === null || 
+        this.state.password === null || 
+        this.state.cra === null 
     }
 
     isEqualsPassword = () => {
@@ -186,7 +211,8 @@ class CreateCandidateAccount extends Component {
                         options={ [1, 2, 3] }
                         addSkill={ this.addLanguages }
                     />
-                </Container>               
+                </Container>
+                             
             </Content>
             <Legend>
                 <Button width={30} onClick={ this.createCandidateAccount }>Criar Conta</Button>

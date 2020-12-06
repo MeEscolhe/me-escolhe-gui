@@ -7,7 +7,6 @@ import { Content, Footer } from './styled'
 import selectionService from '../../services/selectionsService'
 import phaseService from '../../services/phasesService'
 import user from '../../user'
-import { route } from '../../routes'
 
 class SelectionProfile extends React.Component {
     constructor(props){
@@ -29,7 +28,7 @@ class SelectionProfile extends React.Component {
 
     apply = () => {
         console.log(this.state.selection)
-        let phases =  this.state.selection.phases        
+        let phases =  this.state.selection.phases ? this.state.selection.phases : []   
         phaseService.registrationPhase(phases[0], user.getID()).then(status => {
             if(status === 200)
                 this.setState({isSuccess: true})
@@ -52,7 +51,7 @@ class SelectionProfile extends React.Component {
                     languages={ this.state.selection.skills? this.state.selection.skills.languages : [] }/>
             </Content>
             {
-                user.isCandidate() ?
+                user.isCandidate() ? 
                 <Footer>
                     <Button onClick={ this.apply }>Candidatar-se</Button>
                 </Footer>
@@ -62,14 +61,14 @@ class SelectionProfile extends React.Component {
                 visible={ this.state.isSuccess }
                 title={"Sucesso!"}
                 message={"Candidatura realizada com sucesso"}
-                onClick={() => this.props.history.push(route.selections)}
+                onClick={() => this.setState({isSuccess: false})}
             />
             <StatusModal
                 visible={ this.state.isError }
                 error 
                 title={"Erro!"}
                 message={"Tente novamente em alguns segundos"}
-                onClick={() => this.props.history.push(route.selections)}
+                onClick={() => this.setState({isError: false})}
             />         
         </>
     }
