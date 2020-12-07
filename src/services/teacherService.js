@@ -23,6 +23,16 @@ class TeacherService {
             return []
         }        
     }
+
+    async getSelections(idRecruiter) {
+        try {
+            const res = await server.get('/teachers/'+idRecruiter+'/selections')
+            console.log(res.data)
+            return res.data
+        } catch (error) {
+            return []
+        }        
+    }
 }
 
 export default new TeacherService()

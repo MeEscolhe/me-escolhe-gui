@@ -10,7 +10,14 @@ import {
 } from "react-router-dom"
 import { Menu } from './components/templates'
 import { route } from './routes'
-import { Home, AllSelections, CreateStudentAccount, CreateRecruiterAccount, CandidateProfile, CandidateProjectProfile, SelectionProfile } from './pages';
+import { Home, 
+  AllSelections, 
+  Candidates,
+  CreateCandidateAccount, 
+  CreateRecruiterAccount, 
+  CandidateProfile, 
+  CandidateProjectProfile, 
+  SelectionProfile } from './pages';
 
 import auth from './auth'
 
@@ -40,7 +47,7 @@ ReactDOM.render(
       <Route 
         exact 
         path={ route.accountStudent }
-        render={() => <CreateStudentAccount/>}/>
+        render={() => <CreateCandidateAccount/>}/>
 
       <Route 
         exact 
@@ -52,7 +59,11 @@ ReactDOM.render(
         path={ route.selections }
         component={<AllSelections title="Seleções" location={() => useLocation() } history={useHistory}/>}
       />
-
+      <ProtectedRoute 
+        exact 
+        path={ route.candidates }
+        component={<Candidates />}
+      />  
       <ProtectedRoute 
         exact 
         path={ route.userProfile }

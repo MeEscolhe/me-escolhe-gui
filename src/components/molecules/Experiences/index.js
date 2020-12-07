@@ -2,17 +2,23 @@ import React from 'react'
 import { Title } from '../../atoms'
 import { Content, Header, TimeLine, Experience, Details, TitleComponent } from './styled'
 import { colors } from '../../../styles/colors'
+import moment from 'moment'
 
 export const Experiences = ({academicExperiences, workExperiences }) => {
-    console.log("A" + academicExperiences)
-    console.log("W" + workExperiences)
 
     const title = workExperiences ? "Profissional" : "Acadêmica"  
     
-    const duration = (date) => {
-        date = new Date(date)
-       
-        return date.getMonth() + " de " + date.getYear()
+    const duration = (date) => {    
+        date = moment(date)
+        return date.format("MMM") + " de " + date.format("YYYY")
+    }
+
+    const isEmpty = () => {
+        if(academicExperiences) 
+            return academicExperiences.lenth > 0 
+        if(workExperiences) 
+            return workExperiences.lenth > 0
+        return false
     }
 
     const listExperience = workExperiences ? 
@@ -39,7 +45,10 @@ export const Experiences = ({academicExperiences, workExperiences }) => {
 
     return <Content>
         <Header>
-            <Title level={3} color={ colors.pink }>{ title }</Title>
+            {   isEmpty ?
+                    <Title level={3} color={ colors.pink }>{ title }</Title>
+                : <></>
+            }
         </Header>
         <TimeLine mode="alternate">
             { listExperience }
