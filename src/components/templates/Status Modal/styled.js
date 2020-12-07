@@ -1,22 +1,18 @@
 import styled from 'styled-components'
 import 'antd/dist/antd.css'
 
-import { Card, Avatar } from 'antd'
+import { Modal, Avatar } from 'antd'
 import { colors } from '../../../styles/colors';
 
 
-export const CardMolecule = styled(Card)`
-    margin: 25vw;
-    padding: 24px;
-
-    .ant-card-body {
+export const ModalMolecule = styled(Modal)`
+    .ant-modal-body {
         display: flex;
         flex-direction: column;
+        justify-items: center;
         align-items: center;
-        justify-content: center;
-        text-align: center;
-
-    }
+    }    
+}
 `;
 
 export const Icon = styled(Avatar)`
@@ -31,4 +27,8 @@ export const Icon = styled(Avatar)`
     margin: 5vw;
     
     
+`
+export const Legend = styled.div`
+    margin-block-start: 10%;
+    margin-block-end: 3%;
 `

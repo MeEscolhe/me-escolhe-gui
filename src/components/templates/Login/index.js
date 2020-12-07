@@ -15,6 +15,7 @@ export const Login = ({visible, onCancel, onOk}) => {
 
     const CANDIDATE = "CANDIDATE"
     const RECRUITER = "RECRUITER"
+    
     const history = useHistory()
 
     const loginPage = () => {
@@ -67,26 +68,26 @@ export const Login = ({visible, onCancel, onOk}) => {
                     <Button color={ colors.icon } onClick={() => setTypeAccount(CANDIDATE) }>Estudante</Button>
                 </Legend>
                 <Legend>
-                    <Button color={ colors.icon } onClick={() => setTypeAccount(RECRUITER) }>Porfessor</Button>
+                    <Button color={ colors.icon } onClick={() => setTypeAccount(RECRUITER) }>Professor</Button>
                 </Legend>
             </>
             :
             <>
                 <Form>
                     <Header>
-                        <Title color level={4}>Criar Seleção</Title>
+                        <Title color level={4}>Login</Title>
                     </Header>  
                     <InputForm
                         size="large" 
                         placeholder="E-mail"
                         value={ email }
-                        onChange={ setUserEmail}
+                        onChange={ setUserEmail }
                         />
                     <InputForm
                         size="large" 
                         placeholder="Senha"
                         value={ password }
-                        onChange={setUserPassword}
+                        onChange={ setUserPassword }
                         />
                 </Form>
                 <Legend>

@@ -134,7 +134,7 @@ class CreateRecruiterAccount extends Component {
                 </Container>
             </Content>
             <Legend>
-                <Button onClick={ this.createStudentAccount }>Criar Conta</Button>
+                <Button width={30} onClick={ this.createStudentAccount }>Criar Conta</Button>
             </Legend>
         </Content>
     }

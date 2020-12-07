@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 
-export const Footer = styled.div``
-
-export const Content = styled.div``
+export const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 1%;
+`
 
 export const Header = styled.div`
     display: flex;
@@ -15,8 +17,8 @@ export const Header = styled.div`
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
-    margin-inline-start: 5%;
-    margin-inline-end: 5%;
+    margin-inline-start: 1%;
+    margin-inline-end: 5%
     margin-block-start: 5%;
     margin-block-end: 5%;
 `
