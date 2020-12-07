@@ -36,6 +36,8 @@ class SelectionProfile extends React.Component {
         console.log(this.state.selection)
         let phases =  this.state.selection.phases ? this.state.selection.phases : []   
         phaseService.registrationPhase(phases[0], user.getID()).then(status => {
+            console.log(status)
+            console.log(status === 200)
             if (status === 200)
                 this.setState({ isSuccess: true })
             else

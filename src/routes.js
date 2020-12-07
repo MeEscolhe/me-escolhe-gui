@@ -9,5 +9,6 @@ export const route = {
   home: "/",
   login: "/login",
   accountStudent: "/account/student",
-  accountRecruiter: "/account/recruiter"
+  accountRecruiter: "/account/recruiter",
+  candidates: "/selections/candidates"
 }
