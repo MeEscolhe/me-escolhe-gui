@@ -4,7 +4,7 @@ const PRD = "http://me-escolhe-back.herokuapp.com/"
 const LOCAL = "http://localhost:8080/"
 
 export default axios.create({
-    baseURL: LOCAL,
+    baseURL: PRD,
     responseType: "json",
     headers: {
         'Content-Type': 'application/json',
