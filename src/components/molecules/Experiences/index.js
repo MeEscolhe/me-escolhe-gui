@@ -3,6 +3,7 @@ import { Title } from '../../atoms'
 import { Content, Header, TimeLine, Experience, Details, TitleComponent } from './styled'
 import { colors } from '../../../styles/colors'
 import moment from 'moment'
+
 export const Experiences = ({academicExperiences, workExperiences }) => {
 
     const title = workExperiences ? "Profissional" : "Acadêmica"  
@@ -17,6 +18,7 @@ export const Experiences = ({academicExperiences, workExperiences }) => {
             return academicExperiences.lenth > 0 
         if(workExperiences) 
             return workExperiences.lenth > 0
+        return false
     }
 
     const listExperience = workExperiences ? 
@@ -43,7 +45,7 @@ export const Experiences = ({academicExperiences, workExperiences }) => {
 
     return <Content>
         <Header>
-            {   isEmpty() ?
+            {   isEmpty ?
                     <Title level={3} color={ colors.pink }>{ title }</Title>
                 : <></>
             }
