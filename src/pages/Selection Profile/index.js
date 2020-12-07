@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '../../components/atoms'
-import { HeaderProject } from '../../components/molecules'
+import { HeaderProject, CardError } from '../../components/molecules'
 import { AboutCard, SkillsCard, StatusModal } from '../../components/templates'
 import { Content, Footer } from './styled'
 
@@ -16,20 +16,25 @@ class SelectionProfile extends React.Component {
             selection: {},
             isSuccess: false,
             isError: false,
-            hideCandidateButton: false
+            hideCandidateButton: false,
+            error: false
         }
     }
 
     componentDidMount() {
-
+        console.log("ComponentDidMount")
         const location = window.location.href
         const selectionID = (location.split("/"))[5]
         Promise.all([
             selectionService.getSelection(selectionID),
             candidateService.getCandidateIsInSelection(user.getID(), selectionID)
         ]).then(([selectionData, hideCandidateButton]) => {
+            console.log(selectionData)
+            console.log(hideCandidateButton)
             this.setState({ selection: selectionData, hideCandidateButton: hideCandidateButton.data })
-        }).catch((err) => { console.log(err) });
+        }).catch((err) => { 
+            this.setState({isError: true})
+        });
     }
 
     apply = () => {
@@ -63,7 +68,7 @@ class SelectionProfile extends React.Component {
                     <Footer>
                         <Button onClick={this.apply}>Candidatar-se</Button>
                     </Footer>
-                    : <></>
+                : <></>
             }
             <StatusModal
                 visible={this.state.isSuccess}
