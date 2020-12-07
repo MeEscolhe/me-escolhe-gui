@@ -1,6 +1,5 @@
 export { default as CardError } from './Card Error'
 export { default as CardMessage } from './Card Message'
-export { default as CardStatus } from './Card Status'
 export { default as Selection } from './Selection'
 export { default as Progress } from './Progress'
 export { default as HeaderUser } from './Header User'

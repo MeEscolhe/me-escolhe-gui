@@ -8,6 +8,7 @@ export const ButtonAtom = styled(Button)`
     background-color: ${ ({color}) => color ? color: colors.pink };
     color: ${ colors.white };
     border-color: ${ ({color}) => color ? color: colors.pink };
+    width: ${({width}) => width ? (width+'% !important') : 'none'} ;
     cursor: pointer;
     border-radius: 40px 40px 40px 40px;
     &:hover {

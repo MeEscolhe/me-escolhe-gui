@@ -6,7 +6,7 @@ import { Skill, Content, Header, Legend} from './styled'
 import { PlusOutlined } from '@ant-design/icons'
 
 
-export const SkillsForm = ({ title, skills=[], options, deleteSkill, addSkill }) => {
+export const SkillsForm = ({ title, skills=[], options, addSkill }) => {
     const [skillName, setSkillName] = useState()
     const [_skillLevel, setSkillLevel] = useState()
 

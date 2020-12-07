@@ -21,8 +21,9 @@ class PhasesService {
             }catch(e){
                 return 400
             }
-        }        
-
+        } 
+        
+        return 400
     }
 }
 
