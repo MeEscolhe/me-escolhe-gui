@@ -3,7 +3,7 @@ import CardMessage from './index'
 import { Button } from '../../atoms'
 
 export default {
-  title: 'Card Error Molecule Component',
+  title: 'Card Message Molecule Component',
   component: CardMessage,
 };
 

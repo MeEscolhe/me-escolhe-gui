@@ -6,7 +6,8 @@ export const PersonalForm = ({name,
     registration, 
     cra, 
     email, 
-    password, 
+    password,
+    confirmPassword, 
     setName, 
     setRegistration, 
     setCRA,
@@ -22,12 +23,10 @@ export const PersonalForm = ({name,
         allowClear={true}
         placeholder="Nome"
         onChange={ (event) => setName(event) }/>
-    <InputNumber 
+    <Input 
         value={ registration }
         allowClear={true}
         placeholder="Matrícula"
-        min={0}
-        max={999999999}
         onChange={ (event) => setRegistration(event) }/>
     <InputNumber 
         value={ cra }

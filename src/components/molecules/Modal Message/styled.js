@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
 
-import { Card } from 'antd';
+import { Modal } from 'antd';
 
-export const CardMolecule = styled(Card)`
+export const ModalMolecule = styled(Modal)`
     width: 300;
     margin-top: 16;
 `;

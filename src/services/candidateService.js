@@ -11,14 +11,10 @@ class UserService {
     }
 
     async postCandidate(body) {
-        console.log(body)
         try {
-            await server.post('/students', body).then(res => {
-                console.log(res)
-                return res
-            })
+            return await server.post('/students', body)
         } catch (error) {
-            return []
+            return error
         }
     }
 
