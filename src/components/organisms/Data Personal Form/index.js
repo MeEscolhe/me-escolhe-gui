@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Title, Input, InputNumber } from '../../atoms'
 import { Container } from './styled';
 
@@ -13,8 +13,7 @@ export const PersonalForm = ({name,
     setCRA,
     setEmail,
     setPassword,
-    setConfirmPassword,
-    ...props}) => {
+    setConfirmPassword}) => {
     
     return <Container>
     <Title color level={5}>Dados Pessoais</Title>
