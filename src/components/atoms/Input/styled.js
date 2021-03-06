@@ -11,6 +11,7 @@ export const InputAtom = styled(Input)`
     border: none;
     border-bottom: solid ${ colors.gray } 1px;
     padding: 3px 10px;
+    width: auto;
     margin-block-start: 24px;
     margin-block-end: 24px;
 

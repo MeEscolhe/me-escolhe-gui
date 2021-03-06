@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-import { Title, Input, InputTextArea, Button} from '../../components/atoms'
-import { ExperiencesForm, SkillsForm } from '../../components/organisms'
-
-import { Content, Header, Container, Legend } from './styled'
+import { Title, Button} from '../../components/atoms'
+import { ModalMessage } from '../../components/molecules'
+import { DataPersonalForm } from '../../components/organisms'
+import { Content, Header, HeaderForm, Legend } from './styled'
 
 import candidateService from '../../services/candidateService'
+
+import { withRouter } from 'react-router-dom'
+import { route } from '../../routes'
 
 class CreateCandidateAccount extends Component {
     constructor(props) {
@@ -15,17 +18,13 @@ class CreateCandidateAccount extends Component {
             email: null,
             password: null,
             confirmPassword: null,
-            description: '',
             cra: null,
-            skills: {
-                hardSkills: [],
-                softSkills: [],
-                languages: []
-            },
-            experiences: [{
-                academic: [],
-                work: []
-            }]
+            open: false,
+            modalMessage: {
+                title: null,
+                message: null,
+                onOk: () => {}
+            }  
         }
     }
 
@@ -34,185 +33,149 @@ class CreateCandidateAccount extends Component {
     }
 
     addEmail = (event) => {
-        this.setState({email:  event.target.value})
+        this.setState({email:  event.target.value.trim()})
     }
 
     addPassword = (event) => {
-        this.setState({password:  event.target.value})
+        this.setState({password:  event.target.value.trim()})
         
     }
 
     addConfirmPassword = (event) => {
-        this.setState({confirmPassword:  event.target.value})
+        this.setState({confirmPassword:  event.target.value.trim()})
     }
 
     addRegistration = (event) => {
-        this.setState({registration:  parseInt(event.target.value)})
-
+        let register = event.target.value.trim()
+        register=register.replace(/[^0-9]/g, '')
+        if(register.length > 9) this.setState({registration: parseInt(register.substring(0,8))})
+        else this.setState({registration:  parseInt(register)})
     }
 
-    addDescription = (event) => {
-        console.log(event.target.value)
-        this.setState({description: event.target.value})
-        
+    addCRA = (value) => {
+        this.setState({cra: value})
     }
 
-    addCRA = (event) => {
-        this.setState({cra: parseFloat(event.target.value)})
-        
+    setModalMessage = (title, message, onOk) => {
+        this.setState({modalMessage: {title: title, message: message, onOk: onOk}})
     }
 
-    addSoftSkills = (skill) => {
-        const skills =  this.state.skills.softSkills
-        skills.push(skill)      
-        this.setState({skills:{
-            hardSkills: this.state.skills.hardSkills, 
-            softSkills: skills,
-            languages: this.state.skills.languages
-        }}) 
+    setOpen = (value) => {
+        this.setState({open: value})
+    }
+    isValidString = (prop) => {
+        return prop !== null && prop !== undefined
     }
 
-    addHardSkills = (skill) => {
-        const skills =  this.state.skills.hardSkills
-        skills.push(skill)      
-        this.setState({skills:{
-            hardSkills: skills, 
-            softSkills: this.state.skills.softSkills,
-            languages: this.state.skills.languages
-        }})         
-    }
-
-    addLanguages = (skill) => {
-        const skills =  this.state.skills.languages
-        skills.push(skill)      
-        this.setState({skills:{
-            hardSkills: this.state.skills.hardSkills, 
-            softSkills: this.state.skills.softSkills,
-            languages: skills
-        }})  
-    }
-
-    addAcademicExperience = (experience) => {
-        const experiences =  this.state.experiences[0].academic
-        experiences.push(experience)      
-        this.setState({experiences:[{
-            academic: experiences, 
-            work: this.state.experiences[0].work
-        }]})         
-    }
-
-    addWorkExperience = (experience) => {
-        const experiences =  this.state.experiences[0].work
-        experiences.push(experience)      
-        this.setState({experiences:[{
-            academic: this.state.experiences[0].academic, 
-            work: experiences
-        }]})         
-    }
-
-    createCandidateAccount = () => {
-        console.log("Criando Conta")
-        console.log("Passs" + this.isEqualsPassword())
-        console.log(!this.isNotValidStudent())
-        if(this.isEqualsPassword() && !this.isNotValidStudent()){
-            const body = {
-                registration: this.state.registration,
-                name: this.state.name,
-                password: this.state.password,
-                description: this.state.description,
-                email: this.state.email,
-                cra: this.state.cra,
-                skills: this.state.skills,
-                experiences: [],
-                phases: []
-            }
-            let res = candidateService.postCandidate(body)
-            console.log(res)
-        }
-        
+    isValidNumber = (prop) => {
+        return prop !== null && prop !== undefined
     }
 
     isNotValidStudent = () => {
-        return this.state.registration === null || 
-        this.state.name === null || 
-        this.state.email === null || 
-        this.state.password === null || 
-        this.state.cra === null 
+        return this.isValidString(this.state.registration) && 
+        this.isValidString(this.state.name) && 
+        this.isValidString(this.state.email) && 
+        this.isValidString(this.state.password) && 
+        this.isValidNumber(this.state.cra)
     }
 
     isEqualsPassword = () => {
         return this.state.password === this.state.confirmPassword
     }
 
+    redirect = (route) => {
+        this.props.history.push(route)
+    }
+
+    createCandidateAccount = async () => {
+        console.debug("Criando Conta")
+        if(!this.isNotValidStudent()) {
+            this.setModalMessage(
+                'Ops! Ocorreu um Erro',
+                'Os dados inseridos são inválidos. Por favor, tente novamente', 
+                () => this.setOpen(false)
+            )
+            this.setOpen(true)
+            return
+        }
+        if(this.isEqualsPassword()){
+            const body = {
+                registration: this.state.registration,
+                name: this.state.name,
+                password: this.state.password,
+                email: this.state.email,
+                cra: this.state.cra,
+                description: "",
+                skills: {
+                    hardSkills: [],
+                    softSkills: [],
+                    languages: []
+                },
+                experiences: [],
+                phases: []
+            }
+            await candidateService.postCandidate(body)
+            .then((res) => {
+                console.debug(res)
+                if(res.status === 200)
+                    this.setModalMessage(
+                        'Conta Criada',
+                        'Parabéns, sua conta foi criada com sucesso! Seja bem vindo!',
+                        () => this.redirect(route.home)    
+                    )
+                else
+                    this.setModalMessage(
+                        'Ops! Tivemos um problema',
+                        'Parece que essa conta já existe!',
+                        () => this.setOpen(false)
+                    )
+            })
+            .catch((error) => {
+                console.error(error)
+                this.setModalMessage(
+                    'Ops! Ocorreu um Erro',
+                    'Ocorreu um problema na criação da conta. Tente novamente mais tarde',
+                    () => this.setOpen(false)
+                )
+            })
+
+            this.setOpen(true)
+        }
+    }
 
     render() {
         return <Content>
-            
+            <ModalMessage 
+                title={this.state.modalMessage.title} 
+                message={this.state.modalMessage.message}
+                visible={this.state.open} 
+                onOk={this.state.modalMessage.onOk}
+                onCancel={() => this.setOpen(false)}
+            />
             <Header>
-                <Title color='black' level={3}>Criar Conta</Title>
+                <Button onClick={() => this.redirect(route.home)}>Voltar</Button>
             </Header>
+        
+            <HeaderForm>
+                <Title color level={3}>Criar Conta</Title>
+            </HeaderForm>
+
             <Content>
-                <Container>
-                    <Title color='black' level={5}>Dados Pessoais</Title>
-                    <Input 
-                        value={ this.state.name }
-                        allowClear={true}
-                        placeholder="Nome"
-                        onChange={ (event) => this.addName(event) }/>
-                    <Input 
-                        value={ this.state.registration }
-                        allowClear={true}
-                        placeholder="Matrícula"
-                        onChange={ this.addRegistration }/>
-                    <Input 
-                        value={ this.state.cra }
-                        allowClear={true}
-                        placeholder="CRA"
-                        onChange={ this.addCRA }/>
-                    <Input 
-                        value={ this.state.email }
-                        allowClear={true}
-                        placeholder="E-mail"
-                        onChange={ this.addEmail }/>
-                    <Input 
-                        value={ this.state.password }
-                        allowClear={true}
-                        placeholder="Senha"
-                        onChange={ this.addPassword }/>
-                    <Input 
-                        value={ this.state.confirmPassword }
-                        allowClear={true}
-                        placeholder="Confirmar Senha"
-                        onChange={ this.addConfirmPassword }/>
-                </Container>
-                <Container>
-                    <Title color='black' level={5}>Sobre Você</Title>
-                    <InputTextArea
-                        rows={5}
-                        placeholder="Descrição"
-                        onChange={ this.addDescription }
-                    />
-                </Container>
-                <Container>
-                    <SkillsForm
-                        title={ "Habilidades Técnicas" } 
-                        skills={ this.state.skills.hardSkills } 
-                        options={ [1, 2, 3] }
-                        addSkill={ this.addHardSkills }
-                    />
-                    <SkillsForm
-                        title={ "Habilidades Interpessoais" } 
-                        skills={ this.state.skills.softSkills } 
-                        addSkill={ this.addSoftSkills }
-                    />
-                    <SkillsForm
-                        title={ "Idiomas" } 
-                        skills={ this.state.skills.languages } 
-                        options={ [1, 2, 3] }
-                        addSkill={ this.addLanguages }
-                    />
-                </Container>
-                             
+                <DataPersonalForm
+                name={this.state.name} 
+                registration={this.state.registration}
+                cra={this.state.cra}
+                email={this.state.email}
+                password={this.state.password}
+                confirmPassword={this.state.confirmPassword}
+                setName={this.addName}
+                setRegistration={this.addRegistration} 
+                setCRA={this.addCRA}
+                setEmail={this.addEmail}
+                setPassword={this.addPassword}
+                setConfirmPassword={this.addConfirmPassword}
+                />
+                                        
             </Content>
             <Legend>
                 <Button width={30} onClick={ this.createCandidateAccount }>Criar Conta</Button>
@@ -223,4 +186,4 @@ class CreateCandidateAccount extends Component {
 
 }
 
-export default CreateCandidateAccount
+export default withRouter(CreateCandidateAccount)
