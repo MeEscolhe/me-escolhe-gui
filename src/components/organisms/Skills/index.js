@@ -26,7 +26,7 @@ export const Skills = ({ hardSkills, softSkills, languages }) => {
     }) 
     
     const tagSkills = skills.map((skill) => {
-            return <Tag color={ skillLevel(skill.level) }>{'eae'}{ skill.name }</Tag>
+            return <Tag color={ skillLevel(skill.level) }>{ skill.name }</Tag>
     })
 
     return <Content> 

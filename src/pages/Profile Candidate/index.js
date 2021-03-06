@@ -10,6 +10,7 @@ class CandidateProfile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            editSkillsCard: false,
             user: {
                 description: null,
                 name: null,
@@ -52,6 +53,21 @@ class CandidateProfile extends React.Component {
     onChangeDescription = (event) =>
         this.setState({ user: { ...this.state.user, description: event.target.value } });
 
+    onChangeSkill = (type, skills, skill, add) => {
+
+        add ? skills.push(skill) : skills = skills.filter((skillData) => skillData.name !== skill.name);
+
+        this.setState({
+            user: {
+                ...this.state.user, skills: {
+                    ...this.state.user.skills,
+                    [type]: skills
+                }
+            }
+        });
+
+    }
+    onChangeEdit = () => this.setState({ editSkillsCard: !this.state.editSkillsCard });
     render() {
         return <>
             <Header>
@@ -65,9 +81,13 @@ class CandidateProfile extends React.Component {
                 {
                     this.state.user.skills ?
                         <SkillsCard
+                            editSkillsCard={this.state.editSkillsCard}
                             hardSkills={this.state.user.skills.hardSkills}
                             softSkills={this.state.user.skills.softSkills}
-                            languages={this.state.user.skills.languages} />
+                            languages={this.state.user.skills.languages}
+                            onChangeSkill={this.onChangeSkill}
+                            onChangeEdit={this.onChangeEdit}
+                        />
                         :
                         <></>
                 }
