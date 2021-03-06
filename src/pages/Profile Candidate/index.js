@@ -1,8 +1,8 @@
 import React from 'react'
 import { HeaderUser } from '../../components/molecules'
 import { SkillsCard, ExperiencesCard, AboutCard } from '../../components/templates'
-import { Header, Content } from './styled'
-
+import { Header, Content, ButtonContainer } from './styled'
+import { Button } from '../../components/atoms'
 import candidateService from '../../services/candidateService'
 import user from '../../user'
 
@@ -12,6 +12,7 @@ class CandidateProfile extends React.Component {
         this.state = {
             editSkillsCard: false,
             user: {
+                registration: '',
                 description: null,
                 name: null,
                 email: null,
@@ -38,6 +39,7 @@ class CandidateProfile extends React.Component {
             console.log(data)
             this.setState({
                 user: {
+                    registration: data.registration,
                     description: data.description,
                     name: data.name,
                     email: data.email,
@@ -68,6 +70,9 @@ class CandidateProfile extends React.Component {
 
     }
     onChangeEdit = () => this.setState({ editSkillsCard: !this.state.editSkillsCard });
+    onChangeUpdateData = () => {
+        candidateService.updateCandidate(this.state.user);
+    }
     render() {
         return <>
             <Header>
@@ -102,7 +107,9 @@ class CandidateProfile extends React.Component {
                         <></>
 
                 }
-
+                <ButtonContainer>
+                    <Button onClick={this.onChangeUpdateData}>Salvar</Button>
+                </ButtonContainer>
             </Content>
         </>
 
