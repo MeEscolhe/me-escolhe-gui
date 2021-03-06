@@ -22,6 +22,7 @@ export const User = styled.div`
     display: flex;
     flex-direction: column;    
     align-items: center;
+    margin-top: 10px;
     margin-block-end: 3%;
 `;
 

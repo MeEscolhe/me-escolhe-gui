@@ -68,7 +68,7 @@ class AllSelections extends Component {
     render() {
         return <>
         <Header>
-            <Title color level={2}>{ this.state.title }</Title>
+            <Title color='black' level={2}>{ this.state.title }</Title>
             <Search>
             <Input 
                 bordered={false}

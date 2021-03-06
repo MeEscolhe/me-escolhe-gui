@@ -10,8 +10,8 @@ class CandidateProfile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            description: null, 
             user: {
+                description: null,
                 name: null,
                 email: null,
                 soft: 0,
@@ -21,64 +21,71 @@ class CandidateProfile extends React.Component {
                 image: '',
                 skills: {
                     hardSkills: [],
-                    softSkills: [], 
+                    softSkills: [],
                     languages: [],
                 },
                 experiences: {
                     academic: [],
                     work: [],
                 }
-            }            
+            }
         }
     }
 
     componentDidMount() {
         candidateService.getCandidate(user.getID()).then(data => {
             console.log(data)
-            this.setState({user: {
-                name: data.name,
-                email: data.email,
-                cra: data.cra,
-                image: '',
-                skills: data.skills,
-                experiences: data.experiences[0]
-            }})
-            console.log(this.state.user)
+            this.setState({
+                user: {
+                    description: data.description,
+                    name: data.name,
+                    email: data.email,
+                    cra: data.cra,
+                    image: '',
+                    skills: data.skills,
+                    experiences: data.experiences[0]
+                }
+            })
         })
-        
+
     }
+    onChangeDescription = (event) =>
+        this.setState({ user: { ...this.state.user, description: event.target.value } });
 
     render() {
         return <>
             <Header>
-                <HeaderUser user={ this.state.user }/>
+                <HeaderUser user={this.state.user} />
             </Header>
             <Content>
-                <AboutCard description={ this.state.user.description }/>
+                <AboutCard
+                    description={this.state.user.description}
+                    onChangeDescription={this.onChangeDescription}
+                />
                 {
-                    this.state.user.skills ? 
-                        <SkillsCard 
-                            hardSkills={ this.state.user.skills.hardSkills } 
-                            softSkills={ this.state.user.skills.softSkills } 
-                            languages={ this.state.user.skills.languages }/>
-                    :
+                    this.state.user.skills ?
+                        <SkillsCard
+                            hardSkills={this.state.user.skills.hardSkills}
+                            softSkills={this.state.user.skills.softSkills}
+                            languages={this.state.user.skills.languages} />
+                        :
                         <></>
                 }
-                
+
                 {
-                    
-                    this.state.user.experiences ? 
-                        <ExperiencesCard 
-                            workExperiences={ this.state.user.experiences.work } 
-                            academicExperiences={ this.state.user.experiences.academic }/>
-                    :
+
+                    this.state.user.experiences ?
+                        <ExperiencesCard
+                            workExperiences={this.state.user.experiences.work}
+                            academicExperiences={this.state.user.experiences.academic} />
+                        :
                         <></>
-                    
+
                 }
-                
+
             </Content>
         </>
-        
+
     }
 }
 export default CandidateProfile;

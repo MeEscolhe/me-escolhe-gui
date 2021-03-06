@@ -75,7 +75,7 @@ export const Login = ({visible, onCancel, onOk}) => {
             <>
                 <Form>
                     <Header>
-                        <Title color level={4}>Login</Title>
+                        <Title color='black' level={4}>Login</Title>
                     </Header>  
                     <InputForm
                         size="large" 

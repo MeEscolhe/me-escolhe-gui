@@ -17,7 +17,7 @@ export const Skills = ({ hardSkills, softSkills, languages }) => {
 
     const legendHardSkills = levels.map((level) => {
         return <Level>
-                    <Title color level={5}> Nível </Title>
+                    <Title color='black' level={5}> Nível </Title>
                     <LogoComponent 
                         size={20} 
                         color={skillLevel(level)}
@@ -26,7 +26,7 @@ export const Skills = ({ hardSkills, softSkills, languages }) => {
     }) 
     
     const tagSkills = skills.map((skill) => {
-            return <Tag color={ skillLevel(skill.level) }>{ skill.name }</Tag>
+            return <Tag color={ skillLevel(skill.level) }>{'eae'}{ skill.name }</Tag>
     })
 
     return <Content> 

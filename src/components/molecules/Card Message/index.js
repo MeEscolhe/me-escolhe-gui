@@ -8,7 +8,7 @@ export const CardMessage = ({title, message, onClick, ...props}) => {
             hoverable
             {...props}
         >
-            <Title color level={5}>{ title }</Title>
+            <Title color='black' level={5}>{ title }</Title>
             <Text> { message }</Text>
             <ButtonLink onClick={ onClick }>Ok</ButtonLink>
         </CardMolecule>

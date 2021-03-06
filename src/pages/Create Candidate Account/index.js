@@ -149,11 +149,11 @@ class CreateCandidateAccount extends Component {
         return <Content>
             
             <Header>
-                <Title color level={3}>Criar Conta</Title>
+                <Title color='black' level={3}>Criar Conta</Title>
             </Header>
             <Content>
                 <Container>
-                    <Title color level={5}>Dados Pessoais</Title>
+                    <Title color='black' level={5}>Dados Pessoais</Title>
                     <Input 
                         value={ this.state.name }
                         allowClear={true}
@@ -186,7 +186,7 @@ class CreateCandidateAccount extends Component {
                         onChange={ this.addConfirmPassword }/>
                 </Container>
                 <Container>
-                    <Title color level={5}>Sobre Você</Title>
+                    <Title color='black' level={5}>Sobre Você</Title>
                     <InputTextArea
                         rows={5}
                         placeholder="Descrição"
