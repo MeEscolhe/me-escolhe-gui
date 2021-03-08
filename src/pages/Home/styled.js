@@ -2,18 +2,61 @@ import styled from 'styled-components'
 
 import { colors } from '../../styles/colors'
 
-export const TopBar = styled.div`
+export const Container = styled.div`
+    background-image: linear-gradient(120deg, ${colors.black}, ${colors.darkMagenta});
+`;
+
+export const Menu = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px;
-    border-bottom: 1px solid  ${ colors.ice };
-    background: ${ colors.white }
+    margin: 1vw;
+    justify-content: flex-end;
 `;
 
 export const Logo = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    width: auto;
+    padding: 1vw;
     align-items: center;
-`
+`;
+
+export const HeaderBody = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    padding: 5vw 10vw;
+`;
+
+export const Header = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+export const Plans = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    padding: 5vw;
+    background-color: ${ colors.white };
+`;
+
+export const Time = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    padding: 5vw;
+`;
+
+export const Footer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    padding: 5vw;
+    background-color: ${ colors.white };
+
+`;

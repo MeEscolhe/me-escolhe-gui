@@ -3,7 +3,7 @@ import {role} from '../../pt-br'
 export default {
     darkViolet: '#311D3F',
     violet: '#522546',
-    darkMagenta: '#88304E',
+    darkMagenta: '#a31545',
     pink: '#E23E57',
     white: '#FFFFFF',
     ice: '#EEEEEE',
@@ -14,6 +14,8 @@ export default {
     green: '#35bd26',
     red: '#db4f40',
     icon: "#ff7d90",
+    pinkLight: "#ff7875",
+    greenLight: "#d1ff33",
     fullstack: {
         primary: "#7143e5",
         secundary: "#D450E6",

@@ -1,7 +1,9 @@
 import styled from 'styled-components'
-import { Avatar } from 'antd'
+import Icon from '@ant-design/icons'
 
-export const LogoComponent = styled(Avatar)`
-    background: none;
+export const IconComponent = styled(Icon)`
+    display: flex;
+    width: auto;
+    margin: 2vw;
     font-size: ${({size}) => size ? (size-5) : 54}px !important;
 `;

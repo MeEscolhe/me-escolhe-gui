@@ -6,6 +6,7 @@ import { Button } from 'antd';
 
 export const ButtonAtom = styled(Button)`
     color: ${ ({color}) => color? color : colors.pink };
+    background-color: ${ ({backgroundColor}) => backgroundColor ? backgroundColor : '' };
     &:hover {
         color: ${ ({color}) => color? color : colors.pink };
     }
