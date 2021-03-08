@@ -13,9 +13,7 @@ export const InputAtom = styled(InputNumber)`
     border: none;
     border-bottom: solid ${ colors.gray } 1px;
     padding: 1vw;
-    width: 90vw;
-    margin-block-start: 2vw;
-    margin-block-end: 2vw;
+    width: auto;
     &:focus, &:focus{
         outline: none !important;
     }
