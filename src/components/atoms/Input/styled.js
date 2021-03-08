@@ -5,12 +5,11 @@ import { Input } from 'antd';
 
 export const InputAtom = styled(Input)`
     display: flex;
-    border-radius: 0px;
     outline: none;
     outline-style: none;
     border: none;
     border-bottom: solid ${ colors.gray } 1px;
-    padding: 3px 10px;
+    padding: 1vw;
     width: auto;
     margin-block-start: 24px;
     margin-block-end: 24px;

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { colors } from '../../../styles/colors'
-import { Avatar, Title, Button } from '../../atoms'
+import { Avatar, Title, Button, Input} from '../../atoms'
 import { ModalSelection } from '../../molecules'
-import { Form, Header, InputForm, Legend } from './styled'
+import { Form, Header, Password, Legend } from './styled'
 import { useHistory } from 'react-router-dom'
 import { route } from '../../../routes'
 
@@ -52,10 +52,15 @@ export const Login = ({visible, onCancel, onOk}) => {
         else
             history.push(route.accountRecruiter)
     }
+    const closeModal = () => {
+        setEmail('')
+        setPassword('')
+        onCancel()
+    }
 
     return <ModalSelection
         visible={visible}
-        onCancel={onCancel}
+        onCancel={closeModal}
         onOk={onOk}
         title={
             <Avatar color={ colors.icon }/>
@@ -77,13 +82,13 @@ export const Login = ({visible, onCancel, onOk}) => {
                     <Header>
                         <Title color='black' level={4}>Login</Title>
                     </Header>  
-                    <InputForm
+                    <Input
                         size="large" 
                         placeholder="E-mail"
                         value={ email }
                         onChange={ setUserEmail }
                         />
-                    <InputForm
+                    <Password
                         size="large" 
                         placeholder="Senha"
                         value={ password }
