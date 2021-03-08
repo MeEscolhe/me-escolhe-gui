@@ -66,44 +66,30 @@ export const Login = ({visible, onCancel, onOk}) => {
             <Avatar color={ colors.icon }/>
         }
     >
-        {
-            !typeAccount ? 
-            <>
-                <Legend>
-                    <Button color={ colors.icon } onClick={() => setTypeAccount(CANDIDATE) }>Estudante</Button>
-                </Legend>
-                <Legend>
-                    <Button color={ colors.icon } onClick={() => setTypeAccount(RECRUITER) }>Professor</Button>
-                </Legend>
-            </>
-            :
-            <>
-                <Form>
-                    <Header>
-                        <Title color level={4}>Login</Title>
-                    </Header>  
-                    <Input
-                        size="large" 
-                        placeholder="E-mail"
-                        value={ email }
-                        onChange={ setUserEmail }
-                        />
-                    <Password
-                        size="large" 
-                        placeholder="Senha"
-                        value={ password }
-                        onChange={ setUserPassword }
-                        />
-                </Form>
-                <Legend>
-                    <Button color={ colors.icon } onClick={() => loginPage() }>Login</Button>
-                </Legend>
+        <Form>
+            <Header>
+                <Title color level={4}>Login</Title>
+            </Header>  
+            <Input
+                size="large" 
+                placeholder="E-mail"
+                value={ email }
+                onChange={ setUserEmail }
+                />
+            <Password
+                size="large" 
+                placeholder="Senha"
+                value={ password }
+                onChange={ setUserPassword }
+                />
+        </Form>
+        <Legend>
+            <Button color={ colors.icon } onClick={() => loginPage() }>Login</Button>
+        </Legend>
 
-                <Legend>
-                    <Button color={ colors.icon } onClick={() => createAccountPage() }>Criar Conta</Button>
-                </Legend>
-            </>
-        }
+        <Legend>
+            <Button color={ colors.icon } onClick={() => createAccountPage() }>Criar Conta</Button>
+        </Legend>
         
     </ModalSelection>
 
