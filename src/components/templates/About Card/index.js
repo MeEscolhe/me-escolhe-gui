@@ -1,14 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Title, Text, InputTextArea } from '../../atoms'
 import { Card, Pencil } from './styled';
 
-export const AboutCard = ({ title, description, onChangeDescription }) => {
-    const [edit, setEdit] = useState(false);
+export const AboutCard = ({
+    title,
+    description,
+    onChangeDescription,
+    editAboutCard,
+    onChangeEditAboutCard
+}) => {
 
     return <Card>
-        <Pencil onClick={() => setEdit(!edit)} />
+        <Pencil onClick={() => onChangeEditAboutCard(!editAboutCard)} />
         <Title level={3} color>{title ? title : 'Sobre'}</Title>
-        {edit ?
+        {editAboutCard ?
             <InputTextArea
                 value={description}
                 rows={5}

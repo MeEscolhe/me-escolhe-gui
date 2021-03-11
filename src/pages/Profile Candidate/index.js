@@ -11,6 +11,8 @@ class CandidateProfile extends React.Component {
         super(props);
         this.state = {
             editSkillsCard: false,
+            editAboutCard: false,
+            activeSaveButton: false,
             user: {
                 registration: '',
                 description: null,
@@ -69,9 +71,15 @@ class CandidateProfile extends React.Component {
         });
 
     }
-    onChangeEdit = () => this.setState({ editSkillsCard: !this.state.editSkillsCard });
+    onChangeEdit = () => this.setState({ editSkillsCard: !this.state.editSkillsCard, activeSaveButton: true });
+    onChangeEditAboutCard = () => this.setState({ editAboutCard: !this.state.editAboutCard, activeSaveButton: true });
+
     onChangeUpdateData = () => {
-        candidateService.updateCandidate(this.state.user);
+        this.setState({ editSkillsCard: false, editAboutCard: false },
+            () =>
+                candidateService.updateCandidate(this.state.user)
+        );
+
     }
     render() {
         return <>
@@ -80,6 +88,8 @@ class CandidateProfile extends React.Component {
             </Header>
             <Content>
                 <AboutCard
+                    editAboutCard={this.state.editAboutCard}
+                    onChangeEditAboutCard={this.onChangeEditAboutCard}
                     description={this.state.user.description}
                     onChangeDescription={this.onChangeDescription}
                 />
@@ -96,9 +106,7 @@ class CandidateProfile extends React.Component {
                         :
                         <></>
                 }
-
                 {
-
                     this.state.user.experiences ?
                         <ExperiencesCard
                             workExperiences={this.state.user.experiences.work}
@@ -107,9 +115,11 @@ class CandidateProfile extends React.Component {
                         <></>
 
                 }
-                <ButtonContainer>
-                    <Button onClick={this.onChangeUpdateData}>Salvar</Button>
-                </ButtonContainer>
+                {this.state.activeSaveButton &&
+                    <ButtonContainer>
+                        <Button onClick={this.onChangeUpdateData}>Salvar</Button>
+                    </ButtonContainer>
+                }
             </Content>
         </>
 

@@ -4,7 +4,14 @@ import { Skills, SkillsForm } from '../../organisms'
 import { Card, Pencil } from './styled'
 import { colors } from '../../../styles/colors'
 
-export const SkillsCard = ({ editSkillsCard, hardSkills, softSkills, languages, onChangeSkill, onChangeEdit }) => {
+export const SkillsCard = ({
+    editSkillsCard,
+    hardSkills,
+    softSkills,
+    languages,
+    onChangeSkill,
+    onChangeEdit
+}) => {
     return <Card>
         <Pencil onClick={onChangeEdit} />
 
@@ -28,7 +35,6 @@ export const SkillsCard = ({ editSkillsCard, hardSkills, softSkills, languages, 
                     <SkillsForm
                         title={"Habilidades Interpessoais"}
                         skills={softSkills}
-                        options={[1, 2, 3, 4, 5]}
                         addSkill={(skill) => onChangeSkill('softSkills', softSkills, skill, true)}
                     />
                     : <Skills softSkills={softSkills} />
@@ -40,7 +46,7 @@ export const SkillsCard = ({ editSkillsCard, hardSkills, softSkills, languages, 
                     <SkillsForm
                         title={"Idiomas"}
                         skills={languages}
-                        options={[1, 2, 3, 4, 5]}
+                        options={[1, 2, 3]}
                         addSkill={(skill) => onChangeSkill('languages', languages, skill, true)}
                     />
                     : <Skills languages={languages} />
