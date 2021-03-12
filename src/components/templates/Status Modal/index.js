@@ -13,7 +13,7 @@ export const StatusModal = ({title, message, error, visible, onCancel, onClick, 
             footer={null}
             closable={false}
         >
-            <Title color level={3}>{ title }</Title>
+            <Title color='black' level={3}>{ title }</Title>
             { error ? 
             <Icon error size={64} icon={<CloseCircleOutlined />}/>
             

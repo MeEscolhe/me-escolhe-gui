@@ -164,7 +164,7 @@ class CreateSelection extends Component {
         >
             <Form>
                 <HeaderForm>
-                    <Title color level={4}>Criar Seleção</Title>
+                    <Title color='black' level={4}>Criar Seleção</Title>
                 </HeaderForm>  
                 <SelectComponent 
                     value={ this.state.projectID }
@@ -182,7 +182,7 @@ class CreateSelection extends Component {
                     rows={3} 
                     placeholder="Descrição"
                     onChange={ this.addDescription }/>
-                <Title color level={4}>Competências</Title>
+                <Title color='black' level={4}>Competências</Title>
                 <SkillsForm
                     title={ "Habilidades Técnicas" } 
                     skills={ this.state.hardSkills } 

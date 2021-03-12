@@ -10,3 +10,9 @@ export const Content = styled.div`
     margin-inline-start: 5%;
     margin-inline-end: 5%;
 `;
+export const ButtonContainer = styled.div`
+    display:flex;
+    width:100%;
+    justify-content: center;
+    padding: 10px 0px;
+`;

@@ -91,11 +91,11 @@ class CreateRecruiterAccount extends Component {
         return <Content>
             
             <Header>
-                <Title color level={3}>Criar Conta</Title>
+                <Title color='black' level={3}>Criar Conta</Title>
             </Header>
             <Content>
                 <Container>
-                    <Title color level={5}>Dados Pessoais</Title>
+                    <Title color='black' level={5}>Dados Pessoais</Title>
                     <SelectComponent 
                         value={ this.state.lab.name }
                         onChange={ this.addLab }
@@ -124,7 +124,7 @@ class CreateRecruiterAccount extends Component {
                         onChange={ this.addConfirmPassword }/>
                 </Container>
                 <Container>
-                    <Title color level={5}>Sobre Você</Title>
+                    <Title color='black' level={5}>Sobre Você</Title>
                     <InputTextArea
                         rows={5}
                         placeholder="Descrição"

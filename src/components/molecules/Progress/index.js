@@ -23,8 +23,8 @@ export const Progress = ({ phase, status }) => {
             width={ 200 }
             percent={ 100 }
             format={() => <>
-                    <Title color level={2}>{ "Fase " + phase }</Title>
-                    <Title color level={5}>{ message() }</Title>
+                    <Title color='black' level={2}>{ "Fase " + phase }</Title>
+                    <Title color='black' level={5}>{ message() }</Title>
                 </> 
             }
             status={ status }/>
