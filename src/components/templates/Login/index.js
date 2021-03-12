@@ -14,26 +14,22 @@ export const Login = ({visible, onCancel, onOk}) => {
     const [password, setPassword] =  useState()
 
     const CANDIDATE = "CANDIDATE"
-    const RECRUITER = "RECRUITER"
     
     const history = useHistory()
 
-    const loginPage = () => {
-        console.log(typeAccount)
-        const user = {
+    const loginPage = async () => {
+        const body = {
             email: email,
             password: password
         }
 
-        if(typeAccount === CANDIDATE) {
-            auth.login(user, CANDIDATE, () => {
-                history.push(route.selections)
-            })
-        } else if(typeAccount === RECRUITER) {
-            auth.login(user, RECRUITER, () => {
-                history.push(route.selections)
-            })
+        const status = await auth.login(body);
+
+        if(status === 200) {
+            console.log("Success");
+            history.push(route.selections)
         } else {
+            console.log("Usuario não encontrado");
             history.push(route.home)
         }  
     }
