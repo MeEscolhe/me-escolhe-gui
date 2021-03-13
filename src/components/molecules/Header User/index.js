@@ -1,15 +1,10 @@
 import React from 'react'
 import { Avatar } from 'antd'
-import { UserOutlined, SettingOutlined } from '@ant-design/icons'
-import { ButtonLink } from '../../atoms'
-import { HeaderProfile, User, Config, Skills, Skill, Footer, LogoComponent, TitleComponent } from './styled'
-import { colors } from '../../../styles/colors'
+import { UserOutlined } from '@ant-design/icons'
+import { HeaderProfile, User, Skills, Skill, Footer, LogoComponent, TitleComponent } from './styled'
 
 export const Header = ({ user }) => {
   return <HeaderProfile>
-      <Config>
-          <ButtonLink color={ colors.white } onClick={ () => alert("CONFIG") }><SettingOutlined/></ButtonLink>
-      </Config>
       <User>
         <Avatar src={ user.image } size={150} icon={ <UserOutlined /> }/>
         <TitleComponent level={2}> { user.name } </TitleComponent>

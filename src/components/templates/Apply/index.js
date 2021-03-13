@@ -21,7 +21,7 @@ export const Apply = ({visible, onCancel, onOk, labName, projectName, role}) => 
         >
             <Form>
                 <HeaderForm>
-                    <Title color level={4}>Formulário de Candidatura</Title>
+                    <Title color='black' level={4}>Formulário de Candidatura</Title>
                 </HeaderForm>  
                 <ItemForm>
                     <Input size="large" placeholder="Nome Completo"/>
