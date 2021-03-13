@@ -21,8 +21,8 @@ export const Login = ({visible, onCancel, onOk}) => {
     const loginPage = () => {
         console.log(typeAccount)
         const user = {
-            email: email,
-            password: password
+            email: `anderson.vidal@ccc.ufcg.edu.br`,
+            password: `123456`
         }
 
         if(typeAccount === CANDIDATE) {
