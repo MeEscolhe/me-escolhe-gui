@@ -9,7 +9,7 @@ import teacherService from '../../services/teacherService'
 
 export const Candidates = () => {
     const [selections, setSelections] = useState()
-    const [project, setProjects] = useState()
+    const [project] = useState()
 
     const { TabPane } = Tabs
 

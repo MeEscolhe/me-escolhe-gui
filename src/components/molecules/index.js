@@ -1,4 +1,3 @@
-export { default as CardError } from './Card Error'
 export { default as ModalMessage } from './Modal Message'
 export { default as Selection } from './Selection'
 export { default as Progress } from './Progress'

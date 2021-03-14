@@ -1,48 +1,26 @@
 import server from './services/server'
+
 import user from './user'
 
 class Auth {
     constructor() {
         this.authenticated = false
         this.route = null
+        this.authenticated = false
     }
     
-    async login(_user, typeUser, cb){
-        user.createUser(_user.email, _user.password, typeUser)
-        
-        if(user.isCandidate()){
-            this.route = 'students/'
-        } else {
-            this.route = 'teachers/'
-        }
-        let users = null
-        
+    async login(body, cb){
         try {
-            users = await server.get(this.route)
-        } catch(e) {
-            return
+            const {status, data} = await server.post('/auth', body)
+            if(status === 200) {
+                localStorage.getItem('@me-escolhe/tokenUser')
+                localStorage.setItem('@me-escolhe/tokenUser', data.token)
+                user.createUser(data.user, data.isTeacher)
+            }
+            return status
+        } catch(error) {
+            return error
         }
-
-        let userAccount = users.data.filter(({email, password}) => user.getEmail() ===  email && user.getPassword() === password);
-
-        console.log(userAccount)
-        if(userAccount.length > 0) {
-            this.authenticated = true
-            if(user.isCandidate())
-                user.setID(userAccount[0].registration)
-            else    
-                user.setID(userAccount[0]._id)
-            cb()
-        }
-        
-    }
-
-    getUserType(){
-        return this.typeUser
-    }
-
-    getUserId() {
-        return this.userID
     }
 
     logout(cb) {
@@ -54,9 +32,10 @@ class Auth {
     }
 
     isAuthenticated() {
-        return this.authenticated
+        const res = localStorage.getItem('@me-escolhe/tokenUser') !== ( null || undefined)
+        console.log(res);
+        return res
     }
-
 }
 
 export default new Auth()
