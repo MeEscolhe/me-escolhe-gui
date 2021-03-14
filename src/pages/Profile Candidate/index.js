@@ -9,6 +9,7 @@ import user from '../../user'
 class CandidateProfile extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             editSkillsCard: false,
             editAboutCard: false,
@@ -37,9 +38,11 @@ class CandidateProfile extends React.Component {
     }
 
     componentDidMount() {
+        this.props.setLoading();
         candidateService.getCandidate(user.getID()).then(data => {
-            console.log(data)
+
             this.setState({
+                loading: false,
                 user: {
                     registration: data.registration,
                     description: data.description,
@@ -50,25 +53,18 @@ class CandidateProfile extends React.Component {
                     skills: data.skills,
                     experiences: data.experiences[0]
                 }
-            })
+            }, () => this.props.setLoading())
         })
 
     }
     onChangeDescription = (event) =>
         this.setState({ user: { ...this.state.user, description: event.target.value } });
 
-    onChangeSkill = (type, skills, skill, add) => {
-
-        add ? skills.push(skill) : skills = skills.filter((skillData) => skillData.name !== skill.name);
-
-        this.setState({
-            user: {
-                ...this.state.user, skills: {
-                    ...this.state.user.skills,
-                    [type]: skills
-                }
-            }
-        });
+    onChangeSkill = (skills, save) => {
+        save ?
+            this.setState({ editSkillsCard: false })
+            :
+            this.setState({ user: { ...this.state.user, skills } });
 
     }
     onChangeEdit = () => this.setState({ editSkillsCard: !this.state.editSkillsCard, activeSaveButton: true });
@@ -82,6 +78,7 @@ class CandidateProfile extends React.Component {
 
     }
     render() {
+        console.log(this.state.user.skills);
         return <>
             <Header>
                 <HeaderUser user={this.state.user} />
@@ -97,9 +94,11 @@ class CandidateProfile extends React.Component {
                     this.state.user.skills ?
                         <SkillsCard
                             editSkillsCard={this.state.editSkillsCard}
-                            hardSkills={this.state.user.skills.hardSkills}
-                            softSkills={this.state.user.skills.softSkills}
-                            languages={this.state.user.skills.languages}
+                            propsSkills={{
+                                hardSkills: this.state.user.skills.hardSkills,
+                                softSkills: this.state.user.skills.softSkills,
+                                languages: this.state.user.skills.languages
+                            }}
                             onChangeSkill={this.onChangeSkill}
                             onChangeEdit={this.onChangeEdit}
                         />
@@ -121,6 +120,7 @@ class CandidateProfile extends React.Component {
                     </ButtonContainer>
                 }
             </Content>
+
         </>
 
     }

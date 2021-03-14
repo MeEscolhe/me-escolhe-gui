@@ -1,61 +1,75 @@
-import React from 'react'
-import { Title } from '../../atoms'
-import { Skills, SkillsForm } from '../../organisms'
-import { Card, Pencil } from './styled'
+import React, { useEffect, useState } from 'react'
+import { Title, Button } from '../../atoms'
+import { Skills, SkillsForm, } from '../../organisms'
+import { Card, Pencil, ButtonsContainer } from './styled'
 import { colors } from '../../../styles/colors'
 
 export const SkillsCard = ({
     editSkillsCard,
-    hardSkills,
-    softSkills,
-    languages,
+    propsSkills,
     onChangeSkill,
     onChangeEdit
 }) => {
+    const [localSkills, setLocalSkills] = useState({ hardSkills: [], softSkills: [], languages: [] });
+
+    useEffect(() => {
+        setLocalSkills(propsSkills);
+
+    }, [propsSkills, editSkillsCard]);
+
+    const onLocalChangeSkill = (type, skills, skill, add) => {
+        add ? skills.push(skill) :
+            skills = skills.filter((skillData) => skillData.name !== skill.name);
+        setLocalSkills({ ...localSkills, [type]: skills })
+    }
+
     return <Card>
         <Pencil onClick={onChangeEdit} />
 
         <Title level={3} color> Competências </Title>
 
         {
-            hardSkills ?
+            localSkills.hardSkills ?
                 editSkillsCard ?
                     <SkillsForm
                         title={"Habilidades Técnicas"}
-                        skills={hardSkills}
+                        skills={localSkills.hardSkills}
                         options={[1, 2, 3, 4, 5]}
-                        addSkill={(skill) => onChangeSkill('hardSkills', hardSkills, skill, true)}
+                        addSkill={(skill) => onLocalChangeSkill('hardSkills', localSkills.hardSkills, skill, true)}
                     />
-                    : <Skills hardSkills={hardSkills} />
+                    : <Skills hardSkills={localSkills.hardSkills} />
                 : <></>
         }
         {
-            softSkills ?
+            localSkills.softSkills ?
                 editSkillsCard ?
                     <SkillsForm
                         title={"Habilidades Interpessoais"}
-                        skills={softSkills}
-                        addSkill={(skill) => onChangeSkill('softSkills', softSkills, skill, true)}
+                        skills={localSkills.softSkills}
+                        addSkill={(skill) => onLocalChangeSkill('softSkills', localSkills.softSkills, skill, true)}
                     />
-                    : <Skills softSkills={softSkills} />
+                    : <Skills softSkills={localSkills.softSkills} />
                 : <></>
         }
         {
-            languages ?
+            localSkills.languages ?
                 editSkillsCard ?
                     <SkillsForm
                         title={"Idiomas"}
-                        skills={languages}
+                        skills={localSkills.languages}
                         options={[1, 2, 3]}
-                        addSkill={(skill) => onChangeSkill('languages', languages, skill, true)}
+                        addSkill={(skill) => onLocalChangeSkill('languages', localSkills.languages, skill, true)}
                     />
-                    : <Skills languages={languages} />
+                    : <Skills languages={localSkills.languages} />
                 : <></>
         }
         {
-            !hardSkills && !softSkills && !languages ? <Title level={4} color={colors.gray} >Nenhuma Habilidade Informada</Title>
+            !localSkills.hardSkills && !localSkills.softSkills && !localSkills.languages ? <Title level={4} color={colors.gray} >Nenhuma Habilidade Informada</Title>
                 : <></>
         }
+        {editSkillsCard && <ButtonsContainer>
+            <Button>Salvar</Button> <Button>Cancelar</Button>
+        </ButtonsContainer>}
     </Card>
 }
 

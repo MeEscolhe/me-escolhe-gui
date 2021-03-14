@@ -4,7 +4,7 @@ import { Avatar, Button, Title } from '../../components/atoms'
 import { Login } from '../../components/templates'
 import { TopBar, Logo } from './styled'
 
-export const Home = () => {
+export const Home = ({setLoading}) => {
     const [openLogin, setOpenLoginFom] = useState(false)
     
     return <>
@@ -17,6 +17,7 @@ export const Home = () => {
             <Login
                 visible={ openLogin }
                 onCancel={() => setOpenLoginFom(false) }
+                setLoading={setLoading}
             />
         </TopBar>
     </>

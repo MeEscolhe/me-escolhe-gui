@@ -16,3 +16,9 @@ export const Pencil = styled(EditOutlined)`
         height:20px;
     }
 `;
+
+export const ButtonsContainer = styled.div`
+    width:100%;
+    justify-content:space-between;
+
+`;
