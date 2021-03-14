@@ -9,8 +9,7 @@ import teacherService from '../../services/teacherService'
 
 export const Candidates = () => {
     const [selections, setSelections] = useState()
-    const [phaseId, setPhaseId] = useState()
-    const [project, setProjects] = useState()
+    const [project] = useState()
 
     const { TabPane } = Tabs
 
@@ -20,11 +19,11 @@ export const Candidates = () => {
             return phases.lenth > 0
         })
         setSelections(selecionsFilter)
-    })
+    }, [])
 
     const candidates = () => {
         selections.map(selection => (
-            <TabPane tab={selection.phases[0]} >
+            <TabPane key={Math.random()} tab={selection.phases[0]} >
               { selections.name }
             </TabPane>
           ))
@@ -33,7 +32,7 @@ export const Candidates = () => {
     return <Content> 
         <HeaderProject project={ project }/>
         <Header>
-            <Title color level={3}> Candidatos </Title>
+            <Title color='black' level={3}> Candidatos </Title>
         </Header>
         <Tabs defaultActiveKey="1" tabPosition={"left"} style={{ height: 220 }}>
           { Candidates }
@@ -46,7 +45,7 @@ export const Candidates = () => {
                     <CardMolecule
                         hoverable
                     >
-                        <Name color level={5}>{ candidate.name }</Name>
+                        <Name color='black' level={5}>{ candidate.name }</Name>
                         <Email>{ candidate.email }</Email> 
                     </CardMolecule>
                 </List.Item>

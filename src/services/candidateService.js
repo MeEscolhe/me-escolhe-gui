@@ -11,14 +11,19 @@ class UserService {
     }
 
     async postCandidate(body) {
-        console.log(body)
         try {
-            await server.post('/students', body).then(res => {
-                console.log(res)
-                return res
-            })
+            return await server.post('/students', body)
         } catch (error) {
-            return []
+            return error
+        }
+    }
+    updateCandidate = async (body) => {
+
+        try {
+            const req = await server.put('/students/' + body.registration, body);
+            return { data: req.data, error: false };
+        } catch (error) {
+            return { data: error.response.data, error: true };
         }
     }
 

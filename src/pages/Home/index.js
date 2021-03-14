@@ -11,7 +11,7 @@ export const Home = () => {
         <TopBar>
             <Logo>
                 <Avatar size={54} color={ colors.pink }/>
-                <Title color level={4}> ME ESCOLHE </Title>
+                <Title color='black' level={4}> ME ESCOLHE </Title>
             </Logo>
             <Button onClick={() => setOpenLoginFom(true) }>Login</Button>
             <Login

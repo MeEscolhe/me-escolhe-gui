@@ -22,6 +22,7 @@ class AllSelections extends Component {
     }
 
     componentDidMount() {
+        console.log(user);
         if(user.isCandidate()){
             const location = '/' + window.location.href.split('/')[3]
             if(location === route.selections)
@@ -68,7 +69,7 @@ class AllSelections extends Component {
     render() {
         return <>
         <Header>
-            <Title color level={2}>{ this.state.title }</Title>
+            <Title color='black' level={2}>{ this.state.title }</Title>
             <Search>
             <Input 
                 bordered={false}

@@ -1,26 +1,26 @@
 import React, { useState } from 'react'
 import { Tag, Title, Input, Button, Select } from '../../atoms'
 import { skillLevel, colors } from '../../../styles/colors'
-import { Skill, Content, Header, Legend} from './styled'
+import { Skill, Content, Header, Legend } from './styled'
 
 import { PlusOutlined } from '@ant-design/icons'
 
 
-export const SkillsForm = ({ title, skills=[], options, addSkill }) => {
+export const SkillsForm = ({ title, skills = [], options, addSkill }) => {
     const [skillName, setSkillName] = useState()
     const [_skillLevel, setSkillLevel] = useState()
 
     const tagSkills = skills.map((skill) => {
-            return <Tag color={ skillLevel(skill.level) }>
-                { skill.name }
-            </Tag>
+        return <Tag key={Math.random()} color={skillLevel(skill.level)}>
+            {skill.name}
+        </Tag>
     })
 
     const add = () => {
-        if(!skillName) return
-        if(options)
-            if(!_skillLevel) return
-        
+        if (!skillName) return
+        if (options)
+            if (!_skillLevel) return
+
         const skill = options ? {
             name: skillName,
             level: _skillLevel
@@ -28,7 +28,7 @@ export const SkillsForm = ({ title, skills=[], options, addSkill }) => {
         setSkillName(null)
         setSkillLevel(null)
         addSkill(skill)
-        
+
     }
 
     const setName = (event) => {
@@ -40,41 +40,41 @@ export const SkillsForm = ({ title, skills=[], options, addSkill }) => {
     }
 
     return <Skill>
-        <Title color level={5}>{ title }</Title>
-        <Input 
-            value={ skillName }
-            onChange={ setName }
+        <Title color='black' level={5}>{title}</Title>
+        <Input
+            value={skillName}
+            onChange={setName}
             allowClear={true}
-            size="large" 
-            placeholder={ title }/>
+            size="large"
+            placeholder={title} />
         {
-            options ? 
+            options ?
 
-            <Select
-            value={ _skillLevel }
-            onChange={ setLevel }
-            options={ options }
-            placeholder="Nível de conhecimento"/> : <></>
+                <Select
+                    value={_skillLevel}
+                    onChange={setLevel}
+                    options={options}
+                    placeholder="Nível de conhecimento" /> : <></>
         }
         {
-            skills.length > 0 ? 
+            skills.length > 0 ?
 
-            <Content> 
-            <Header>
-                <Title level={4} color={ colors.pink }>{ title }</Title> 
-            </Header>
-            
-            { tagSkills }
-            
-            </Content> : <></>
+                <Content>
+                    <Header>
+                        <Title level={4} color={colors.pink}>{title}</Title>
+                    </Header>
+
+                    {tagSkills}
+
+                </Content> : <></>
         }
-        
+
         <Legend>
-            <Button 
-                onClick={ add }
-                icon={ <PlusOutlined /> }/>
+            <Button
+                onClick={add}
+                icon={<PlusOutlined />} />
         </Legend>
     </Skill>
-       
+
 }
 export default SkillsForm;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Title, Input, InputTextArea, Button, ButtonLink } from '../../components/atoms'
+import { Title, Input, InputTextArea, Button } from '../../components/atoms'
 
-import { Footer, Content, Header, Container, Legend, SelectComponent, OptionComponent } from './styled'
+import { Content, Header, Container, Legend, SelectComponent, OptionComponent } from './styled'
 
 import labService from '../../services/labService'
 import teacherService from '../../services/teacherService'
@@ -45,7 +45,6 @@ class CreateRecruiterAccount extends Component {
 
     addDescription = (event) => {
         this.setState({description: event.target.value})
-        
     }
 
     createStudentAccount = () => {
@@ -92,11 +91,11 @@ class CreateRecruiterAccount extends Component {
         return <Content>
             
             <Header>
-                <Title color level={3}>Criar Conta</Title>
+                <Title color='black' level={3}>Criar Conta</Title>
             </Header>
             <Content>
                 <Container>
-                    <Title color level={5}>Dados Pessoais</Title>
+                    <Title color='black' level={5}>Dados Pessoais</Title>
                     <SelectComponent 
                         value={ this.state.lab.name }
                         onChange={ this.addLab }
@@ -125,7 +124,7 @@ class CreateRecruiterAccount extends Component {
                         onChange={ this.addConfirmPassword }/>
                 </Container>
                 <Container>
-                    <Title color level={5}>Sobre Você</Title>
+                    <Title color='black' level={5}>Sobre Você</Title>
                     <InputTextArea
                         rows={5}
                         placeholder="Descrição"

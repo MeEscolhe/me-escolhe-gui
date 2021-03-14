@@ -8,21 +8,19 @@ class SelectionService {
         if (limit === null) limit = 10
         try {
             let selections = await server.get('/selections?page='+page+'&limit='+limit)
-            return selections.data.filter(({current}) => current)
-        } catch(e) {
-            return e
-        }
-        
+            console.log(selections);
+            return selections.data.docs
+        } catch(error) {
+            return error
+        }        
     }
 
     async getCloseSelections(page, limit) {
-        console.log("CLOSE")
-
         if (page === null) page = 1
         if (limit === null) limit = 10
         try {
             let selections = await server.get('/selections?page='+page+'&limit='+limit)
-            return selections.data.filter(({current}) => !current)
+            return selections.data.docs.filter(({current}) => !current)
         } catch(e) {
             return e
         }
@@ -32,12 +30,10 @@ class SelectionService {
         if (id === null) return
         let selection = await server.get('/selections/'+id)
         console.log(selection)
-        return selection.data
+        return selection
     }
 
     async getSelectionByCandidate(registration) {
-        console.log("CANDIDATE")
-
         try {
             let selections = await server.get('/selections?type=student&id='+registration)
             return selections.data
@@ -64,9 +60,13 @@ class SelectionService {
         } catch(e) {
             return e
         }
-
     }
 
+    async setCurrentSelection(id, body) {
+        let res = await server.put('/selections/'+id, body)
+        console.log(res);
+        return res
+    }
 }
 
 export default new SelectionService()

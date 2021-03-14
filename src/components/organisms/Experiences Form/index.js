@@ -81,7 +81,7 @@ class ExperiencesForm extends Component{
 
     render() { 
         return <>
-            <Title color level={5}>{ 
+            <Title color='black' level={5}>{ 
                 this.isAcademic() ? "Experiência Academica" 
                 : "Experiência Profissional"
             }</Title>
@@ -125,10 +125,8 @@ class ExperiencesForm extends Component{
                 this.isAcademic() ? 
                     <Experiences academicExperiences={ this.props.experiences }/>
                 : <Experiences workExperiences={ this.props.experiences }/>                 
-            }
-            
-        </>
-    
+            }            
+        </>    
     }
 }
 
