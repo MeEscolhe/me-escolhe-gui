@@ -22,8 +22,8 @@ class AllSelections extends Component {
     }
 
     componentDidMount() {
-        this.props.setLoading();
-        if (user.isCandidate()) {
+        console.log(user);
+        if(user.isCandidate()){
             const location = '/' + window.location.href.split('/')[3]
             if (location === route.selections)
                 this.selectionService.getOpenSelections().then(data => this.setState({ selections: data, title: this.props.title }, () => this.props.setLoading()))

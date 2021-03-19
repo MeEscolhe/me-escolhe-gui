@@ -70,17 +70,17 @@ const App = () => {
       <ProtectedRoute
         exact
         path={route.candidates}
-        component={<Candidates setLoading={() => { setLoading(!loading) }} />}
+        component={<Candidates />}
       />
       <ProtectedRoute
         exact
-        path={route.userProfile}
-        component={<CandidateProfile setLoading={() => { setLoading(!loading) }} />}
+        path={route.authProfile}
+        component={<CandidateProfile />}
       />
       <ProtectedRoute
         exact
-        path={route.userSelection}
-        component={<CandidateProjectProfile setLoading={() => { setLoading(!loading) }} />}
+        path={route.authSelection}
+        component={<CandidateProjectProfile />}
       />
 
       <ProtectedRoute
@@ -91,8 +91,8 @@ const App = () => {
 
       <ProtectedRoute
         exact
-        path={route.userSelections}
-        component={<AllSelections title="Minhas Seleções" location={useLocation} history={useHistory} setLoading={() => { setLoading(!loading) }} />}
+        path={route.authSelections}
+        component={<AllSelections title="Minhas Seleções" location={useLocation} history={useHistory} />}
       />
 
       <Route

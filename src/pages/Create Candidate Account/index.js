@@ -104,16 +104,9 @@ class CreateCandidateAccount extends Component {
                 name: this.state.name,
                 password: this.state.password,
                 email: this.state.email,
-                cra: this.state.cra,
-                description: "",
-                skills: {
-                    hardSkills: [],
-                    softSkills: [],
-                    languages: []
-                },
-                experiences: [],
-                phases: []
+                cra: this.state.cra
             }
+            console.log(body);
             await candidateService.postCandidate(body)
             .then((res) => {
                 console.debug(res)
@@ -159,7 +152,6 @@ class CreateCandidateAccount extends Component {
             <HeaderForm>
                 <Title color level={3}>Criar Conta</Title>
             </HeaderForm>
-
             <Content>
                 <DataPersonalForm
                 name={this.state.name} 
@@ -174,8 +166,7 @@ class CreateCandidateAccount extends Component {
                 setEmail={this.addEmail}
                 setPassword={this.addPassword}
                 setConfirmPassword={this.addConfirmPassword}
-                />
-                                        
+                />                                 
             </Content>
             <Legend>
                 <Button width={30} onClick={ this.createCandidateAccount }>Criar Conta</Button>
