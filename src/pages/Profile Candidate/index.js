@@ -29,8 +29,8 @@ class CandidateProfile extends React.Component {
                     languages: [],
                 },
                 experiences: {
-                    academic: [],
-                    work: [],
+                    academicExperiences: [],
+                    workExperiences: [],
                 }
             }
         }
@@ -106,15 +106,8 @@ class CandidateProfile extends React.Component {
                         :
                         <></>
                 }
-                {
-                    this.state.user.experiences ?
-                        <ExperiencesCard
-                            workExperiences={this.state.user.experiences.work}
-                            academicExperiences={this.state.user.experiences.academic} />
-                        :
-                        <></>
-
-                }
+                <ExperiencesCard
+                    experiences={this.state.user.experiences} />
                 {this.state.activeSaveButton &&
                     <ButtonContainer>
                         <Button onClick={this.onChangeUpdateData}>Salvar</Button>

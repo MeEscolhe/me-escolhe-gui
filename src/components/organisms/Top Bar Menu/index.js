@@ -22,7 +22,7 @@ export const TopBarMenu = ({ image, onClick }) => {
                     {
                         user.isCandidate() ? 
                         <MenuComponent.Item onClick={() => history.push(route.userSelections)}>
-                            Minhas Seleções
+                            
                         </MenuComponent.Item>
                         : <></>
                     }                    

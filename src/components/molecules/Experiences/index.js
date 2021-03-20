@@ -5,7 +5,8 @@ import { colors } from '../../../styles/colors'
 import moment from 'moment'
 
 export const Experiences = ({academicExperiences, workExperiences }) => {
-
+    console.log(academicExperiences);
+    console.log(workExperiences);
     const title = workExperiences ? "Profissional" : "Acadêmica"  
     
     const duration = (date) => {    
@@ -21,8 +22,8 @@ export const Experiences = ({academicExperiences, workExperiences }) => {
         return false
     }
 
-    const listExperience = workExperiences ? 
-        workExperiences.map((experience) => {
+    const listExperience = workExperiences ?
+        workExperiences?.map((experience) => {
             return <Experience color={ colors.pink }>
                 <Details>
                     <TitleComponent level={4} color>{ experience.role }</TitleComponent>
@@ -32,7 +33,7 @@ export const Experiences = ({academicExperiences, workExperiences }) => {
             </Experience>
         })
     :    
-        academicExperiences.map((experience) => {
+        academicExperiences?.map((experience) => {
             return <Experience color={ colors.pink }>
                 <Details>
                     <TitleComponent level={4} color>{ experience.title }</TitleComponent>

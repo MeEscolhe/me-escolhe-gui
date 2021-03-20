@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { Title, Input, InputTextArea, Button } from '../../components/atoms'
 
-import { Content, Header, Container, Legend, SelectComponent, OptionComponent } from './styled'
+import { Content, Header, HeaderForm, Container, Legend, SelectComponent, OptionComponent } from './styled'
 
 import labService from '../../services/labService'
 import teacherService from '../../services/teacherService'
+
+import { withRouter } from 'react-router-dom'
+import { route } from '../../routes'
 
 class CreateRecruiterAccount extends Component {
     constructor(props) {
@@ -78,6 +81,10 @@ class CreateRecruiterAccount extends Component {
         this.setState({lab: labs[0]})
     }
 
+    redirect = (route) => {
+        this.props.history.push(route)
+    }
+
     labs = () => {
         return this.state.labs.map(lab => {
             return <OptionComponent
@@ -89,10 +96,12 @@ class CreateRecruiterAccount extends Component {
 
     render() {
         return <Content>
-            
             <Header>
-                <Title color='black' level={3}>Criar Conta</Title>
+                <Button onClick={() => this.redirect(route.home)}>Voltar</Button>
             </Header>
+            <HeaderForm>
+                <Title color='black' level={3}>Criar Conta</Title>
+            </HeaderForm>
             <Content>
                 <Container>
                     <Title color='black' level={5}>Dados Pessoais</Title>
@@ -141,4 +150,4 @@ class CreateRecruiterAccount extends Component {
 
 }
 
-export default CreateRecruiterAccount
+export default withRouter(CreateRecruiterAccount)
