@@ -8,17 +8,17 @@ class Auth {
         this.route = null
         this.authenticated = false
     }
-    
-    async login(body, cb){
+
+    async login(body, cb) {
         try {
-            const {status, data} = await server.post('/auth', body)
-            if(status === 200) {
+            const { status, data } = await server.post('/auth', body)
+            if (status === 200) {
                 localStorage.getItem('@me-escolhe/tokenUser')
                 localStorage.setItem('@me-escolhe/tokenUser', data.token)
                 user.createUser(data.user, data.isTeacher)
             }
             return status
-        } catch(error) {
+        } catch (error) {
             return error
         }
     }
@@ -32,7 +32,7 @@ class Auth {
     }
 
     isAuthenticated() {
-        const res = localStorage.getItem('@me-escolhe/tokenUser') !== ( null || undefined)
+        const res = localStorage.getItem('@me-escolhe/tokenUser') !== (null || undefined)
         console.log(res);
         return res
     }

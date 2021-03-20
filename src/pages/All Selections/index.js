@@ -22,15 +22,14 @@ class AllSelections extends Component {
     }
 
     componentDidMount() {
-        console.log(user);
-        if(user.isCandidate()){
+        if (user.isCandidate()) {
             const location = '/' + window.location.href.split('/')[3]
             if (location === route.selections)
-                this.selectionService.getOpenSelections().then(data => this.setState({ selections: data, title: this.props.title }, () => this.props.setLoading()))
+                this.selectionService.getOpenSelections().then(data => this.setState({ selections: data, title: this.props.title }))
             else
-                this.selectionService.getSelectionByCandidate(user.getID()).then(data => this.setState({ selections: data, title: this.props.title }, () => this.props.setLoading()))
+                this.selectionService.getSelectionByCandidate(user.getID()).then(data => this.setState({ selections: data, title: this.props.title }))
         } else
-            this.selectionService.getSelectionByRecruter(user.getID()).then(data => this.setState({ selections: data, title: this.props.title }, () => this.props.setLoading()))
+            this.selectionService.getSelectionByRecruter(user.getID()).then(data => this.setState({ selections: data, title: this.props.title }))
 
     }
 

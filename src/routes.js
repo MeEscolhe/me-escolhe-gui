@@ -5,6 +5,7 @@ export const route = {
   userSelection: "/user/selections/profile",
   configuration: "/configuration",
   selectionProfile: "/selections/profile",
+  accountTeacher: "/account/teacher",
   help: "/help",
   home: "/",
   login: "/login",

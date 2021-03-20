@@ -1,6 +1,7 @@
 export { default as Home } from './Home'
 export { default as AllSelections } from './All Selections'
 export { default as CandidateProfile } from './Profile Candidate'
+export { default as TeacherProfile } from './Profile Teacher'
 export { default as SelectionProfile } from './Selection Profile'
 export { default as CandidateProjectProfile } from './Candidate Project Profile'
 export { default as CreateCandidateAccount } from './Create Candidate Account'

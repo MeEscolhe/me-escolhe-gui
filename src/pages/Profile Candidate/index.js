@@ -38,11 +38,10 @@ class CandidateProfile extends React.Component {
     }
 
     componentDidMount() {
-        this.props.setLoading();
+
         candidateService.getCandidate(user.getID()).then(data => {
 
             this.setState({
-                loading: false,
                 user: {
                     registration: data.registration,
                     description: data.description,
@@ -53,7 +52,7 @@ class CandidateProfile extends React.Component {
                     skills: data.skills,
                     experiences: data.experiences[0]
                 }
-            }, () => this.props.setLoading())
+            })
         })
 
     }

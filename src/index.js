@@ -19,6 +19,7 @@ import {
   CreateCandidateAccount,
   CreateRecruiterAccount,
   CandidateProfile,
+  TeacherProfile,
   CandidateProjectProfile,
   SelectionProfile
 } from './pages';
@@ -42,35 +43,38 @@ const ProtectedRoute = ({ component, ...props }) => {
   />
 }
 const App = () => {
-  const [loading, setLoading] = useState(false);
 
   return <Router>
-    {loading && <Loading />}
     <Switch>
       <Route
         exact
         path={route.home}
-        render={() => <Home setLoading={() => { setLoading(!loading) }} />} />
+        render={() => <Home />} />
 
       <Route
         exact
         path={route.accountStudent}
-        render={() => <CreateCandidateAccount setLoading={() => { setLoading(!loading) }} />} />
+        render={() => <CreateCandidateAccount />} />
 
       <Route
         exact
         path={route.accountRecruiter}
-        render={() => <CreateRecruiterAccount setLoading={() => { setLoading(!loading) }} />} />
+        render={() => <CreateRecruiterAccount />} />
 
       <ProtectedRoute
         exact
         path={route.selections}
-        component={<AllSelections title="Seleções" location={() => useLocation()} history={useHistory} setLoading={() => { setLoading(!loading) }} />}
+        component={<AllSelections title="Seleções" location={() => useLocation()} history={useHistory} />}
       />
       <ProtectedRoute
         exact
         path={route.candidates}
         component={<Candidates />}
+      />
+      <ProtectedRoute
+        exact
+        path={route.accountTeacher}
+        component={<TeacherProfile />}
       />
       <ProtectedRoute
         exact
@@ -86,7 +90,7 @@ const App = () => {
       <ProtectedRoute
         exact
         path={route.selectionProfile + '/:selectionID'}
-        component={<SelectionProfile setLoading={() => { setLoading(!loading) }} />}
+        component={<SelectionProfile />}
       />
 
       <ProtectedRoute
