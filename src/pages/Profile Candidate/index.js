@@ -12,6 +12,7 @@ class CandidateProfile extends React.Component {
         this.state = {
             editSkillsCard: false,
             editAboutCard: false,
+            editExperienceCard: false,
             activeSaveButton: false,
             user: {
                 registration: '',
@@ -71,6 +72,10 @@ class CandidateProfile extends React.Component {
         });
 
     }
+    onChangeExperience = () => {
+
+    }
+    
     onChangeEdit = () => this.setState({ editSkillsCard: !this.state.editSkillsCard, activeSaveButton: true });
     onChangeEditAboutCard = () => this.setState({ editAboutCard: !this.state.editAboutCard, activeSaveButton: true });
 
@@ -81,6 +86,14 @@ class CandidateProfile extends React.Component {
         );
 
     }
+
+    onChangeEditExperienceCard = () => {
+        this.setState({
+            editExperienceCard: !this.state.editExperienceCard,
+            activeSaveButton: true
+        })
+    }
+
     render() {
         return <>
             <Header>
@@ -107,7 +120,12 @@ class CandidateProfile extends React.Component {
                         <></>
                 }
                 <ExperiencesCard
-                    experiences={this.state.user.experiences} />
+                    onChangeEditExperienceCard={this.onChangeEditExperienceCard}
+                    editExperienceCard={this.state.editExperienceCard}
+                    workExperiences={this.state.user.experiences ? this.state.user.experiences.work : []}
+                    academicExperiences={this.state.user.experiences ? this.state.user.experiences.academic : []} 
+                />
+                
                 {this.state.activeSaveButton &&
                     <ButtonContainer>
                         <Button onClick={this.onChangeUpdateData}>Salvar</Button>

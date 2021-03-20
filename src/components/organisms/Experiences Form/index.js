@@ -11,7 +11,7 @@ class ExperiencesForm extends Component{
     constructor(props) {
         super(props)
         this.state = {
-            type: null,
+            type: this.props.type,
             title: null,
             category: null,
             categories: ['Fundamental', 'Médio', 'Tecnico', 'Graduação', 'Mestrado', 'Doutorado'],
@@ -75,8 +75,7 @@ class ExperiencesForm extends Component{
                 finalDate: this.state.finalDate            
             }
         }
-        this.props.addExperience(body)
-        this.setState({})       
+        this.props.addExperience(body)  
     }
 
     render() { 
@@ -117,15 +116,8 @@ class ExperiencesForm extends Component{
                 onChange={ this.addFinalDate }
                 format={'YYYY/MM/DD'} />
             <Legend>
-                <Button 
-                    onClick={ this.add }
-                    icon={ <PlusOutlined /> }/>
-            </Legend>
-            {
-                this.isAcademic() ? 
-                    <Experiences academicExperiences={ this.props.experiences }/>
-                : <Experiences workExperiences={ this.props.experiences }/>                 
-            }            
+                <Button onClick={ this.add }>Salvar</Button>
+            </Legend>           
         </>    
     }
 }
