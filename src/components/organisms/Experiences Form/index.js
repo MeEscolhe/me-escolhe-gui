@@ -11,7 +11,7 @@ class ExperiencesForm extends Component{
     constructor(props) {
         super(props)
         this.state = {
-            type: null,
+            type: this.props.type,
             title: null,
             category: null,
             categories: ['Fundamental', 'Médio', 'Tecnico', 'Graduação', 'Mestrado', 'Doutorado'],
