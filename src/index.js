@@ -66,12 +66,12 @@ ReactDOM.render(
       />  
       <ProtectedRoute 
         exact 
-        path={ route.userProfile }
+        path={ route.authProfile }
         component={<CandidateProfile />}
       />  
       <ProtectedRoute 
         exact 
-        path={ route.userSelection }
+        path={ route.authSelection }
         component={<CandidateProjectProfile/>}
       />
 
@@ -83,7 +83,7 @@ ReactDOM.render(
 
       <ProtectedRoute 
         exact 
-        path={ route.userSelections }
+        path={ route.authSelections }
         component={<AllSelections title="Minhas Seleções" location={useLocation} history={useHistory}/>}
       />
 

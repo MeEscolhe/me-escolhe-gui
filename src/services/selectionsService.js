@@ -8,11 +8,11 @@ class SelectionService {
         if (limit === null) limit = 10
         try {
             let selections = await server.get('/selections?page='+page+'&limit='+limit)
-            return selections.data.filter(({current}) => current)
-        } catch(e) {
-            return e
-        }
-        
+            console.log(selections);
+            return selections.data.docs
+        } catch(error) {
+            return error
+        }        
     }
 
     async getCloseSelections(page, limit) {
@@ -20,7 +20,7 @@ class SelectionService {
         if (limit === null) limit = 10
         try {
             let selections = await server.get('/selections?page='+page+'&limit='+limit)
-            return selections.data.filter(({current}) => !current)
+            return selections.data.docs.filter(({current}) => !current)
         } catch(e) {
             return e
         }

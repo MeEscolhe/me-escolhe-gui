@@ -22,6 +22,7 @@ class AllSelections extends Component {
     }
 
     componentDidMount() {
+        console.log(user);
         if(user.isCandidate()){
             const location = '/' + window.location.href.split('/')[3]
             if(location === route.selections)

@@ -1,55 +1,31 @@
 class User {
     constructor() {
-        this.email = ''
-        this.password = ''
-        this.id = ''
-        this.type = ''
+        this.user = null;
+        this.isTeacher = false;
+        this.isStudent = false;
     }
 
-    createUser(email, password, type) {
-        this.email = email
-        this.password = password
-        this.type = type
+    createUser(user, isTeacher) {
+        this.user = user;
+        this.isTeacher = isTeacher;
+        this.isStudent = !isTeacher;
     }
 
     getEmail() {
-        return this.email
-    }
-
-    setEmail(email) {
-        this.email = email
-    }
-
-    getPassword() {
-        return this.password
-    }
-
-    setPassword(password) {
-        this.password = password
-    }
-
-    getID() {
-        return this.id
-    }
-
-    setID(id) {
-        this.id = id
-    }
-
-    getType() {
-        return this.type
-    }
-
-    setType(type) {
-        this.type = type
+        return this.user.email
     }
 
     isCandidate() {
-        return this.type === "CANDIDATE"
+        return this.isStudent
+    }
+
+    getID() {
+        console.log(this.user);
+        return this.user ? this.user.registration : undefined
     }
 
     isRecruiter() {
-        return this.type === "RECRUITER"
+        return this.isTeacher
     }
 }
 

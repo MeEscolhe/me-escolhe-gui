@@ -125,10 +125,8 @@ class ExperiencesForm extends Component{
                 this.isAcademic() ? 
                     <Experiences academicExperiences={ this.props.experiences }/>
                 : <Experiences workExperiences={ this.props.experiences }/>                 
-            }
-            
-        </>
-    
+            }            
+        </>    
     }
 }
 

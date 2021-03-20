@@ -1,28 +1,18 @@
 import React, { useState } from 'react'
-import CardMessage from './index'
-import { Button } from '../../atoms'
+import ModalMessage from './index'
 
 export default {
-  title: 'Card Message Molecule Component',
-  component: CardMessage,
+  title: 'Modal Message Molecule Component',
+  component: ModalMessage,
 };
 
 const title="Ops! Tivemos um problema com o Serviço."
 const message = "Aguarde e tente novamente em alguns instantes!"
 
-const Erro = () => {
-  const [open, setOpen] = useState(false)
+const [open, setOpen] = useState(false)
 
-  return<>
-    {  open ?
-        <CardMessage title={title} message={message} onClick={() => setOpen(false)}/> :
-        <Button onClick={() => setOpen(true)}>Open Card Error</Button>
-    }
-  </>
-}
+export const ToStorybookModal = () => <ModalMessage title={title} message={message} visible={open} onOk={() => setOpen(false)} onClick={() => setOpen(false)}/> ;
 
-export const ToStorybookCard = () => <Erro/>;
-
-ToStorybookCard.story = {
-  name: 'Card Error',
+ToStorybookModal.story = {
+  name: 'Modal Message',
 }
