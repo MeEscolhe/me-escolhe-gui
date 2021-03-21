@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { EditOutlined } from '@ant-design/icons'
 import { Card as CardAntd } from 'antd';
 import { CloseCircleOutlined as CloseSquare } from '@ant-design/icons';
+import { Select } from '../../atoms'
 
 
 
@@ -37,3 +38,18 @@ export const ProjectCard = styled.div`
     padding:1rem;
     margin: 1rem 0rem;
 `
+
+export const SelectProjects = styled(Select)`
+    width:100%;
+`;
+export const Legend = styled.div`
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 2%;
+`;
+export const ButtonsContainer = styled.div`
+    display:flex;
+    width:100%;
+    justify-content:space-between;
+
+`;

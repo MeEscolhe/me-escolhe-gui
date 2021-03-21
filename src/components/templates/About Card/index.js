@@ -12,7 +12,7 @@ export const AboutCard = ({
 
     return <Card>
         <Pencil onClick={() => onChangeEditAboutCard(!editAboutCard)} />
-        <Title level={3} color>{title ? title : 'Sobre'}</Title>
+        <Title level={3} color='black' >{title ? title : 'Sobre'}</Title>
         {editAboutCard ?
             <InputTextArea
                 value={description}

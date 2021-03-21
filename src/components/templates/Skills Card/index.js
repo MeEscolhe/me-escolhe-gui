@@ -68,7 +68,8 @@ export const SkillsCard = ({
                 : <></>
         }
         {editSkillsCard && <ButtonsContainer>
-            <Button>Salvar</Button> <Button>Cancelar</Button>
+            <Button onClick={() => onChangeSkill(localSkills, true)}>Salvar</Button>
+            <Button onClick={() => onChangeSkill(localSkills, false)}>Cancelar</Button>
         </ButtonsContainer>}
     </Card>
 }

@@ -61,10 +61,10 @@ class CandidateProfile extends React.Component {
         this.setState({ user: { ...this.state.user, description: event.target.value } });
 
     onChangeSkill = (skills, save) => {
-        save ?
+        !save ?
             this.setState({ editSkillsCard: false })
             :
-            this.setState({ user: { ...this.state.user, skills } });
+            this.setState({ user: { ...this.state.user, skills, editSkillsCard: false } });
 
     }
     onChangeEdit = () => this.setState({ editSkillsCard: !this.state.editSkillsCard, activeSaveButton: true });
@@ -117,9 +117,9 @@ class CandidateProfile extends React.Component {
                     onChangeEditExperienceCard={this.onChangeEditExperienceCard}
                     editExperienceCard={this.state.editExperienceCard}
                     workExperiences={this.state.user.experiences ? this.state.user.experiences.work : []}
-                    academicExperiences={this.state.user.experiences ? this.state.user.experiences.academic : []} 
+                    academicExperiences={this.state.user.experiences ? this.state.user.experiences.academic : []}
                 />
-                
+
                 {this.state.activeSaveButton &&
                     <ButtonContainer>
                         <Button onClick={this.onChangeUpdateData}>Salvar</Button>
