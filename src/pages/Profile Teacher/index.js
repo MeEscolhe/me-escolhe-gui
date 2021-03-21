@@ -52,7 +52,7 @@ const TeacherProfile = () => {
         if (save) {
             setUser({ ...user, managements: projects })
 
-            teacherService.update({ ...user, managements: projects });
+            teacherService.update(user._id, { managements: projects });
         }
 
         setEditProjectsCard(false);

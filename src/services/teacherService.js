@@ -34,10 +34,10 @@ class TeacherService {
         }
     }
 
-    async update(data) {
+    async update(id, data) {
         try {
-            const { _id, ...restData } = data;
-            const res = await server.put('/teachers/' + data._id, restData)
+
+            const res = await server.put('/teachers/' + id, data)
             return res.data
         } catch (error) {
             return []
