@@ -8,6 +8,13 @@ class LabService {
         console.log(labs)
         return labs.data
     }
+
+    async getLab(id) {
+        const lab = await server.get(`/labs/${id}`);
+        console.log(`/labs/${id}`);
+
+        return lab.data;
+    }
 }
 
 export default new LabService()

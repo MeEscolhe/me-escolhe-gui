@@ -1,0 +1,6 @@
+export { default as candidateService } from './candidateService'
+export { default as labService } from './labService'
+export { default as phasesService } from './phasesService'
+export { default as projectService } from './projectService'
+export { default as selectionsService } from './selectionsService'
+export { default as teacherService } from './teacherService'

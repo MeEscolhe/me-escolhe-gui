@@ -1,31 +1,43 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { HeaderUser } from '../../components/molecules';
-import { AboutCard } from '../../components/templates';
+import { AboutCard, ProjectCard } from '../../components/templates';
 import { Header, Content, ButtonContainer } from './styled';
 import { Button } from '../../components/atoms';
-import teacherService from '../../services/teacherService';
+import { labService } from '../../services/index';
 import User from '../../user';
 
 
 const TeacherProfile = () => {
     const [editAboutCard, setEditAboutCard] = useState(false);
+    const [editProjectsCard, setEditProjectsCard] = useState(false);
     const [activeSaveButton, setActiveSaveButton] = useState(false);
     const [user, setUser] = useState({
         description: null,
         name: null,
         email: null,
-        image: ''
+        image: '',
+        labId: "",
+        managements: []
     });
-
+    const [lab, setLab] = useState({
+        id: '',
+        name: '',
+        description: '',
+        projects: []
+    });
     useEffect(() => {
-        teacherService.getById(User.getID()).then(data => {
-            setUser({
-                description: data.description,
-                name: data.name,
-                email: data.email
+
+        labService.getLab(User.user.labId).then((response) => {
+            setUser(User.user);
+            console.log(response);
+            setLab({
+                id: response.id,
+                name: response.name,
+                description: response.description,
+                projects: response.projects
             })
         });
-
     }, [])
 
     const onChangeDescription = (event) =>
@@ -35,7 +47,10 @@ const TeacherProfile = () => {
         setEditAboutCard(!editAboutCard);
         setActiveSaveButton(true);
     }
-
+    const onChangeProjectsAboutCard = () => {
+        setEditProjectsCard(!editProjectsCard);
+        setActiveSaveButton(true);
+    }
 
     return <>
         <Header>
@@ -48,7 +63,13 @@ const TeacherProfile = () => {
                 description={user.description}
                 onChangeDescription={onChangeDescription}
             />
-
+            <ProjectCard
+                editCard={editProjectsCard}
+                onChangeEditCard={onChangeProjectsAboutCard}
+                projects={lab.projects}
+                teacherProjects={user.managements}
+                onChangeDescription={onChangeDescription}
+            />
             {activeSaveButton &&
                 <ButtonContainer>
                     <Button onClick={() => { }}>Salvar</Button>
