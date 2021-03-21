@@ -3,7 +3,7 @@ import { colors } from '../../../styles/colors';
 import { Input } from 'antd';
 
 
-export const InputAtom = styled(Input)`
+export const InputAtom= styled(Input)`
     display: flex;
     outline: none;
     outline-style: none;
