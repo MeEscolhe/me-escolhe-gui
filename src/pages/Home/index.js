@@ -6,21 +6,21 @@ import { TopBar, Logo } from './styled'
 
 export const Home = () => {
     const [openLogin, setOpenLoginFom] = useState(false)
-    
+
     return <>
         <TopBar>
             <Logo>
-                <Avatar size={54} color={ colors.pink }/>
+                <Avatar size={54} color={colors.pink} />
                 <Title color='black' level={4}> ME ESCOLHE </Title>
             </Logo>
-            <Button onClick={() => setOpenLoginFom(true) }>Login</Button>
+            <Button onClick={() => setOpenLoginFom(true)}>Login</Button>
             <Login
-                visible={ openLogin }
-                onCancel={() => setOpenLoginFom(false) }
+                visible={openLogin}
+                onCancel={() => setOpenLoginFom(false)}
             />
         </TopBar>
     </>
-    
+
 };
 
 export default Home

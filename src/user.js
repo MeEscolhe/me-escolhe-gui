@@ -20,11 +20,14 @@ class User {
     }
 
     getID() {
-        console.log(this.user);
-        return this.user ? this.user.registration : undefined
+
+        return this.user ?
+            this.isTeacher ? this.user._id : this.user.registration
+            : undefined
     }
 
     isRecruiter() {
+        console.log("Is recruiter"+this.isTeacher);
         return this.isTeacher
     }
 }
