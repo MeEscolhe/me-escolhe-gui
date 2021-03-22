@@ -35,7 +35,9 @@ const data = [
 
 const project = {
     name: 'História da Apple',
-    labName: 'Apple',
+    lab: {
+        name: 'Apple',
+    },
     role: 'FullStack',
     image: 'https://i.pinimg.com/originals/92/b4/fa/92b4fa6d36f08759306310acb5ecb219.jpg'
 }
