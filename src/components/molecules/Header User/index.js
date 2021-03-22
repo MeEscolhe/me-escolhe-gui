@@ -15,15 +15,15 @@ export const Header = ({ user, teacher }) => {
       <Skills>
         <Skill>
           <TitleComponent level={4}> Soft Skills </TitleComponent>
-          <TitleComponent level={2}>{user.skills.softSkills.length}</TitleComponent>
+          <TitleComponent level={2}>{user.skills?.softSkills?.length}</TitleComponent>
         </Skill>
         <Skill>
           <TitleComponent level={4}> Hard Skills </TitleComponent>
-          <TitleComponent level={1}>{user.skills.hardSkills.length}</TitleComponent>
+          <TitleComponent level={1}>{user.skills?.hardSkills?.length}</TitleComponent>
         </Skill>
         <Skill>
           <TitleComponent level={4}> Idiomas </TitleComponent>
-          <TitleComponent level={2}>{user.skills.languages.length}</TitleComponent>
+          <TitleComponent level={2}>{user.skills?.languages?.length}</TitleComponent>
         </Skill>
       </Skills>
       <Footer>

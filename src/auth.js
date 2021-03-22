@@ -12,6 +12,7 @@ class Auth {
     async login(body, cb) {
         try {
             const { status, data } = await server.post('/auth', body)
+            console.log(status);
             if (status === 200) {
                 localStorage.getItem('@me-escolhe/tokenUser')
                 localStorage.setItem('@me-escolhe/tokenUser', data.token)
