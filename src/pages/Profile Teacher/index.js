@@ -27,7 +27,7 @@ const TeacherProfile = () => {
     });
     useEffect(() => {
 
-        labService.getLab(User.user.labId).then((response) => {
+        labService.getLab(User.user?.labId).then((response) => {
             setUser(User.user);
             setLab({
                 id: response.id,

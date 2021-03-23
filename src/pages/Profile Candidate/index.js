@@ -51,7 +51,7 @@ class CandidateProfile extends React.Component {
                     cra: data.cra,
                     image: '',
                     skills: data.skills,
-                    experiences: data.experiences[0]
+                    experiences: data.experiences
                 }
             })
         })

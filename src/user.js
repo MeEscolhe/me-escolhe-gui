@@ -27,6 +27,7 @@ class User {
     }
 
     isRecruiter() {
+        console.log("Is recruiter"+this.isTeacher);
         return this.isTeacher
     }
 }

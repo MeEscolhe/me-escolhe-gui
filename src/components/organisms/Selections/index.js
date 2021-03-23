@@ -32,7 +32,7 @@ export const Selections = ({selections}) => {
                         projectName={ item.project ? item.project.name : ""  } 
                         role={ item.role } 
                         description={ item.description } 
-                        labName={ item.project ? item.project.lab.name : "" } 
+                        labName={ item.project ? item.project.lab?.name : "" } 
                         colors={ color(item.role) }
                         onClick={() => user.isRecruiter() ? getSelectionPage(item._id) : openDetails(item)}
                     />
@@ -44,7 +44,7 @@ export const Selections = ({selections}) => {
             role={ details.role } 
             description={ details.description } 
             colors={ color(details.role) }
-            labName={ details.project ? details.project.lab.name : "" } 
+            labName={ details.project ? details.project.lab?.name : "" } 
             visible={ open }
             onOk={ () => getSelectionPage(details._id)}
             onCancel={() => setOpen(false)}
