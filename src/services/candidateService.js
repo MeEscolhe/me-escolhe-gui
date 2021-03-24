@@ -1,30 +1,36 @@
 import server from './server'
+import { students } from '../mock/students'
 
 class UserService {
     async getCandidate(id) {
+        return students.getById(id)
+        /*
         try {
             let res = await server.get('/students/' + id)
             return res.data
         } catch (error) {
             return []
-        }
+        }*/
     }
 
     async postCandidate(body) {
+        return students.post(body)
+        /*
         try {
             return await server.post('/students', body)
         } catch (error) {
             return error
-        }
+        }*/
     }
     updateCandidate = async (body) => {
-
+        return students.put(body)
+        /*
         try {
             const req = await server.put('/students/' + body.registration, body);
             return { data: req.data, error: false };
         } catch (error) {
             return { data: error.response.data, error: true };
-        }
+        }*/
     }
 
     /**
