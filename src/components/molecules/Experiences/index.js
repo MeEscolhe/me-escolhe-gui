@@ -4,7 +4,7 @@ import { Content, Header, TimeLine, Experience, Details, TitleComponent } from '
 import { colors } from '../../../styles/colors'
 import moment from 'moment'
 
-export const Experiences = ({academicExperiences, workExperiences }) => {
+export const Experiences = ({academicExperiences=[], workExperiences=[] }) => {
 
     const title = workExperiences ? "Profissional" : "Acadêmica"  
     

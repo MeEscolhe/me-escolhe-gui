@@ -20,7 +20,6 @@ class User {
     }
 
     getID() {
-
         return this.user ?
             this.isTeacher ? this.user._id : this.user.registration
             : undefined

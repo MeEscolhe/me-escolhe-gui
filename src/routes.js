@@ -1,10 +1,10 @@
 export const route = {
   selections: "/selections",
+  configuration: "/configuration",
+  selectionProfile: "/selections/profile",
   userProfile: "/user/profile",
   userSelections: "/user/selections",
   userSelection: "/user/selections/profile",
-  configuration: "/configuration",
-  selectionProfile: "/selections/profile",
   accountTeacher: "/account/teacher",
   help: "/help",
   home: "/",

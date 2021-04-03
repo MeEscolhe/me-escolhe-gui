@@ -30,10 +30,10 @@ class SelectionProfile extends React.Component {
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         const selectionID = this.selectionID()
 
-        selectionService.getSelection(selectionID)
+        await selectionService.getSelection(selectionID)
         .then((res) => {
             let text = res.data.current ? "Fechar" : "Abrir"
             this.setState({ selection: res.data, selectionStatusText: text})
@@ -139,7 +139,9 @@ class SelectionProfile extends React.Component {
                     <Footer>
                         <Button onClick={this.apply}>Candidatar-se</Button>
                     </Footer>
-                : <></>
+                : <Footer>
+                    <Button onClick={this.apply}>Cancelar candidatura</Button>
+                </Footer>
             }
             <StatusModal
                 visible={this.state.openModal}

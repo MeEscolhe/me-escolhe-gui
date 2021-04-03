@@ -7,9 +7,9 @@ class SelectionService {
         if (page === null) page = 1
         if (limit === null) limit = 10
         try {
-            let selections = await server.get('/selections?page='+page+'&limit='+limit)
-            console.log(selections);
-            return selections.data.docs
+            let selections = await server.get('/selections')
+            console.log(selections)
+            return selections.data
         } catch(error) {
             return error
         }        
@@ -19,8 +19,8 @@ class SelectionService {
         if (page === null) page = 1
         if (limit === null) limit = 10
         try {
-            let selections = await server.get('/selections?page='+page+'&limit='+limit)
-            return selections.data.docs.filter(({current}) => !current)
+            let selections = await server.get('/selections')
+            return selections.data.filter(({current}) => !current)
         } catch(e) {
             return e
         }
